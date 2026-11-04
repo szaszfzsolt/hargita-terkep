@@ -9,6 +9,7 @@
 - **Earth Engine-projekt:** `tidal-velocity-494919-e2`, felhasználónév: `szaszfzsolt`
 - **Earth Engine-assetek:** `hargita_kozsegek_shp`, `hargita_megye_shp`
 - **Mentett szkript:** `users/szaszfzsolt/T01_proba/proba_v1`
+- **Közzétett app:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol
 - **Projektmappa a gépen:** `C:\Users\Zsolt\hargita-terkep` (GitHub: szaszfzsolt/hargita-terkep)
 - **Következő lépés:** T01 rendes szkriptje (Cloud Score+ felhőszűrés, domborzatárnyékolás, export Drive-ra); első térképoldal községválasztóval
 
@@ -56,3 +57,5 @@
 - Exportok elkészültek a Drive `HargitaTerkep` mappájában: Sentinel-2 10 m (544 MB), színes domborzat 30 m (59 MB), DEM 30 m (28 MB).
 - Korlát: ekkora fájlokat Claude nem tud a Drive-ról áthozni → webes csempézés majd QGIS-ben, külön alkalommal.
 - Addig: **Earth Engine App** (`T01_app_v1.js`) – községválasztó, 4 réteg (valós, infravörös, NDVI, domborzat), kivágás egy községre, kattintásra település-adatok.
+- App közzétéve: https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol (forrás: `users/szaszfzsolt/T01_proba/app_v1`).
+- **Teendő:** az `alapterkep_v2` Earth Engine-szkriptet véletlenül felülírta az app kódja → visszaállítani a `T01_alapterkep_v2.js`-ből.
