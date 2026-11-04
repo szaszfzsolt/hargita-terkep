@@ -22,3 +22,14 @@
 
 ## Jegyzetek menet közben
 
+
+### Teendő: az app műholdképe elmosódottabb, mint a próbáé (2026-11-05, Zsolt észrevétele)
+Valószínű okok:
+- a v2 286 felvétel mediánját veszi (jún.–szept. közepe): a különböző pályákról készült képek pár méteres elcsúszása és az évszakos változás (kaszálás, aratás) „összemossa" a részleteket;
+- a Cloud Score+ 0,60-as küszöbe átengedi a vékony párát → kisebb kontraszt.
+
+Kipróbálandó (egyenként, összehasonlítva):
+1. szűkebb időablak (pl. júl. 1 – aug. 15) + `CLOUDY_PIXEL_PERCENTAGE < 30` előszűrés;
+2. szigorúbb küszöb (0,65–0,70);
+3. medián helyett „legjobb pixel" mozaik (`qualityMosaic('cs_cdf')`) – éles, de foltosabb lehet;
+4. a legtisztább néhány napot külön választva, kézzel.

@@ -11,6 +11,7 @@
 - **Mentett szkript:** `users/szaszfzsolt/T01_proba/proba_v1`
 - **Közzétett app:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol
 - **Projektmappa a gépen:** `C:\Users\Zsolt\hargita-terkep` (GitHub: szaszfzsolt/hargita-terkep)
+- **Nyitott hiba:** az app műholdképe elmosódottabb a próbánál → lásd [[T01 Felhomentes mozaik]]
 - **Következő lépés:** T01 rendes szkriptje (Cloud Score+ felhőszűrés, domborzatárnyékolás, export Drive-ra); első térképoldal községválasztóval
 
 ---
