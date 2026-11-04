@@ -4,20 +4,20 @@ Sorrendben, pipáld ki, ami megvan. Ha valahol elakadsz, írd le Claude-nak, hol
 
 ## 1. Obsidian (5 perc)
 
-- [ ] Letöltés: https://obsidian.md → Download → Windows
-- [ ] Telepítés után: **„Open folder as vault"** → válaszd ki: `Dokumentumok\Hargita-terkep\jegyzetek`
-- [ ] Kezdésnek a `00 Projektnapló` jegyzetet nyisd meg
+- [x] Letöltés: https://obsidian.md → Download → Windows
+- [x] Telepítés után: **„Open folder as vault"** → válaszd ki: `Dokumentumok\Hargita-terkep\jegyzetek`
+- [x] Kezdésnek a `00 Projektnapló` jegyzetet nyisd meg
 - Bővítményt egyelőre ne telepíts.
 
 ## 2. Google Earth Engine (15–20 perc, ez a legbürokratikusabb)
 
-- [ ] Nyisd meg: https://earthengine.google.com → **Get started**
-- [ ] Jelentkezz be a Google-fiókoddal (szaszfzsolt@gmail.com)
-- [ ] **Register a Noncommercial or Commercial Cloud project** → **Unpaid usage** → felhasználás típusa: **Education / Academia** (vagy *Nonprofit*/*Personal*, ami a legközelebb áll)
-- [ ] **Create a new Google Cloud Project** – javasolt projektazonosító: `hargita-terkep` (ha foglalt, pl. `hargita-terkep-szfzs`)
-- [ ] Elfogadod a feltételeket → **Continue to summary** → **Confirm**
-- [ ] Ellenőrzés: nyisd meg https://code.earthengine.google.com – ha betölt a kódszerkesztő (bal oldalt Scripts, középen üres szkript, lent térkép), kész vagy.
-- [ ] A projektazonosítót írd be ide: `______________`
+- [x] Nyisd meg: https://earthengine.google.com → **Get started**
+- [x] Jelentkezz be a Google-fiókoddal (szaszfzsolt@gmail.com)
+- [x] **Register a Noncommercial or Commercial Cloud project** → **Unpaid usage** → felhasználás típusa: **Education / Academia** (vagy *Nonprofit*/*Personal*, ami a legközelebb áll)
+- [x] **Create a new Google Cloud Project** – javasolt projektazonosító: `hargita-terkep` (ha foglalt, pl. `hargita-terkep-szfzs`)
+- [x] Elfogadod a feltételeket → **Continue to summary** → **Confirm**
+- [x] Ellenőrzés: nyisd meg https://code.earthengine.google.com – ha betölt a kódszerkesztő (bal oldalt Scripts, középen üres szkript, lent térkép), kész vagy.
+- [x] A projektazonosítót írd be ide: `tidal-velocity-494919-e2` (felhasználónév: `szaszfzsolt`)
 - Bankkártya NEM kell a nem kereskedelmi használathoz. Ha mégis kérné, állj meg, és szólj.
 
 ## 3. Copernicus Data Space (5 perc)
@@ -35,11 +35,11 @@ Sorrendben, pipáld ki, ami megvan. Ha valahol elakadsz, írd le Claude-nak, hol
 
 ## 5. GitHub-repó (5 perc)
 
-- [ ] https://github.com/new
-- [ ] Repository name: `hargita-terkep`
-- [ ] **Public** (a GitHub Pages ingyenesen csak nyilvános repóval működik; a nyers adatok úgysem kerülnek bele)
-- [ ] Add a README: **NE** pipáld be (a mi README-nket töltjük fel)
-- [ ] **Create repository** → szólj Claude-nak, és a repó feltöltését ő intézi.
+- [x] https://github.com/new
+- [x] Repository name: `hargita-terkep`
+- [x] **Public** (a GitHub Pages ingyenesen csak nyilvános repóval működik; a nyers adatok úgysem kerülnek bele)
+- [x] Add a README: **NE** pipáld be (a mi README-nket töltjük fel)
+- [x] **Create repository** → szólj Claude-nak, és a repó feltöltését ő intézi.
 
 ## 6. (Ajánlott) Claude memória
 
