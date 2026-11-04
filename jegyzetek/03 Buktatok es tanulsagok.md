@@ -24,3 +24,7 @@ Amibe belefutottunk (vagy várhatóan belefutunk), és hogyan oldottuk meg.
 ### 2026-11-04 – Ékezetes fájlnevek ZIP-ben
 **Mi történt:** a Windows beépített kibontója elrontotta az ékezetes fájlneveket.
 **Megoldás:** fájlnevek ékezet nélkül, a tartalom maradhat ékezetes.
+
+### 2026-11-04 – A GitHub Desktop nem tudott klónozni a Dokumentumok mappába
+**Mi történt:** `could not create work tree dir … No such file or directory` – a Windows zsarolóvírus elleni védelme (vezérelt mappahozzáférés) blokkolta.
+**Megoldás:** a repó helye `C:\Users\Zsolt\hargita-terkep` (védett mappán kívül).

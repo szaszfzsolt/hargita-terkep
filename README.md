@@ -18,4 +18,4 @@ Indult: 2026. november 4.
 
 ## Hol tartunk?
 
-Lásd: [[00 Projektnaplo]]
+Lásd: [jegyzetek/00 Projektnaplo.md](jegyzetek/00%20Projektnaplo.md)

@@ -9,7 +9,8 @@
 - **Earth Engine-projekt:** `tidal-velocity-494919-e2`, felhasználónév: `szaszfzsolt`
 - **Earth Engine-assetek:** `hargita_kozsegek_shp`, `hargita_megye_shp`
 - **Mentett szkript:** `users/szaszfzsolt/T01_proba/proba_v1`
-- **Következő lépés:** GitHub-repó + GitHub Desktop; T01 rendes szkriptje (Cloud Score+ felhőszűrés, domborzatárnyékolás, export Drive-ra); első térképoldal községválasztóval
+- **Projektmappa a gépen:** `C:\Users\Zsolt\hargita-terkep` (GitHub: szaszfzsolt/hargita-terkep)
+- **Következő lépés:** T01 rendes szkriptje (Cloud Score+ felhőszűrés, domborzatárnyékolás, export Drive-ra); első térképoldal községválasztóval
 
 ---
 
@@ -50,3 +51,5 @@
 **Zárás (22:08):**
 - Határok feltöltve Earth Engine-be (`hargita_kozsegek_shp`, `hargita_megye_shp`), a próba szkript fut: 67 település, pontos megyehatár. Mentve: `users/szaszfzsolt/T01_proba/proba_v1`.
 - Ismert hibák a próbaképen: szögletes adathiány a megye déli részén (Brassó megye határánál) és halvány csempehatárok → Cloud Score+ felhőszűrővel javítjuk.
+- GitHub-repó (`szaszfzsolt/hargita-terkep`) és GitHub Desktop beállítva, a régi mappa: `Dokumentumok\Hargita-terkep-regi`.
+- T01 v2 szkript (`users/szaszfzsolt/T01_proba/alapterkep_v2`): Cloud Score+ felhőszűrés – a lyuk és a csempehatárok eltűntek; domborzat; 3 export elindítva a Drive `HargitaTerkep` mappájába.

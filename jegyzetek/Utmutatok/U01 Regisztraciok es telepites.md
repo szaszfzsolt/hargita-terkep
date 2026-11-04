@@ -5,7 +5,7 @@ Sorrendben, pipáld ki, ami megvan. Ha valahol elakadsz, írd le Claude-nak, hol
 ## 1. Obsidian (5 perc)
 
 - [x] Letöltés: https://obsidian.md → Download → Windows
-- [x] Telepítés után: **„Open folder as vault"** → válaszd ki: `Dokumentumok\Hargita-terkep\jegyzetek`
+- [x] Telepítés után: **„Open folder as vault"** → válaszd ki: `C:\Users\Zsolt\hargita-terkep\jegyzetek`
 - [x] Kezdésnek a `00 Projektnapló` jegyzetet nyisd meg
 - Bővítményt egyelőre ne telepíts.
 
@@ -48,3 +48,11 @@ Sorrendben, pipáld ki, ami megvan. Ha valahol elakadsz, írd le Claude-nak, hol
 ---
 
 **Ha mind megvan:** írd meg Claude-nak az Earth Engine-projektazonosítót, és indulhat a [[T01 Felhomentes mozaik]].
+
+## 7. GitHub Desktop (kész)
+
+- [x] Telepítve, bejelentkezve
+- [x] Klónozva ide: `C:\Users\Zsolt\hargita-terkep` (a Dokumentumok mappába a Windows vezérelt mappahozzáférése nem engedte)
+
+**Munkamenet eleje:** Fetch origin → Pull origin (lejönnek Claude változtatásai)
+**Ha te írtál/pipáltál:** Summary kitöltése → Commit to main → Push origin
