@@ -1,0 +1,15 @@
+# Nyers és nagy adatfájlok nem kerülnek gitbe
+adatok/nyers/
+*.tif
+*.tiff
+*.zip
+*.SAFE/
+
+# Obsidian munkaterület-beállítások (gépenként mások)
+jegyzetek/.obsidian/workspace*.json
+jegyzetek/.trash/
+
+# Rendszerfájlok
+Thumbs.db
+desktop.ini
+.DS_Store
