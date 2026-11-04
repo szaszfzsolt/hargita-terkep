@@ -53,3 +53,6 @@
 - Ismert hibák a próbaképen: szögletes adathiány a megye déli részén (Brassó megye határánál) és halvány csempehatárok → Cloud Score+ felhőszűrővel javítjuk.
 - GitHub-repó (`szaszfzsolt/hargita-terkep`) és GitHub Desktop beállítva, a régi mappa: `Dokumentumok\Hargita-terkep-regi`.
 - T01 v2 szkript (`users/szaszfzsolt/T01_proba/alapterkep_v2`): Cloud Score+ felhőszűrés – a lyuk és a csempehatárok eltűntek; domborzat; 3 export elindítva a Drive `HargitaTerkep` mappájába.
+- Exportok elkészültek a Drive `HargitaTerkep` mappájában: Sentinel-2 10 m (544 MB), színes domborzat 30 m (59 MB), DEM 30 m (28 MB).
+- Korlát: ekkora fájlokat Claude nem tud a Drive-ról áthozni → webes csempézés majd QGIS-ben, külön alkalommal.
+- Addig: **Earth Engine App** (`T01_app_v1.js`) – községválasztó, 4 réteg (valós, infravörös, NDVI, domborzat), kivágás egy községre, kattintásra település-adatok.
