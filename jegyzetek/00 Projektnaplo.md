@@ -59,3 +59,4 @@
 - Addig: **Earth Engine App** (`T01_app_v1.js`) – községválasztó, 4 réteg (valós, infravörös, NDVI, domborzat), kivágás egy községre, kattintásra település-adatok.
 - App közzétéve: https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol (forrás: `users/szaszfzsolt/T01_proba/app_v1`).
 - **Teendő:** az `alapterkep_v2` Earth Engine-szkriptet véletlenül felülírta az app kódja → visszaállítani a `T01_alapterkep_v2.js`-ből.
+- Az app inkognitóban is működik, miután a két asset (`hargita_kozsegek_shp`, `hargita_megye_shp`) megosztása „Anyone can read" lett. Teszt: Bögöz, NDVI, kivágás – 64,4 km², 427–890 m.

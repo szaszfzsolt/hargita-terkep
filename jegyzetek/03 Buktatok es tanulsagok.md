@@ -28,3 +28,8 @@ Amibe belefutottunk (vagy várhatóan belefutunk), és hogyan oldottuk meg.
 ### 2026-11-04 – A GitHub Desktop nem tudott klónozni a Dokumentumok mappába
 **Mi történt:** `could not create work tree dir … No such file or directory` – a Windows zsarolóvírus elleni védelme (vezérelt mappahozzáférés) blokkolta.
 **Megoldás:** a repó helye `C:\Users\Zsolt\hargita-terkep` (védett mappán kívül).
+
+### 2026-11-04 – A közzétett app nem töltötte be a határokat
+**Mi történt:** inkognitóban a községlista „Betöltés…" maradt, nem volt műholdréteg.
+**Megoldás:** az app által használt asseteket meg kell osztani (Assets → asset → SHARE → *Anyone can read*). Az appot nem kell újra közzétenni.
+**Tanulság:** közzététel után mindig inkognitóablakban is tesztelni.

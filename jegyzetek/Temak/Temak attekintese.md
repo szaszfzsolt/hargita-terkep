@@ -2,7 +2,7 @@
 
 | # | Téma | Adat | Állapot |
 |---|---|---|---|
-| T01 | [[T01 Felhomentes mozaik]] – alaptérkép + domborzat + határok + községválasztó | Sentinel-2, Copernicus DEM | ⏳ következő |
+| T01 | [[T01 Felhomentes mozaik]] – alaptérkép + domborzat + határok + községválasztó | Sentinel-2, Copernicus DEM | 🔧 folyamatban – EE App kész, webes (GitHub Pages) változat hátravan |
 | T02 | Erdőváltozás (vágások, széldöntés, szúkár) | Sentinel-2 2017–, Landsat 1985–, Hansen | ötlet |
 | T03 | A Csíki-medence hidegtava (téli hőmérsékleti inverzió) | Landsat hősáv | ötlet |
 | T04 | Hóborítottság és olvadás | Sentinel-2, MODIS | ötlet |
