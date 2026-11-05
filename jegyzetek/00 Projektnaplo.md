@@ -69,3 +69,7 @@
 - `alapterkep_v2` Earth Engine-szkript visszaállítva.
 - App v2 közzétéve és nyilvánosan tesztelve (inkognitó): működik, élesebb kép, Google légifotó réteg.
 - **Következő ötlet:** a mozaikot egyszer kiszámolni és assetként elmenteni → az app gyorsabban tölt be (most élőben számol, csempénként jelenik meg).
+
+## 2026-11-05 (este) – Gyorsítás: előre kiszámolt mozaik
+- `T01_mozaik_asset_export.js` → asset: `T01_s2_2025_nyar_10m` (5 sáv, uint16, UTM 35N, 10 m).
+- `T01_app_v3.js` ezt olvassa be élő számolás helyett. Az assetet nyilvánossá kell tenni (Anyone can read)!
