@@ -3,15 +3,21 @@
 > Minden munkamenet végén ide kerül: mit csináltunk, mi lett az eredmény, mi a következő lépés.
 > Új beszélgetésben Claude-nak elég ezt a fájlt megmutatni, és onnan folytatja.
 
-## Jelenlegi állapot
+## Jelenlegi állapot (2026-11-05, 19:20)
 
-- **Fázis:** 1 – T01 próba (Earth Engine működik, pontos határok elkészültek)
-- **Earth Engine-projekt:** `tidal-velocity-494919-e2`, felhasználónév: `szaszfzsolt`
-- **Earth Engine-assetek:** `hargita_kozsegek_shp`, `hargita_megye_shp`
-- **Mentett szkript:** `users/szaszfzsolt/T01_proba/proba_v1`
-- **Közzétett app:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol
+- **Fázis:** T01 ✅ kész · T02 Erdőváltozás 🔧 folyamatban
+- **Earth Engine:** projekt `tidal-velocity-494919-e2`, felhasználó `szaszfzsolt`, szkriptek: `users/szaszfzsolt/T01_proba/…`
+- **Közzétett app (T01, v3):** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol
+- **Assetek (mind „Anyone can read"):** `hargita_kozsegek_shp`, `hargita_megye_shp`, `T01_s2_2025_nyar_10m`
 - **Projektmappa a gépen:** `C:\Users\Zsolt\hargita-terkep` (GitHub: szaszfzsolt/hargita-terkep)
-- **Következő lépés:** T01 rendes szkriptje (Cloud Score+ felhőszűrés, domborzatárnyékolás, export Drive-ra); első térképoldal községválasztóval
+
+### ▶ Innen folytatjuk (T02)
+1. EE: új fájl `evi_mozaikok_export` ← `T02_evi_mozaikok_export.js` → Run → Tasks: **8× RUN** (`T02_s2_nyar_2018` … `_2025`).
+2. Ha mind kész: Assets → mind a 8 → SHARE → **Anyone can read**.
+3. `erdo_app_v1` kódját lecserélni ← `T02_erdovaltozas_app_v2.js` → Save → Run.
+4. Teszt: Gyergyótölgyes 2018–2025 (több színes folt, kék oszlopok a pirosak mellett); 2020-as széldöntés keresése a csíki/gyergyói községekben.
+5. Tisztázni: a Direcția Silvică táblázat (ha, m³) mire vonatkozik?
+6. Utána: T02 app közzététele, kártya a `szemleltetok` oldalra.
 
 ---
 
