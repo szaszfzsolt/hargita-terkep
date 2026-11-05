@@ -73,3 +73,4 @@
 ## 2026-11-05 (este) – Gyorsítás: előre kiszámolt mozaik
 - `T01_mozaik_asset_export.js` → asset: `T01_s2_2025_nyar_10m` (5 sáv, uint16, UTM 35N, 10 m).
 - `T01_app_v3.js` ezt olvassa be élő számolás helyett. Az assetet nyilvánossá kell tenni (Anyone can read)!
+- Mozaik-export 8 perc alatt kész (`T01_s2_2025_nyar_10m`), megosztva; az `app_v1` szkriptben a v3 kód fut.

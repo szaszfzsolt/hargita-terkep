@@ -3,7 +3,7 @@
 // Községválasztó · rétegkapcsolók · kivágás egy községre
 // v3: a mozaik előre kiszámolt assetből jön (gyors betöltés)
 // v2: élesebb „legjobb pixel" mozaik (élességteszt E változata) + Google légifotó réteg
-// Projekt: tidal-velocity-494919-e2 · Mentés: users/szaszfzsolt/T01_proba/app_v1 (felülírva v2-vel)
+// Projekt: tidal-velocity-494919-e2 · Mentés: users/szaszfzsolt/T01_proba/app_v1
 // =====================================================================
 
 var PROJEKT = 'projects/tidal-velocity-494919-e2/assets/';
