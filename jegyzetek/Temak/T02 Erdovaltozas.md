@@ -16,6 +16,20 @@
 - községválasztó, kattintásra is
 - számok: erdő 2000-ben, vesztés 2001–2024 (ha, %), új vágás a két év között; oszlopdiagram évente
 
+## Ellenőrző adatok (Zsolt gyűjtése, 2026-11-05)
+Forrás: Direcția Silvică Harghita (a megyei területrendezési tanulmány közli, hargitamegye) – *a táblázat pontos tartalmát (év, vágás vagy kár) tisztázni!*
+
+| Erdészeti hivatal | Terület (ha) | Faanyag (m³) |
+|---|---|---|
+| Borszék | 3379 | 104 491 |
+| Homoród | 1310 | 35 005 |
+| Csíkszereda | 2285 | 81 754 |
+| Maroshévíz | 2455 | 56 316 |
+| Gyergyótölgyes | 2343 | 42 115 |
+
+- **2020-as széldöntés:** közel 1000 ha erdő semmisült meg; utána felgyorsult az újraerdősítés, főleg a csíki és a gyergyói régióban (Marosvásárhelyi Rádió).
+- **Teszt:** 2019 → 2021 összehasonlítás a gyergyói és csíki községekben; a Hansen-grafikonon 2020–2021-ben kiugrás várható.
+
 ## Teendők / ötletek
 - [ ] első futtatás, küszöbök finomítása (0,25 NBR, 0,7 NDVI)
 - [ ] ismert események ellenőrzése (pl. nagyobb széldöntések) – helyismeret kell!
