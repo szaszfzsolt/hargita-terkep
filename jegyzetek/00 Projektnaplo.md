@@ -67,3 +67,5 @@
 - Élességteszt eredménye: **E (legjobb pixel)** a legélesebb (Zsolt). Az A élesebb volt a B-nél → a sok kép mediánja mosta el.
 - `T01_app_v2.js`: E-mozaik + „Részletes légifotó (Google)" réteg, kivágás sötétítő maszkkal. `T01_alapterkep_v3.js`: exportok az E-mozaikkal.
 - `alapterkep_v2` Earth Engine-szkript visszaállítva.
+- App v2 közzétéve és nyilvánosan tesztelve (inkognitó): működik, élesebb kép, Google légifotó réteg.
+- **Következő ötlet:** a mozaikot egyszer kiszámolni és assetként elmenteni → az app gyorsabban tölt be (most élőben számol, csempénként jelenik meg).
