@@ -234,8 +234,12 @@ panel.add(ui.Label('Adatok: Copernicus Sentinel-2 (ESA); Hansen et al. 2013, Glo
 // ---------------------------------------------------------------------
 // Összeállítás
 // ---------------------------------------------------------------------
-var terkepek = ui.SplitPanel({firstPanel: bal, secondPanel: jobb, orientation: 'horizontal', wipe: true});
+// (Osztott panel nem tehető újabb osztott panelbe → a gyökérbe egymás mellé tesszük)
+var terkepek = ui.SplitPanel({firstPanel: bal, secondPanel: jobb, orientation: 'horizontal',
+  wipe: true, style: {stretch: 'both'}});
 ui.root.clear();
-ui.root.add(ui.SplitPanel(panel, terkepek));
+ui.root.setLayout(ui.Panel.Layout.flow('horizontal'));
+ui.root.add(panel);
+ui.root.add(terkepek);
 bal.centerObject(megye, 9);
 rajzol();
