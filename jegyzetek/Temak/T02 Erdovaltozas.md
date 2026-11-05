@@ -30,6 +30,12 @@ Forrás: Direcția Silvică Harghita (a megyei területrendezési tanulmány kö
 - **2020-as széldöntés:** közel 1000 ha erdő semmisült meg; utána felgyorsult az újraerdősítés, főleg a csíki és a gyergyói régióban (Marosvásárhelyi Rádió).
 - **Teszt:** 2019 → 2021 összehasonlítás a gyergyói és csíki községekben; a Hansen-grafikonon 2020–2021-ben kiugrás várható.
 
+## Első teszt (2026-11-05, Gyergyótölgyes, 2018 → 2025)
+- Hansen: erdő 2000-ben 19 551 ha, vesztés 2001–2024: 3452 ha (17,7%); csúcs 2004–2008 körül (>300 ha/év), **2020-ban nincs kiugrás** → a széldöntés máshol lehetett.
+- Sentinel-becslés csak 46 ha → **hiba oka:** 2018 és 2025 között a korábbi vágások újra kizöldültek, a két végpont összevetése nem látja őket.
+- **Javítás (app v2):** évről évre (2018→19, 19→20 …) hasonlít, a vágás évével színez; küszöb: NBR-csökkenés > 0,2, előző évi NDVI > 0,65. Évenkénti mozaikok assetként: `T02_s2_nyar_2018` … `_2025`.
+- Erdőkiemelő színezés tompítva (max 4500).
+
 ## Teendők / ötletek
 - [ ] első futtatás, küszöbök finomítása (0,25 NBR, 0,7 NDVI)
 - [ ] ismert események ellenőrzése (pl. nagyobb széldöntések) – helyismeret kell!

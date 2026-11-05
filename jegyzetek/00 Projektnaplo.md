@@ -78,3 +78,4 @@
 
 ## 2026-11-05 (este) – T02 Erdőváltozás indul
 - `T02_erdovaltozas_app_v1.js`: két év függönnyel, új vágások (dNBR), Hansen 2001–2024, községi grafikon. Lásd [[T02 Erdovaltozas]].
+- T02 első teszt: Hansen-rész jó; Sentinel-becslés kevés (újra kizöldült vágások) → app v2 évről évre hasonlít; ehhez 8 évenkénti mozaik export (`T02_evi_mozaikok_export.js`).
