@@ -5,6 +5,12 @@ Ingyenesen elérhető műholdadatokból (Sentinel, Landsat, Copernicus DEM stb.)
 Készíti: Szász Ferenc Zsolt, Claude segítségével
 Indult: 2026. november 4.
 
+## 🗺️ Az interaktív térkép
+
+**[Hargita megye műholdról – megnyitás](https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol)**
+
+Böngészőben fut, bejelentkezés nélkül (telefonon, okostáblán is). Községválasztó, műholdkép, infravörös, NDVI, domborzat, Google légifotó.
+
 ## Mappaszerkezet
 
 | Mappa | Mi van benne |
