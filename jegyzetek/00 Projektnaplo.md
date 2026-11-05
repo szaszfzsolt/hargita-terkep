@@ -11,7 +11,6 @@
 - **Mentett szkript:** `users/szaszfzsolt/T01_proba/proba_v1`
 - **Közzétett app:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-megye-muholdrol
 - **Projektmappa a gépen:** `C:\Users\Zsolt\hargita-terkep` (GitHub: szaszfzsolt/hargita-terkep)
-- **Nyitott hiba:** az app műholdképe elmosódottabb a próbánál → lásd [[T01 Felhomentes mozaik]]
 - **Következő lépés:** T01 rendes szkriptje (Cloud Score+ felhőszűrés, domborzatárnyékolás, export Drive-ra); első térképoldal községválasztóval
 
 ---
@@ -65,3 +64,6 @@
 ## 2026-11-05 – Élességteszt
 - `T01_elesseg_teszt.js`: 5 mozaikváltozat (A próba, B app, C szűk ablak, D legtisztább napok + C, E legjobb pixel) két összekapcsolt, „függönyös" térképen, Bögöz közelről.
 - Cél: kiválasztani a legélesebbet, és azzal frissíteni az appot és az exportot.
+- Élességteszt eredménye: **E (legjobb pixel)** a legélesebb (Zsolt). Az A élesebb volt a B-nél → a sok kép mediánja mosta el.
+- `T01_app_v2.js`: E-mozaik + „Részletes légifotó (Google)" réteg, kivágás sötétítő maszkkal. `T01_alapterkep_v3.js`: exportok az E-mozaikkal.
+- `alapterkep_v2` Earth Engine-szkript visszaállítva.

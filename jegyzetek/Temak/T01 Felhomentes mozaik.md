@@ -33,3 +33,6 @@ Kipróbálandó (egyenként, összehasonlítva):
 2. szigorúbb küszöb (0,65–0,70);
 3. medián helyett „legjobb pixel" mozaik (`qualityMosaic('cs_cdf')`) – éles, de foltosabb lehet;
 4. a legtisztább néhány napot külön választva, kézzel.
+
+**Döntés (2026-11-05):** az élességteszt alapján az **E – legjobb pixel** változat nyert (`qualityMosaic('cs_cdf')`, júl 1 – aug 20, <30% felhő, CS+ ≥ 0,65). → `T01_app_v2.js`, `T01_alapterkep_v3.js`.
+Új réteg az appban: **Részletes légifotó (Google)** – csak megjelenítés, a kivágást sötétítő maszk adja.
