@@ -87,3 +87,4 @@
 - T02 első teszt: Hansen-rész jó; Sentinel-becslés kevés (újra kizöldült vágások) → app v2 évről évre hasonlít; ehhez 8 évenkénti mozaik export (`T02_evi_mozaikok_export.js`).
 - 2026-11-06 reggel: mind a 8 évenkénti export kész (`T02_s2_nyar_2018…2025`, egyenként 9–26 perc). Következik: megosztás (Anyone can read) + app v2 az `erdo_app_v1` szkriptbe.
 - App v2 hiba: `connectedPixelCount` lebegőpontos maszkon nem fut → a maszkot egész típusúvá alakítjuk (`gt(0).toByte()`).
+- App v2 a javítással fut az `erdo_app_v1` szkriptben (2026-11-06 06:35). Következik: közzététel Earth Engine Appként, inkognitós teszt.
