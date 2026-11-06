@@ -34,14 +34,23 @@ var EVEK = ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'];
 var VESZTES_PALETTA = ['ffff66', 'ffcc33', 'ff9933', 'ff6633', 'e6194b', 'b3003c', '800080'];
 var S2_PALETTA = ['00e5ff', '2979ff', '651fff', 'd500f9', 'ff1744', 'ff9100', 'ffea00'];   // 2019 … 2025
 
-// Évről évre: ahol az előző nyáron erdő volt (NDVI > 0,65) és a következő nyárra
-// az NBR több mint 0,2-vel csökkent → vágás/kár; értéke a vágás éve.
+// Erdőmaszk: csak itt keresünk vágást (különben a kaszált rét, learatott szántó is „vágásnak" látszik).
+// Erdő = ESA WorldCover 2020 fa-borítás (10 m) VAGY Hansen 2000-es erdő (≥30% lombkorona).
+var worldcover = ee.ImageCollection('ESA/WorldCover/v100').first().select('Map');
+var erdoMaszk = worldcover.eq(10).or(erdo2000.unmask(0)).selfMask();
+
+// Évről évre: ahol erdő van, az előző nyáron zöld volt (NDVI > 0,65), a következő nyárra
+// az NBR több mint 0,2-vel csökkent, ÉS egy évvel később sem nőtt vissza (tartós) → vágás/kár.
 function vagasEvenkent(evA, evB) {
   if (evA >= evB) { return ee.Image.constant(0).toInt16().rename('ev').selfMask(); }  // nincs mit összevetni
   var lista = [];
   for (var ev = evA; ev < evB; ev++) {
     var elozo = evMozaik(ev), kovetkezo = evMozaik(ev + 1);
     var esett = nbr(elozo).subtract(nbr(kovetkezo)).gt(0.2).and(ndvi(elozo).gt(0.65));
+    if (ev + 2 <= 2025) {                                           // tartósság: 2 év múlva is lejjebb
+      esett = esett.and(nbr(elozo).subtract(nbr(evMozaik(ev + 2))).gt(0.1));
+    }
+    esett = esett.and(erdoMaszk.unmask(0));
     lista.push(ee.Image.constant(ev + 1).toInt16().updateMask(esett).rename('ev'));
   }
   var elso = ee.ImageCollection(lista).min();                       // az első vágás éve
