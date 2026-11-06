@@ -489,6 +489,8 @@ function rajzol() {
   }
   // Települések rétegei legfelül, mindkét térképen
   aktTer = ter;
+  // Saját nevek mellett a Google-feliratok kikapcsolva (ne legyen minden név kétszer)
+  [bal, jobb].forEach(function (t) { t.setOptions(allapot.nevek ? 'SATELLITE' : 'HYBRID'); });
   telepRetegek = [];
   var z = bal.getZoom();
   [bal, jobb].forEach(function (t) {
