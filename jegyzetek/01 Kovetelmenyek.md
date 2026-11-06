@@ -20,6 +20,10 @@ Mit kell tudnia a kész térképnek. Ha új igény jön, ide kerül.
 - [ ] 3D domborzat (pl. Csomád, Szent Anna-tó)
 - [ ] Községenkénti kivágat nyomtatható A4-es lapként (PNG/PDF), jelmagyarázattal, léptékkel
 - [ ] Községenkénti statisztika (erdő/rét/szántó/település %)
+- [x] Településnevek magyarul, kapcsolhatóan, megyei nézetben is (T02 app v2.3)
+- [x] Beépített terület / épületkörvonalak, kapcsolhatóan (T02 app v2.3)
+- [ ] Falu szintű nézet: becsült faluhatár (Voronoi-felosztás a községen belül) + falu-választó
+- [ ] **Ötlet:** történeti faluhatárok (régi kataszteri térképek, katonai felmérések – mapire.eu, Hungaricana) kézi átrajzolással QGIS-ben, kiemelt falvakra (Bögöz környékével kezdve)
 
 ## Technikai keretek
 
