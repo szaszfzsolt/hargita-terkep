@@ -11,6 +11,10 @@ Indult: 2026. november 4.
 
 Böngészőben fut, bejelentkezés nélkül (telefonon, okostáblán is). Községválasztó, műholdkép, infravörös, NDVI, domborzat, Google légifotó.
 
+**[Hargita erdőváltozás 2018–2025 – megnyitás](https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-erdovaltozas)**
+
+Két év összehasonlítása függönnyel, évenkénti vágás/erdőkár (Sentinel-2), erdővesztés 2001–2024 (Hansen), községenkénti számok és grafikon, beépített terület, magyar településnevek.
+
 ## Mappaszerkezet
 
 | Mappa | Mi van benne |
