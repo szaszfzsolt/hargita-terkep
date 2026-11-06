@@ -3,8 +3,8 @@
 | # | Téma | Adat | Állapot |
 |---|---|---|---|
 | T01 | [[T01 Felhomentes mozaik]] – alaptérkép + domborzat + határok + községválasztó | Sentinel-2, Copernicus DEM | ✅ EE App kész (v3) · webes változat később |
-| T02 | [[T02 Erdovaltozas]] (vágások, széldöntés, szúkár) | Sentinel-2 2018–2025, Hansen GFC 2001–2024 | 🔧 folyamatban |
-| T03 | A Csíki-medence hidegtava (téli hőmérsékleti inverzió) | Landsat hősáv | ötlet |
+| T02 | [[T02 Erdovaltozas]] (vágások, széldöntés, szúkár) | Sentinel-2 2018–2025, Hansen GFC 2001–2024 | ✅ EE App kész (v2.5) |
+| T03 | A Csíki-medence hidegtava (téli hőmérsékleti inverzió) | Landsat 8–9 hősáv, MODIS éjszakai LST, Copernicus DEM | ⏳ következő |
 | T04 | Hóborítottság és olvadás | Sentinel-2, MODIS | ötlet |
 | T05 | Vegetáció évszakos ritmusa (NDVI) | Sentinel-2 | ötlet |
 | T06 | Vulkáni formák 3D-ben (Csomád, Szent Anna-tó, Mohos) | Copernicus DEM | ötlet |

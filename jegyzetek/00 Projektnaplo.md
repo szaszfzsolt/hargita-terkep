@@ -99,3 +99,7 @@
 - v2.5 (6656c0a): feliratok Roboto Condensed SemiBold betűvel (sokszögként, OFL licenc); 10-es nagyításig csak városok, 11–12: községközpontok, 13-tól minden falu; ha csak a kiválasztott község látszik, csak annak falvai. Épületek csak körvonallal.
 - Döntés (Zsolt): az évenkénti mozaik módszere marad (jún. 15–szept. 15, legfelhőtlenebb pixel); nincs szűkebb időablak, nincs dátumréteg – az app maradjon gyors. A 2024/2025 színkülönbség oka: 2024 rekordmeleg, aszályos nyár + a pixelek eltérő dátumai.
 - 2026-11-06 20:50: a közzétett app frissítve v2.5-re (e37b49d), inkognitóban ellenőrizve: Roboto-feliratok, csak a község falvai, épületek körvonallal. **T02 kész.** Későbbre: vágáspöttyök szűrése közeli nagyításon; falu szintű nézet; történeti faluhatárok.
+
+## 2026-11-06 este – T02 lezárva, T03 indul holnap
+- T02 app közzétéve és ellenőrizve (v2.5).
+- Következő: **T03 Hidegtó** → [[T03 Hidegto]]. Kezdés: derült téli Landsat-napok keresése.
