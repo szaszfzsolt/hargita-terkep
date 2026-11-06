@@ -398,11 +398,9 @@ var NEV_VONALAK = FALVAK_ADAT.map(function (f) { return nevVonalai(f[0]); });   
 
 function beepitettKep(zoom, ter) {
   if (zoom >= EPULET_ZOOM) {
-    // Csak az épületek kapnak színt: 0 alap → épület = 1 → a 0 eltakarva (selfMask)
-    var ep = ee.Image(0).byte().paint(EPULETEK.filterBounds(ter), 1).selfMask().clip(ter);
-    var kor = ee.Image(0).byte().paint(EPULETEK.filterBounds(ter), 1, 1).selfMask().clip(ter);
-    return ee.ImageCollection([ep.visualize({palette: ['ff9a3c'], opacity: 0.8}),
-                               kor.visualize({palette: ['7a2e00']})]).mosaic();
+    // Csak körvonal: az adatban néhány hibás, nagy sokszög a kitöltéssel az egész területet befestené
+    return ee.Image(0).byte().paint(EPULETEK.filterBounds(ter), 1, 2).selfMask().clip(ter)
+      .visualize({palette: ['ff7a00']});
   }
   return beepitettFolt.clip(ter).visualize({palette: ['ff7a00'], opacity: 0.85});
 }
