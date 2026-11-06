@@ -1,9 +1,12 @@
-# Hargita megye falvai
+# Hargita megye települései
 
-`hargita_falvak.csv`: 264 település pontja, ezt használja a T02 app „Településnevek” rétege.
+| Fájl | Mi van benne |
+|---|---|
+| `hargita_telepulesek_nevek.csv` | **Névlista** (Szász F. Zsolt gyűjtése, 2026-11-06): román és magyar név, rang (városközpont / községközpont / falu), közigazgatási egység. Ez a hiteles névforrás. |
+| `hargita_falvak.csv` | Összevont tábla a T02 app „Településnevek” rétegéhez: a névlista nevei + koordináták és népesség. 264 település. |
 
-- **Koordináták, népesség:** [baza-de-date-localitati-romania](https://github.com/catalin87/baza-de-date-localitati-romania) (public domain; Google Maps-koordináták). Fenyéd (Brădeşti) pontját kézzel javítottuk; a „Porumbeni” sort kihagytuk (nem önálló falu).
-- **Magyar nevek:** Claude töltötte ki. A `bizonytalan = 1` sorokat (48 db) ellenőrizni kell; javítás után az appban a `FALVAK_ADAT` listát frissíteni.
-- `kozseg`: térbeli illesztéssel a községhatárokból; ahol üres, a pont a megyehatáron kívül esik (Úzvölgye, Csobányos).
-- `kiemelt = 1`: községközpont vagy 2500 főnél népesebb; ezek megyei nézetben is látszanak.
-- Hiányos lehet: néhány kis falu, telep nincs a forrásban.
+- **Koordináták, népesség:** [baza-de-date-localitati-romania](https://github.com/catalin87/baza-de-date-localitati-romania) (public domain; Google Maps-koordináták). Fenyéd pontját kézzel javítottuk.
+- A térképen a magyar név első alakja szerepel; a zárójeles változatok (pl. „Csíkkozmás (Kozmás)”) a `megjegyzes` oszlopban vannak.
+- Kárpitusz (Carpitus, Tusnádfürdő) nincs a névlistában, a nevét Claude adta.
+- `kiemelt = 1`: város- vagy községközpont, illetve 2500 főnél népesebb; ezek megyei nézetben is látszanak.
+- Ha a névlista változik: a `hargita_falvak.csv` újragenerálása, majd az appban a `FALVAK_ADAT` lista cseréje.

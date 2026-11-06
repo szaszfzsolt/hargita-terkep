@@ -1,0 +1,264 @@
+Román név,Magyar név,Rang,Közigazgatási egység (román),Közigazgatási egység (magyar),Egység típusa
+Miercurea Ciuc,Csíkszereda,városközpont,Miercurea Ciuc,Csíkszereda,municípium
+Ciba,Csiba,falu,Miercurea Ciuc,Csíkszereda,municípium
+Harghita-Băi,Hargitafürdő,falu,Miercurea Ciuc,Csíkszereda,municípium
+Jigodin-Băi,Zsögödfürdő,falu,Miercurea Ciuc,Csíkszereda,municípium
+Gheorgheni,Gyergyószentmiklós,városközpont,Gheorgheni,Gyergyószentmiklós,municípium
+Covacipeter,Kovácspéter,falu,Gheorgheni,Gyergyószentmiklós,municípium
+Lacu Roșu,Gyilkostó (Gyilkosvölgyi telep),falu,Gheorgheni,Gyergyószentmiklós,municípium
+Vargatac,Vargatag,falu,Gheorgheni,Gyergyószentmiklós,municípium
+Visafolio,Visszafolyó,falu,Gheorgheni,Gyergyószentmiklós,municípium
+Odorheiu Secuiesc,Székelyudvarhely,városközpont,Odorheiu Secuiesc,Székelyudvarhely,municípium
+Toplița,Maroshévíz,városközpont,Toplița,Maroshévíz,municípium
+Călimănel,Kelemenpatak,falu,Toplița,Maroshévíz,municípium
+Luncani,Lunkány,falu,Toplița,Maroshévíz,municípium
+Măgheruș,Magyaros,falu,Toplița,Maroshévíz,municípium
+Moglănești,Moglán,falu,Toplița,Maroshévíz,municípium
+Secu,Székpatak,falu,Toplița,Maroshévíz,municípium
+Vale,Válya (Alsó- és Felsőválya),falu,Toplița,Maroshévíz,municípium
+Vâgani,Vigán,falu,Toplița,Maroshévíz,municípium
+Zencani,Zsákhegy,falu,Toplița,Maroshévíz,municípium
+Băile Tușnad,Tusnádfürdő,városközpont,Băile Tușnad,Tusnádfürdő,város
+Bălan,Balánbánya,városközpont,Bălan,Balánbánya,város
+Borsec,Borszék,városközpont,Borsec,Borszék,város
+Cristuru Secuiesc,Székelykeresztúr,városközpont,Cristuru Secuiesc,Székelykeresztúr,város
+Betești,Betfalva,falu,Cristuru Secuiesc,Székelykeresztúr,város
+Filiaș,Fiatfalva,falu,Cristuru Secuiesc,Székelykeresztúr,város
+Vlăhița,Szentegyháza,városközpont,Vlăhița,Szentegyháza,város
+Băile Homorod,Homoródfürdő,falu,Vlăhița,Szentegyháza,város
+Minele Lueta,Szentkeresztbánya,falu,Vlăhița,Szentegyháza,város
+Atid,Etéd,községközpont,Atid,Etéd,község
+Crișeni,Kőrispatak,falu,Atid,Etéd,község
+Cușmed,Küsmöd,falu,Atid,Etéd,község
+Inlăceni,Énlaka,falu,Atid,Etéd,község
+Șiclod,Siklód,falu,Atid,Etéd,község
+Avrămești,Szentábrahám,községközpont,Avrămești,Szentábrahám,község
+Andreeni,Magyarandrásfalva,falu,Avrămești,Szentábrahám,község
+Cechești,Csekefalva,falu,Avrămești,Szentábrahám,község
+Firtănuș,Firtosmartonos,falu,Avrămești,Szentábrahám,község
+Goagiu,Gagy,falu,Avrămești,Szentábrahám,község
+Laz-Firtănuș,Firtosiláz,falu,Avrămești,Szentábrahám,község
+Laz-Șoimuș,Solymosiláz,falu,Avrămești,Szentábrahám,község
+Medișoru Mic,Kismedesér,falu,Avrămești,Szentábrahám,község
+Bilbor,Bélbor,községközpont,Bilbor,Bélbor,község
+Răchitiș,Rakottyás,falu,Bilbor,Bélbor,község
+Brădești,Fenyéd,községközpont,Brădești,Fenyéd,község
+Târnovița,Küküllőkeményfalva,falu,Brădești,Fenyéd,község
+Căpâlnița,Kápolnásfalu,községközpont,Căpâlnița,Kápolnásfalu,község
+Cârța,Karcfalva,községközpont,Cârța,Karcfalva,község
+Ineu,Csíkjenőfalva,falu,Cârța,Karcfalva,község
+Ciceu,Csíkcsicsó,községközpont,Ciceu,Csíkcsicsó,község
+Ciaracio,Csaracsó,falu,Ciceu,Csíkcsicsó,község
+Ciucsângeorgiu,Csíkszentgyörgy,községközpont,Ciucsângeorgiu,Csíkszentgyörgy,község
+Armășeni,Csíkménaság,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Armășenii Noi,Ménaságújfalu,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Bancu,Csíkbánkfalva,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Ciobăniș,Csobányos,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Cotormani,Kotormány,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Eghersec,Egerszék,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Ghiurche,Gyürke,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Potiond,Pottyond,falu,Ciucsângeorgiu,Csíkszentgyörgy,község
+Ciumani,Gyergyócsomafalva,községközpont,Ciumani,Gyergyócsomafalva,község
+Corbu,Gyergyóholló,községközpont,Corbu,Gyergyóholló,község
+Capu Corbului,Hollósarka,falu,Corbu,Gyergyóholló,község
+Corund,Korond,községközpont,Corund,Korond,község
+Atia,Atyha,falu,Corund,Korond,község
+Calonda,Kalonda,falu,Corund,Korond,község
+Fântâna Brazilor,Fenyőkút,falu,Corund,Korond,község
+Valea lui Pavel,Pálpataka,falu,Corund,Korond,község
+Cozmeni,Csíkkozmás (Kozmás),községközpont,Cozmeni,Csíkkozmás,község
+Lăzărești,Lázárfalva,falu,Cozmeni,Csíkkozmás,község
+Dănești,Csíkdánfalva,községközpont,Dănești,Csíkdánfalva,község
+Dârjiu,Székelyderzs,községközpont,Dârjiu,Székelyderzs,község
+Mujna,Székelymuzsna,falu,Dârjiu,Székelyderzs,község
+Dealu,Oroszhegy,községközpont,Dealu,Oroszhegy,község
+Fâncel,Székelyfancsal,falu,Dealu,Oroszhegy,község
+Sâncrai,Székelyszentkirály,falu,Dealu,Oroszhegy,község
+Tămașu,Székelyszenttamás,falu,Dealu,Oroszhegy,község
+Tibod,Tibód,falu,Dealu,Oroszhegy,község
+Ulcani,Ülke,falu,Dealu,Oroszhegy,község
+Valea Rotundă,Uknyéd,falu,Dealu,Oroszhegy,község
+Ditrău,Ditró,községközpont,Ditrău,Ditró,község
+Jolotca,Orotva,falu,Ditrău,Ditró,község
+Țengheler,Csengellér,falu,Ditrău,Ditró,község
+Feliceni,Felsőboldogfalva,községközpont,Feliceni,Felsőboldogfalva,község
+Alexandrița,Sándortelke,falu,Feliceni,Felsőboldogfalva,község
+Arvățeni,Árvátfalva,falu,Feliceni,Felsőboldogfalva,község
+Cireșeni,Sükő,falu,Feliceni,Felsőboldogfalva,község
+Forțeni,Farcád,falu,Feliceni,Felsőboldogfalva,község
+Hoghia,Hodgya,falu,Feliceni,Felsőboldogfalva,község
+Oțeni,Ocfalva,falu,Feliceni,Felsőboldogfalva,község
+Polonița,Székelylengyelfalva,falu,Feliceni,Felsőboldogfalva,község
+Tăureni,Bikafalva,falu,Feliceni,Felsőboldogfalva,község
+Teleac,Telekfalva,falu,Feliceni,Felsőboldogfalva,község
+Văleni,Patakfalva,falu,Feliceni,Felsőboldogfalva,község
+Frumoasa,Csíkszépvíz (Szépvíz),községközpont,Frumoasa,Csíkszépvíz,község
+Bârzava,Csíkborzsova,falu,Frumoasa,Csíkszépvíz,község
+Făgețel,Bükklok,falu,Frumoasa,Csíkszépvíz,község
+Nicolești,Csíkszentmiklós,falu,Frumoasa,Csíkszépvíz,község
+Gălăuțaș,Galócás,községközpont,Gălăuțaș,Galócás,község
+Dealu Armanului,Ármándombja,falu,Gălăuțaș,Galócás,község
+Gălăuțaș-Pârău,Galócáspatak,falu,Gălăuțaș,Galócás,község
+Nuțeni,Nucén,falu,Gălăuțaș,Galócás,község
+Plopiș,Ploptyis,falu,Gălăuțaș,Galócás,község
+Preluca,Preluka,falu,Gălăuțaș,Galócás,község
+Toleșeni,Tolésén,falu,Gălăuțaș,Galócás,község
+Zăpodea,Zápodéa,falu,Gălăuțaș,Galócás,község
+Joseni,Gyergyóalfalu,községközpont,Joseni,Gyergyóalfalu,község
+Borzont,Borzont,falu,Joseni,Gyergyóalfalu,község
+Bucin,Bucsin,falu,Joseni,Gyergyóalfalu,község
+Lăzarea,Gyergyószárhegy (Szárhegy),községközpont,Lăzarea,Gyergyószárhegy,község
+Ghiduț,Güdüctelep,falu,Lăzarea,Gyergyószárhegy,község
+Leliceni,Csíkszentlélek,községközpont,Leliceni,Csíkszentlélek,község
+Fitod,Fitód,falu,Leliceni,Csíkszentlélek,község
+Hosasău,Hosszúaszó,falu,Leliceni,Csíkszentlélek,község
+Misentea,Csíkmindszent,falu,Leliceni,Csíkszentlélek,község
+Lueta,Lövéte,községközpont,Lueta,Lövéte,község
+Băile Chirui,Királyfürdő,falu,Lueta,Lövéte,község
+Lunca de Jos,Gyimesközéplok,községközpont,Lunca de Jos,Gyimesközéplok,község
+Barațcoș,Barackospatak,falu,Lunca de Jos,Gyimesközéplok,község
+Poiana Fagului,Bothavaspataka,falu,Lunca de Jos,Gyimesközéplok,község
+Puntea Lupului,Farkaspalló,falu,Lunca de Jos,Gyimesközéplok,község
+Valea Boroș,Borospataka,falu,Lunca de Jos,Gyimesközéplok,község
+Valea Capelei,Kápolnapatak,falu,Lunca de Jos,Gyimesközéplok,község
+Valea Întunecoasă,Sötétpatak,falu,Lunca de Jos,Gyimesközéplok,község
+Valea lui Antaloc,Antalokpataka,falu,Lunca de Jos,Gyimesközéplok,község
+Valea Rece,Hidegség,falu,Lunca de Jos,Gyimesközéplok,község
+Lunca de Sus,Gyimesfelsőlok,községközpont,Lunca de Sus,Gyimesfelsőlok,község
+Comiat,Komjádpataka,falu,Lunca de Sus,Gyimesfelsőlok,község
+Izvorul Trotușului,Sántatelek,falu,Lunca de Sus,Gyimesfelsőlok,község
+Păltiniș-Ciuc,Nyíresalja,falu,Lunca de Sus,Gyimesfelsőlok,község
+Valea Gârbea,Görbepataka,falu,Lunca de Sus,Gyimesfelsőlok,község
+Valea Ugra,Ugrapataka,falu,Lunca de Sus,Gyimesfelsőlok,község
+Lupeni,Farkaslaka,községközpont,Lupeni,Farkaslaka,község
+Bisericani,Szentlélek,falu,Lupeni,Farkaslaka,község
+Bulgăreni,Bogárfalva,falu,Lupeni,Farkaslaka,község
+Firtușu,Firtosváralja,falu,Lupeni,Farkaslaka,község
+Morăreni,Nyikómalomfalva,falu,Lupeni,Farkaslaka,község
+Păltiniș,Kecsed,falu,Lupeni,Farkaslaka,község
+Păuleni,Székelypálfalva,falu,Lupeni,Farkaslaka,község
+Satu Mic,Kecsetkisfalud,falu,Lupeni,Farkaslaka,község
+Sâncel,Szencsed,falu,Lupeni,Farkaslaka,község
+Mădăraș,Csíkmadaras,községközpont,Mădăraș,Csíkmadaras,község
+Mărtiniș,Homoródszentmárton,községközpont,Mărtiniș,Homoródszentmárton,község
+Aldea,Abásfalva,falu,Mărtiniș,Homoródszentmárton,község
+Bădeni,Bágy,falu,Mărtiniș,Homoródszentmárton,község
+Călugăreni,Homoródremete,falu,Mărtiniș,Homoródszentmárton,község
+Chinușu,Kénos,falu,Mărtiniș,Homoródszentmárton,község
+Comănești,Homoródkeményfalva,falu,Mărtiniș,Homoródszentmárton,község
+Ghipeș,Gyepes,falu,Mărtiniș,Homoródszentmárton,község
+Locodeni,Lókod,falu,Mărtiniș,Homoródszentmárton,község
+Orășeni,Városfalva,falu,Mărtiniș,Homoródszentmárton,község
+Petreni,Homoródszentpéter,falu,Mărtiniș,Homoródszentmárton,község
+Rareș,Recsenyéd,falu,Mărtiniș,Homoródszentmárton,község
+Sânpaul,Homoródszentpál,falu,Mărtiniș,Homoródszentmárton,község
+Merești,Homoródalmás,községközpont,Merești,Homoródalmás,község
+Mihăileni,Csíkszentmihály,községközpont,Mihăileni,Csíkszentmihály,község
+Livezi,Lóvész,falu,Mihăileni,Csíkszentmihály,község
+Nădejdea,Ajnád,falu,Mihăileni,Csíkszentmihály,község
+Văcărești,Vacsárcsi,falu,Mihăileni,Csíkszentmihály,község
+Mugeni,Bögöz,községközpont,Mugeni,Bögöz,község
+Aluniș,Székelymagyaros,falu,Mugeni,Bögöz,község
+Beta,Béta,falu,Mugeni,Bögöz,község
+Dejuțiu,Décsfalva,falu,Mugeni,Bögöz,község
+Dobeni,Székelydobó,falu,Mugeni,Bögöz,község
+Lutița,Agyagfalva,falu,Mugeni,Bögöz,község
+Mătișeni,Mátisfalva,falu,Mugeni,Bögöz,község
+Tăietura,Vágás,falu,Mugeni,Bögöz,község
+Ocland,Oklánd,községközpont,Ocland,Oklánd,község
+Crăciunel,Homoródkarácsonyfalva (Karácsonfalva),falu,Ocland,Oklánd,község
+Satu Nou,Homoródújfalu,falu,Ocland,Oklánd,község
+Păuleni-Ciuc,Csíkpálfalva,községközpont,Păuleni-Ciuc,Csíkpálfalva,község
+Delnița,Csíkdelne,falu,Păuleni-Ciuc,Csíkpálfalva,község
+Șoimeni,Csíkcsomortán,falu,Păuleni-Ciuc,Csíkpálfalva,község
+Plăieșii de Jos,Kászonaltíz,községközpont,Plăieșii de Jos,Kászonaltíz,község
+Cașinu Nou,Kászonújfalu,falu,Plăieșii de Jos,Kászonaltíz,község
+Iacobeni,Kászonjakabfalva,falu,Plăieșii de Jos,Kászonaltíz,község
+Imper,Kászonimpér,falu,Plăieșii de Jos,Kászonaltíz,község
+Plăieșii de Sus,Kászonfeltíz,falu,Plăieșii de Jos,Kászonaltíz,község
+Porumbenii Mari,Nagygalambfalva,községközpont,Porumbeni,Galambfalva / Nagygalambfalva,község
+Porumbenii Mici,Kisgalambfalva,falu,Porumbeni,Galambfalva / Nagygalambfalva,község
+Praid,Parajd,községközpont,Praid,Parajd,község
+Becaș,Békástelep,falu,Praid,Parajd,község
+Bucin,Bucsin,falu,Praid,Parajd,község
+Ocna de Jos,Alsósófalva,falu,Praid,Parajd,község
+Ocna de Sus,Felsősófalva,falu,Praid,Parajd,község
+Șașvereș,Szászveres,falu,Praid,Parajd,község
+Racu,Csíkrákos,községközpont,Racu,Csíkrákos,község
+Gârciu,Göröcsfalva,falu,Racu,Csíkrákos,község
+Remetea,Gyergyóremete,községközpont,Remetea,Gyergyóremete,község
+Făgețel,Kisbükk,falu,Remetea,Gyergyóremete,község
+Martonca,Martonka,falu,Remetea,Gyergyóremete,község
+Sineu,Eszenyő,falu,Remetea,Gyergyóremete,község
+Săcel,Székelyandrásfalva,községközpont,Săcel,Székelyandrásfalva,község
+Șoimușu Mare,Nagysolymos,falu,Săcel,Székelyandrásfalva,község
+Șoimușu Mic,Kissolymos,falu,Săcel,Székelyandrásfalva,község
+Uilac,Újlaktelep,falu,Săcel,Székelyandrásfalva,község
+Vidacut,Hidegkút,falu,Săcel,Székelyandrásfalva,község
+Sâncrăieni,Csíkszentkirály,községközpont,Sâncrăieni,Csíkszentkirály,község
+Sândominic,Csíkszentdomokos,községközpont,Sândominic,Csíkszentdomokos,község
+Sânmartin,Csíkszentmárton,községközpont,Sânmartin,Csíkszentmárton,község
+Ciucani,Csíkcsekefalva,falu,Sânmartin,Csíkszentmárton,község
+Valea Uzului,Úzvölgye,falu,Sânmartin,Csíkszentmárton,község
+Sânsimion,Csíkszentsimon,községközpont,Sânsimion,Csíkszentsimon,község
+Cetățuia,Csatószeg,falu,Sânsimion,Csíkszentsimon,község
+Sântimbru,Csíkszentimre,községközpont,Sântimbru,Csíkszentimre,község
+Sântimbru-Băi,Szentimrefürdő,falu,Sântimbru,Csíkszentimre,község
+Sărmaș,Salamás,községközpont,Sărmaș,Salamás,község
+Fundoaia,Fundoja,falu,Sărmaș,Salamás,község
+Hodoșa,Gyergyóhodos,falu,Sărmaș,Salamás,község
+Platonești,Platonest,falu,Sărmaș,Salamás,község
+Runc,Runk,falu,Sărmaș,Salamás,község
+Satu Mare,Máréfalva,községközpont,Satu Mare,Máréfalva,község
+Secuieni,Újszékely,községközpont,Secuieni,Újszékely,község
+Bodogaia,Alsóboldogfalva,falu,Secuieni,Újszékely,község
+Eliseni,Székelyszenterzsébet,falu,Secuieni,Újszékely,község
+Siculeni,Madéfalva,községközpont,Siculeni,Madéfalva,község
+Subcetate,Gyergyóvárhegy,községközpont,Subcetate,Gyergyóvárhegy,község
+Călnaci,Kalnács,falu,Subcetate,Gyergyóvárhegy,község
+Duda,Duda,falu,Subcetate,Gyergyóvárhegy,község
+Filpea,Fülpe,falu,Subcetate,Gyergyóvárhegy,község
+Suseni,Gyergyóújfalu,községközpont,Suseni,Gyergyóújfalu,község
+Chileni,Kilyénfalva,falu,Suseni,Gyergyóújfalu,község
+Liban,Gyergyólibántelep,falu,Suseni,Gyergyóújfalu,község
+Senetea,Szenéte,falu,Suseni,Gyergyóújfalu,község
+Valea Strâmbă,Tekerőpatak,falu,Suseni,Gyergyóújfalu,község
+Șimonești,Siménfalva,községközpont,Șimonești,Siménfalva,község
+Bențid,Bencéd,falu,Șimonești,Siménfalva,község
+Cădaciu Mare,Nagykadács (Kadács),falu,Șimonești,Siménfalva,község
+Cădaciu Mic,Kiskadács,falu,Șimonești,Siménfalva,község
+Cehețel,Csehétfalva,falu,Șimonești,Siménfalva,község
+Chedia Mare,Nagykede,falu,Șimonești,Siménfalva,község
+Chedia Mică,Kiskede,falu,Șimonești,Siménfalva,község
+Cobătești,Kobátfalva,falu,Șimonești,Siménfalva,község
+Medișoru Mare,Medesér,falu,Șimonești,Siménfalva,község
+Mihăileni,Székelyszentmihály,falu,Șimonești,Siménfalva,község
+Nicoleni,Székelyszentmiklós,falu,Șimonești,Siménfalva,község
+Rugănești,Rugonfalva,falu,Șimonești,Siménfalva,község
+Tărcești,Tarcsafalva,falu,Șimonești,Siménfalva,község
+Turdeni,Tordátfalva,falu,Șimonești,Siménfalva,község
+Tomești,Csíkszenttamás,községközpont,Tomești,Csíkszenttamás,község
+Tulgheș,Gyergyótölgyes,községközpont,Tulgheș,Gyergyótölgyes,község
+Hagota,Hágótő,falu,Tulgheș,Gyergyótölgyes,község
+Pintic,Péntekpataka,falu,Tulgheș,Gyergyótölgyes,község
+Recea,Récefalva,falu,Tulgheș,Gyergyótölgyes,község
+Tușnad,Tusnád,községközpont,Tușnad,Tusnád,község
+Tușnadu Nou,Újtusnád,falu,Tușnad,Tusnád,község
+Vrabia,Csíkverebes,falu,Tușnad,Tusnád,község
+Ulieș,Kányád,községközpont,Ulieș,Kányád,község
+Daia,Székelydálya,falu,Ulieș,Kányád,község
+Iașu,Jásfalva,falu,Ulieș,Kányád,község
+Ighiu,Ége,falu,Ulieș,Kányád,község
+Nicolești,Miklósfalva,falu,Ulieș,Kányád,község
+Obrănești,Ábránfalva,falu,Ulieș,Kányád,község
+Petecu,Petek,falu,Ulieș,Kányád,község
+Vasileni,Homoródszentlászló,falu,Ulieș,Kányád,község
+Vărșag,Székelyvarság,községközpont,Vărșag,Székelyvarság,község
+Voșlăbeni,Vasláb,községközpont,Voșlăbeni,Vasláb,község
+Izvoru Mureșului,Marosfő,falu,Voșlăbeni,Vasláb,község
+Zetea,Zetelaka,községközpont,Zetea,Zetelaka,község
+Deșag,Desághátja,falu,Zetea,Zetelaka,község
+Izvoare,Ivómezeje,falu,Zetea,Zetelaka,község
+Poiana Târnavei,Küküllőmező,falu,Zetea,Zetelaka,község
+Șicasău,Sikaszómezeje,falu,Zetea,Zetelaka,község
+Sub Cetate,Zeteváralja,falu,Zetea,Zetelaka,község
