@@ -97,3 +97,4 @@
 - 2026-11-06 16:03: **T02 közzétéve:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-erdovaltozas (forrás: `erdo_app_v2`, Cloud Project). Inkognitós teszt folyamatban.
 - Közzétett app inkognitóban betölt. Hiba: 14. nagyítás fölött a beépített réteg az egész községet narancsra festette → épületréteg maszkolása javítva (selfMask).
 - v2.5 (6656c0a): feliratok Roboto Condensed SemiBold betűvel (sokszögként, OFL licenc); 10-es nagyításig csak városok, 11–12: községközpontok, 13-tól minden falu; ha csak a kiválasztott község látszik, csak annak falvai. Épületek csak körvonallal.
+- Döntés (Zsolt): az évenkénti mozaik módszere marad (jún. 15–szept. 15, legfelhőtlenebb pixel); nincs szűkebb időablak, nincs dátumréteg – az app maradjon gyors. A 2024/2025 színkülönbség oka: 2024 rekordmeleg, aszályos nyár + a pixelek eltérő dátumai.
