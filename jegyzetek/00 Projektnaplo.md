@@ -96,3 +96,4 @@
 - 2026-11-06 15:52: v2.4 (986cfe7) működik: saját magyar nevek helyes ékezetekkel, Google-feliratok nélküli háttér. Apró: Homoródszentlászló és Ábránfalva felirata összeér.
 - 2026-11-06 16:03: **T02 közzétéve:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-erdovaltozas (forrás: `erdo_app_v2`, Cloud Project). Inkognitós teszt folyamatban.
 - Közzétett app inkognitóban betölt. Hiba: 14. nagyítás fölött a beépített réteg az egész községet narancsra festette → épületréteg maszkolása javítva (selfMask).
+- v2.5 (6656c0a): feliratok Roboto Condensed SemiBold betűvel (sokszögként, OFL licenc); 10-es nagyításig csak városok, 11–12: községközpontok, 13-tól minden falu; ha csak a kiválasztott község látszik, csak annak falvai. Épületek csak körvonallal.
