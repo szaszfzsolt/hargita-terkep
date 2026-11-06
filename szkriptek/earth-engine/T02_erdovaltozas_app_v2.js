@@ -401,7 +401,7 @@ function nevekKep(zoom) {
   // Melyik nevek: kiválasztott községnél csak annak falvai; különben nagyítás szerint
   // (≤10: városok, 11–12: + községközpontok, 13-tól: minden falu)
   var minSzint = zoom <= 10 ? 2 : (zoom <= 12 ? 1 : 0);
-  var emPx = zoom <= 10 ? 13 : (zoom <= 12 ? 14 : 16);         // betűméret képpontban
+  var emPx = zoom <= 10 ? 15 : (zoom <= 12 ? 17 : 20);         // betűméret képpontban
   var egyseg = mPerPx * emPx / 100;                             // 1 betűegység méterben
   var b = bal.getBounds();
   var rx = (b[2] - b[0]) * 0.2, ry = (b[3] - b[1]) * 0.2;
@@ -419,7 +419,7 @@ function nevekKep(zoom) {
   });
   if (!sokszogek.length) { return ee.Image(); }
   var geom = ee.FeatureCollection([ee.Feature(ee.Geometry.MultiPolygon(sokszogek, null, false))]);
-  var szegely = ee.Image(0).byte().paint(geom, 1, 3).selfMask().visualize({palette: ['000000'], opacity: 0.7});
+  var szegely = ee.Image(0).byte().paint(geom, 1, 2).selfMask().visualize({palette: ['1a1a1a'], opacity: 0.85});
   var betu = ee.Image(0).byte().paint(geom, 1).selfMask().visualize({palette: ['ffffff']});
   return ee.ImageCollection([szegely, betu]).mosaic();
 }
