@@ -3,6 +3,8 @@
 // - Két év Sentinel-2 nyári képe egymás mellett, húzható „függönnyel"
 // - Új vágások / erdőkárok évről évre (NBR-csökkenés), a vágás évével színezve
 // - v2: előre kiszámolt évenkénti mozaikok (T02_evi_mozaikok_export.js), gyors
+// - v2.1: erdőmaszk (WorldCover + Hansen) és tartóssági feltétel → nincs rét/szántó téves jelzés
+// - v2.2: kapcsoló – csak a kiválasztott község, a környék elsötétítve
 // - Hansen Global Forest Change: évenkénti erdővesztés 2001–2024
 // - Községenkénti grafikon: hány hektár erdő tűnt el évente
 // Projekt: tidal-velocity-494919-e2 · Mentés: users/szaszfzsolt/T01_proba/erdo_app_v1 (v2 kód)
@@ -62,7 +64,7 @@ function vagasEvenkent(evA, evB) {
 // Állapot
 // ---------------------------------------------------------------------
 var allapot = {evA: '2018', evB: '2025', nezet: 'Erdőkiemelő (infravörös)',
-               kozseg: null, hansen: false, ujVagas: true, hatarok: true};
+               kozseg: null, hansen: false, ujVagas: true, hatarok: true, csakKozseg: true};
 
 // ---------------------------------------------------------------------
 // Két összekapcsolt térkép, függönnyel
@@ -82,7 +84,10 @@ bal.add(cimkeA);
 jobb.add(cimkeB);
 
 function rajzol() {
-  var ter = allapot.kozseg ? allapot.kozseg.geometry() : terulet;
+  // Statisztika mindig a kiválasztott községre; a térképen a kapcsolótól függ, mi látszik
+  var statTer = allapot.kozseg ? allapot.kozseg.geometry() : terulet;
+  var kivag = Boolean(allapot.kozseg && allapot.csakKozseg);
+  var ter = kivag ? statTer : terulet;
   var kepA = evMozaik(allapot.evA);
   var kepB = evMozaik(allapot.evB);
   var vis = NEZETEK[allapot.nezet];
@@ -100,13 +105,21 @@ function rajzol() {
       t.addLayer(ee.Image().paint(kozsegek, 0, 1), {palette: 'ffffff'}, 'Községhatárok', true, 0.6);
     }
     t.addLayer(ee.Image().paint(megye, 0, 2.5), {palette: 'ffd400'}, 'Megyehatár');
+    if (kivag) {   // a községen kívüli rész elsötétítve
+      var kint = ee.Image(1).paint(ee.FeatureCollection([allapot.kozseg]), 0).selfMask();
+      t.addLayer(kint, {palette: '000000'}, 'Községen kívül', true, 0.6);
+    }
+    if (allapot.kozseg) {
+      t.addLayer(ee.Image().paint(ee.FeatureCollection([allapot.kozseg]), 0, 3.5),
+                 {palette: 'ff6a00'}, 'Kiválasztott község');
+    }
     x[3].setValue(x[2] + ' nyara');
   });
   // Az új vágásokat a „később" (jobb) oldalon mutatjuk
   if (allapot.ujVagas) {
     jobb.addLayer(ujVagas.clip(ter), {min: 2019, max: 2025, palette: S2_PALETTA}, 'Új vágás / kár', true);
   }
-  frissitStatisztika(ter, ujVagas);
+  frissitStatisztika(statTer, ujVagas);
 }
 
 // ---------------------------------------------------------------------
@@ -170,6 +183,9 @@ panel.add(ui.Checkbox({label: 'Községhatárok', value: allapot.hatarok, style:
 panel.add(ui.Label('Község, város', ALCIM));
 var kozsegValaszto = ui.Select({placeholder: 'Betöltés…', style: {stretch: 'horizontal', margin: '0 8px'}});
 panel.add(kozsegValaszto);
+panel.add(ui.Checkbox({label: 'Csak a kiválasztott község (a környék elsötétítve)',
+  value: allapot.csakKozseg, style: {margin: '6px 8px 0 8px'},
+  onChange: function (v) { allapot.csakKozseg = v; rajzol(); }}));
 panel.add(ui.Button({label: '↺ Az egész megye', style: {margin: '6px 8px'},
   onClick: function () {
     allapot.kozseg = null; kozsegValaszto.setValue(null, false);

@@ -89,3 +89,4 @@
 - App v2 hiba: `connectedPixelCount` lebegőpontos maszkon nem fut → a maszkot egész típusúvá alakítjuk (`gt(0).toByte()`).
 - App v2 a javítással fut az `erdo_app_v1` szkriptben (2026-11-06 06:35). Következik: közzététel Earth Engine Appként, inkognitós teszt.
 - App v2 első teszt (Bögöz, 2018→2025): a Sentinel-becslés 2317 ha, több mint a község teljes erdeje (1954 ha) → téves jelzés a kaszált réteken és a szántókon. Javítás (v2.1): erdőmaszk (ESA WorldCover 2020 + Hansen 2000) és tartóssági feltétel (2 év múlva is alacsony NBR).
+- v2.2: „Csak a kiválasztott község” kapcsoló (Zsolt kérése): bekapcsolva a környék elsötétítve, kikapcsolva a megye teljes képe látszik, a község narancs körvonallal; a számok mindig a községre vonatkoznak.
