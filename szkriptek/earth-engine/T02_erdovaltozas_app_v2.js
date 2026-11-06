@@ -4,6 +4,7 @@
 // - Új vágások / erdőkárok évről évre (NBR-csökkenés), a vágás évével színezve
 // - v2: előre kiszámolt évenkénti mozaikok (T02_evi_mozaikok_export.js), gyors
 // - v2.1: erdőmaszk (WorldCover + Hansen) és tartóssági feltétel → nincs rét/szántó téves jelzés
+// - v2.4: saját vonalas betűkészlet a nevekhez (helyes magyar ékezetek)
 // - v2.3: kapcsolható beépített terület / épületek és magyar településnevek
 // - v2.2: kapcsoló – csak a kiválasztott község, a környék elsötétítve
 // - Hansen Global Forest Change: évenkénti erdővesztés 2001–2024
@@ -360,14 +361,39 @@ var FALVAK_ADAT = [
 var falvak = ee.FeatureCollection(FALVAK_ADAT.map(function (f) {
   return ee.Feature(ee.Geometry.Point([f[2], f[1]]), {nev: f[0], kiemelt: f[3]});
 }));
-var szoveg = require('users/gena/packages:text');
-var EKEZET_CSERE = false;   // ha az ő/ű betű hibásan jelenik meg: true → ö/ü
-if (EKEZET_CSERE) {
-  falvak = falvak.map(function (f) {
-    return f.set('nev', ee.String(f.get('nev')).replace('ő', 'ö', 'g').replace('Ő', 'Ö', 'g')
-                                                 .replace('ű', 'ü', 'g').replace('Ű', 'Ü', 'g'));
-  });
+// Saját vonalas betűkészlet (Hershey „futural”, közkincs) – a magyar ékezeteket (á, é, í, ó, ö, ő, ú, ü, ű)
+// a program rajzolja rá a betűkre, így minden név helyesen jelenik meg.
+var BETUK = {" ":[16,[]],"A":[18,[[9,-12,1,9],[9,-12,17,9],[4,2,14,2]]],"B":[21,[[4,-12,4,9],[4,-12,13,-12,16,-11,17,-10,18,-8,18,-6,17,-4,16,-3,13,-2],[4,-2,13,-2,16,-1,17,0,18,2,18,5,17,7,16,8,13,9,4,9]]],"C":[21,[[18,-7,17,-9,15,-11,13,-12,9,-12,7,-11,5,-9,4,-7,3,-4,3,1,4,4,5,6,7,8,9,9,13,9,15,8,17,6,18,4]]],"D":[21,[[4,-12,4,9],[4,-12,11,-12,14,-11,16,-9,17,-7,18,-4,18,1,17,4,16,6,14,8,11,9,4,9]]],"E":[19,[[4,-12,4,9],[4,-12,17,-12],[4,-2,12,-2],[4,9,17,9]]],"F":[18,[[4,-12,4,9],[4,-12,17,-12],[4,-2,12,-2]]],"G":[21,[[18,-7,17,-9,15,-11,13,-12,9,-12,7,-11,5,-9,4,-7,3,-4,3,1,4,4,5,6,7,8,9,9,13,9,15,8,17,6,18,4,18,1],[13,1,18,1]]],"H":[22,[[4,-12,4,9],[18,-12,18,9],[4,-2,18,-2]]],"I":[8,[[4,-12,4,9]]],"J":[16,[[12,-12,12,4,11,7,10,8,8,9,6,9,4,8,3,7,2,4,2,2]]],"K":[21,[[4,-12,4,9],[18,-12,4,2],[9,-3,18,9]]],"L":[17,[[4,-12,4,9],[4,9,16,9]]],"M":[24,[[4,-12,4,9],[4,-12,12,9],[20,-12,12,9],[20,-12,20,9]]],"N":[22,[[4,-12,4,9],[4,-12,18,9],[18,-12,18,9]]],"O":[22,[[9,-12,7,-11,5,-9,4,-7,3,-4,3,1,4,4,5,6,7,8,9,9,13,9,15,8,17,6,18,4,19,1,19,-4,18,-7,17,-9,15,-11,13,-12,9,-12]]],"P":[21,[[4,-12,4,9],[4,-12,13,-12,16,-11,17,-10,18,-8,18,-5,17,-3,16,-2,13,-1,4,-1]]],"R":[21,[[4,-12,4,9],[4,-12,13,-12,16,-11,17,-10,18,-8,18,-6,17,-4,16,-3,13,-2,4,-2],[11,-2,18,9]]],"S":[20,[[17,-9,15,-11,12,-12,8,-12,5,-11,3,-9,3,-7,4,-5,5,-4,7,-3,13,-1,15,0,16,1,17,3,17,6,15,8,12,9,8,9,5,8,3,6]]],"T":[16,[[8,-12,8,9],[1,-12,15,-12]]],"U":[22,[[4,-12,4,3,5,6,7,8,10,9,12,9,15,8,17,6,18,3,18,-12]]],"V":[18,[[1,-12,9,9],[17,-12,9,9]]],"Z":[20,[[17,-12,3,9],[3,-12,17,-12],[3,9,17,9]]],"a":[19,[[15,-5,15,9],[15,-2,13,-4,11,-5,8,-5,6,-4,4,-2,3,1,3,3,4,6,6,8,8,9,11,9,13,8,15,6]]],"b":[19,[[4,-12,4,9],[4,-2,6,-4,8,-5,11,-5,13,-4,15,-2,16,1,16,3,15,6,13,8,11,9,8,9,6,8,4,6]]],"c":[18,[[15,-2,13,-4,11,-5,8,-5,6,-4,4,-2,3,1,3,3,4,6,6,8,8,9,11,9,13,8,15,6]]],"d":[19,[[15,-12,15,9],[15,-2,13,-4,11,-5,8,-5,6,-4,4,-2,3,1,3,3,4,6,6,8,8,9,11,9,13,8,15,6]]],"e":[18,[[3,1,15,1,15,-1,14,-3,13,-4,11,-5,8,-5,6,-4,4,-2,3,1,3,3,4,6,6,8,8,9,11,9,13,8,15,6]]],"f":[12,[[10,-12,8,-12,6,-11,5,-8,5,9],[2,-5,9,-5]]],"g":[19,[[15,-5,15,11,14,14,13,15,11,16,8,16,6,15],[15,-2,13,-4,11,-5,8,-5,6,-4,4,-2,3,1,3,3,4,6,6,8,8,9,11,9,13,8,15,6]]],"h":[19,[[4,-12,4,9],[4,-1,7,-4,9,-5,12,-5,14,-4,15,-1,15,9]]],"i":[8,[[3,-12,4,-11,5,-12,4,-13,3,-12],[4,-5,4,9]]],"j":[10,[[5,-12,6,-11,7,-12,6,-13,5,-12],[6,-5,6,12,5,15,3,16,1,16]]],"k":[17,[[4,-12,4,9],[14,-5,4,5],[8,1,15,9]]],"l":[8,[[4,-12,4,9]]],"m":[30,[[4,-5,4,9],[4,-1,7,-4,9,-5,12,-5,14,-4,15,-1,15,9],[15,-1,18,-4,20,-5,23,-5,25,-4,26,-1,26,9]]],"n":[19,[[4,-5,4,9],[4,-1,7,-4,9,-5,12,-5,14,-4,15,-1,15,9]]],"o":[19,[[8,-5,6,-4,4,-2,3,1,3,3,4,6,6,8,8,9,11,9,13,8,15,6,16,3,16,1,15,-2,13,-4,11,-5,8,-5]]],"p":[19,[[4,-5,4,16],[4,-2,6,-4,8,-5,11,-5,13,-4,15,-2,16,1,16,3,15,6,13,8,11,9,8,9,6,8,4,6]]],"r":[13,[[4,-5,4,9],[4,1,5,-2,7,-4,9,-5,12,-5]]],"s":[17,[[14,-2,13,-4,10,-5,7,-5,4,-4,3,-2,4,0,6,1,11,2,13,3,14,5,14,6,13,8,10,9,7,9,4,8,3,6]]],"t":[12,[[5,-12,5,5,6,8,8,9,10,9],[2,-5,9,-5]]],"u":[19,[[4,-5,4,5,5,8,7,9,10,9,12,8,15,5],[15,-5,15,9]]],"v":[16,[[2,-5,8,9],[14,-5,8,9]]],"y":[16,[[2,-5,8,9],[14,-5,8,9,6,13,4,15,2,16,1,16]]],"z":[17,[[14,-5,3,9],[3,-5,14,-5],[3,9,14,9]]]};
+var EKEZET = {'á': ['a', 'e'], 'é': ['e', 'e'], 'í': ['i', 'e'], 'ó': ['o', 'e'], 'ú': ['u', 'e'],
+  'ö': ['o', 'p'], 'ü': ['u', 'p'], 'ő': ['o', 'k'], 'ű': ['u', 'k'],
+  'Á': ['A', 'e'], 'É': ['E', 'e'], 'Í': ['I', 'e'], 'Ó': ['O', 'e'], 'Ú': ['U', 'e'],
+  'Ö': ['O', 'p'], 'Ü': ['U', 'p'], 'Ő': ['O', 'k'], 'Ű': ['U', 'k']};   // e: vessző, p: pontok, k: két vessző
+// Egy név vonalai betűegységben (sormagasság ≈ 21 egység, y lefelé nő)
+function nevVonalai(nev) {
+  var vonalak = [], x = 0;
+  for (var i = 0; i < nev.length; i++) {
+    var c = nev.charAt(i), e = EKEZET[c], alap = e ? e[0] : c, g = BETUK[alap];
+    if (!g) { x += 10; continue; }
+    var xs = [];
+    g[1].forEach(function (v) { for (var k = 0; k < v.length; k += 2) { xs.push(v[k]); } });
+    var cx = x + (xs.length ? (Math.min.apply(null, xs) + Math.max.apply(null, xs)) / 2 : 0);
+    g[1].forEach(function (v) {
+      if (alap === 'i' && e && v[1] < -6) { return; }          // í: pont nélkül
+      var pts = [];
+      for (var k = 0; k < v.length; k += 2) { pts.push([x + v[k], v[k + 1]]); }
+      vonalak.push(pts);
+    });
+    if (e) {
+      var y0 = (alap === alap.toUpperCase()) ? -16 : -8;
+      if (e[1] === 'e') { vonalak.push([[cx - 1, y0], [cx + 2, y0 - 4]]); }
+      if (e[1] === 'k') { vonalak.push([[cx - 3, y0], [cx, y0 - 4]]); vonalak.push([[cx + 1, y0], [cx + 4, y0 - 4]]); }
+      if (e[1] === 'p') { vonalak.push([[cx - 3, y0 - 1], [cx - 3, y0 - 3]]); vonalak.push([[cx + 3, y0 - 1], [cx + 3, y0 - 3]]); }
+    }
+    x += g[0];
+  }
+  return {vonalak: vonalak, szel: x};
 }
+var NEV_VONALAK = FALVAK_ADAT.map(function (f) { return nevVonalai(f[0]); });   // egyszer számoljuk ki
 
 function beepitettKep(zoom, ter) {
   if (zoom >= EPULET_ZOOM) {
@@ -378,13 +404,27 @@ function beepitettKep(zoom, ter) {
 }
 function nevekKep(zoom) {
   if (zoom < 9) { return ee.Image(); }
-  var leptek = 156543.03 * Math.cos(46.4 * Math.PI / 180) / Math.pow(2, zoom);   // m / képpont
-  var mit = zoom >= 12 ? falvak : falvak.filter(ee.Filter.eq('kiemelt', 1));
-  var beall = {fontSize: zoom >= 12 ? 18 : 16, textColor: 'ffffff', outlineColor: '000000',
-               outlineWidth: 2.5, outlineOpacity: 0.8, alignX: 'center', alignY: 'center'};
-  return ee.ImageCollection(mit.map(function (f) {
-    return szoveg.draw(f.get('nev'), f.geometry(), leptek, beall);
-  })).mosaic();
+  var mPerPx = 156543.03 * Math.cos(46.4 * Math.PI / 180) / Math.pow(2, zoom);
+  var egyseg = mPerPx * (zoom >= 12 ? 0.75 : 0.62);           // 1 betűegység méterben (≈ 14–16 px-es betű)
+  var b = bal.getBounds();                                      // [ny, d, k, é] – csak a látható rész
+  var rx = (b[2] - b[0]) * 0.2, ry = (b[3] - b[1]) * 0.2;
+  var vonalak = [];
+  FALVAK_ADAT.forEach(function (f, i) {
+    if (zoom < 12 && !f[3]) { return; }
+    if (f[2] < b[0] - rx || f[2] > b[2] + rx || f[1] < b[1] - ry || f[1] > b[3] + ry) { return; }
+    var nv = NEV_VONALAK[i];
+    var dx = egyseg / (111320 * Math.cos(f[1] * Math.PI / 180)), dy = egyseg / 110540;
+    nv.vonalak.forEach(function (v) {
+      vonalak.push(v.map(function (p) {
+        return [f[2] + (p[0] - nv.szel / 2) * dx, f[1] - (p[1] + 1.5) * dy];
+      }));
+    });
+  });
+  if (!vonalak.length) { return ee.Image(); }
+  var geom = ee.FeatureCollection([ee.Feature(ee.Geometry.MultiLineString(vonalak, null, false))]);
+  var kontur = ee.Image().byte().paint(geom, 1, 4).visualize({palette: ['000000'], opacity: 0.75});
+  var betu = ee.Image().byte().paint(geom, 1, 1.6).visualize({palette: ['ffffff']});
+  return ee.ImageCollection([kontur, betu]).mosaic();
 }
 var telepRetegek = [];      // [{terkep, beep, nev}] – nagyításkor csak ezek frissülnek
 var aktTer = terulet;
@@ -396,9 +436,14 @@ function telepulesRetegek() {
   });
 }
 var zoomElozo = null;
-bal.onChangeZoom(function (z) {
-  // csak akkor számolunk újra, ha átlépünk egy küszöböt (9, 12, 14) vagy változik a lépték
-  if (z !== zoomElozo) { zoomElozo = z; telepulesRetegek(); }
+bal.onChangeBounds(function () {
+  var z = bal.getZoom();
+  var zoomValtozott = (z !== zoomElozo);
+  zoomElozo = z;
+  telepRetegek.forEach(function (r) {
+    if (r.beep && zoomValtozott) { r.beep.setEeObject(beepitettKep(z, aktTer)); }
+    if (r.nev) { r.nev.setEeObject(nevekKep(z)); }              // a nevek a látható részhez igazodnak
+  });
 });
 var cimkeA = ui.Label('', {position: 'bottom-left', fontWeight: 'bold', fontSize: '18px'});
 var cimkeB = ui.Label('', {position: 'bottom-right', fontWeight: 'bold', fontSize: '18px'});
