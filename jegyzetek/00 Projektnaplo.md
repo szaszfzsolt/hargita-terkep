@@ -93,3 +93,4 @@
 - v2.3: kapcsolható **beépített terület / épületek** (távolról ESA WorldCover beépített foltok, 14. nagyítástól VIDA Google–Microsoft épületkörvonalak) és **magyar településnevek** (264 falu, megyei nézetben a községközpontok; gena text csomag). Adat: `adatok/kesz/telepulesek/hargita_falvak.csv` – 48 bizonytalan magyar név ellenőrzésre vár. Ötletlistára: történeti faluhatárok.
 - v2.4: a gena szövegcsomag nem ismeri az ékezetes betűket (hiba: 'ü') → saját vonalas betűkészlet (Hershey futural, közkincs), az ékezeteket a program rajzolja; a nevek a látható területhez igazodnak.
 - Településnevek: Zsolt névlistája (`adatok/kesz/telepulesek/hargita_telepulesek_nevek.csv`) a hiteles forrás; összevonva a pontokkal (264 település, 63 név javult). App: v2.4 a frissített nevekkel.
+- 2026-11-06 15:52: v2.4 (986cfe7) működik: saját magyar nevek helyes ékezetekkel, Google-feliratok nélküli háttér. Apró: Homoródszentlászló és Ábránfalva felirata összeér.
