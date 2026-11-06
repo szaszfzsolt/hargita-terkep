@@ -409,9 +409,9 @@ function beepitettKep(zoom, ter) {
 function nevekKep(zoom) {
   if (zoom < 9) { return ee.Image(); }
   var mPerPx = 156543.03 * Math.cos(46.4 * Math.PI / 180) / Math.pow(2, zoom);
-  // Nagyítás szerint: 9: csak a városok, 10–11: + községközpontok, 12-től: minden falu; a betű is nő
-  var minSzint = zoom <= 9 ? 2 : (zoom <= 11 ? 1 : 0);
-  var betuPx = {9: 0.42, 10: 0.5, 11: 0.58}[zoom] || 0.7;      // 1 betűegység képpontban (21 egység ≈ betűmagasság)
+  // Nagyítás szerint: 9: csak a városok, 10–12: + községközpontok, 13-tól: minden falu; a betű is nő
+  var minSzint = zoom <= 9 ? 2 : (zoom <= 12 ? 1 : 0);
+  var betuPx = {9: 0.42, 10: 0.48, 11: 0.52, 12: 0.56, 13: 0.6}[zoom] || 0.66;      // 1 betűegység képpontban (21 egység ≈ betűmagasság)
   var egyseg = mPerPx * betuPx;
   var b = bal.getBounds();                                      // [ny, d, k, é] – csak a látható rész
   var rx = (b[2] - b[0]) * 0.2, ry = (b[3] - b[1]) * 0.2;
@@ -429,8 +429,8 @@ function nevekKep(zoom) {
   });
   if (!vonalak.length) { return ee.Image(); }
   var geom = ee.FeatureCollection([ee.Feature(ee.Geometry.MultiLineString(vonalak, null, false))]);
-  var kontur = ee.Image().byte().paint(geom, 1, zoom >= 12 ? 4 : 3).visualize({palette: ['000000'], opacity: 0.75});
-  var betu = ee.Image().byte().paint(geom, 1, zoom >= 12 ? 1.6 : 1.3).visualize({palette: ['ffffff']});
+  var kontur = ee.Image().byte().paint(geom, 1, zoom >= 13 ? 3.5 : 3).visualize({palette: ['000000'], opacity: 0.75});
+  var betu = ee.Image().byte().paint(geom, 1, zoom >= 13 ? 1.5 : 1.3).visualize({palette: ['ffffff']});
   return ee.ImageCollection([kontur, betu]).mosaic();
 }
 var telepRetegek = [];      // [{terkep, beep, nev}] – nagyításkor csak ezek frissülnek
@@ -577,7 +577,7 @@ panel.add(ui.Label('Távolról: beépített foltok (ESA WorldCover, 10 m). Köze
   'minden épület körvonala (Google–Microsoft épületadat).', {fontSize: '11px', margin: '0 8px 0 30px', color: '666666'}));
 panel.add(ui.Checkbox({label: 'Településnevek (magyarul)', value: allapot.nevek, style: {margin: '2px 8px'},
   onChange: function (v) { allapot.nevek = v; rajzol(); }}));
-panel.add(ui.Label('Megyei nézetben a városok, közelebb a községközpontok, a 12. nagyítástól minden falu.',
+panel.add(ui.Label('Megyei nézetben a városok, közelebb a községközpontok, a 13. nagyítástól minden falu.',
   {fontSize: '11px', margin: '0 8px 0 30px', color: '666666'}));
 
 // Községválasztó
