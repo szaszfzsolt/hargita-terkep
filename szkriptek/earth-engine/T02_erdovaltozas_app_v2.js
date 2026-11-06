@@ -90,12 +90,12 @@ var EPULETEK = ee.FeatureCollection('projects/sat-io/open-datasets/VIDA_COMBINED
 var beepitettFolt = worldcover.eq(50).selfMask();            // ESA WorldCover 2020: beépített (10 m)
 var EPULET_ZOOM = 14;                                        // innen épületenként, alatta foltként
 
-// Falvak: [magyar név, szél., hossz., kiemelt (községközpont / nagy település)]
+// Falvak: [magyar név, szél., hossz., szint (2 = város, 1 = községközpont, 0 = falu)]
 // Forrás: baza-de-date-localitati-romania (koordináták, public domain); magyar nevek: Szász F. Zsolt névlistája
 // (adatok/kesz/telepulesek/hargita_telepulesek_nevek.csv) → összevonva: hargita_falvak.csv
 var FALVAK_ADAT = [
-  ["Balánbánya", 46.65858, 25.80767, 1],
-  ["Borszék", 46.97028, 25.55979, 1],
+  ["Balánbánya", 46.65858, 25.80767, 2],
+  ["Borszék", 46.97028, 25.55979, 2],
   ["Bélbor", 47.06561, 25.4864, 1],
   ["Rakottyás", 47.04428, 25.50513, 0],
   ["Bögöz", 46.25704, 25.22101, 1],
@@ -144,7 +144,7 @@ var FALVAK_ADAT = [
   ["Csíkszentsimon", 46.25786, 25.88635, 1],
   ["Csatószeg", 46.24128, 25.89665, 0],
   ["Csíkszenttamás", 46.55657, 25.77646, 1],
-  ["Csíkszereda", 46.36956, 25.79537, 1],
+  ["Csíkszereda", 46.36956, 25.79537, 2],
   ["Csiba", 46.38005, 25.74652, 0],
   ["Hargitafürdő", 46.37934, 25.63209, 0],
   ["Zsögödfürdő", 46.33937, 25.80886, 0],
@@ -200,9 +200,9 @@ var FALVAK_ADAT = [
   ["Hollósarka", 46.99851, 25.64251, 0],
   ["Gyergyóremete", 46.7963, 25.44266, 1],
   ["Eszenyő", 46.81442, 25.41802, 0],
-  ["Kisbükk", 46.83562, 25.38303, 1],
+  ["Kisbükk", 46.83562, 25.38303, 0],
   ["Martonka", 46.82887, 25.42924, 0],
-  ["Gyergyószentmiklós", 46.72121, 25.58553, 1],
+  ["Gyergyószentmiklós", 46.72121, 25.58553, 2],
   ["Gyilkostó", 46.79383, 25.79597, 0],
   ["Kovácspéter", 46.72668, 25.71923, 0],
   ["Vargatag", 46.7543, 25.6314, 0],
@@ -274,7 +274,7 @@ var FALVAK_ADAT = [
   ["Lövéte", 46.27473, 25.49144, 1],
   ["Királyfürdő", 46.29548, 25.57594, 0],
   ["Madéfalva", 46.43748, 25.75315, 1],
-  ["Maroshévíz", 46.92603, 25.3534, 1],
+  ["Maroshévíz", 46.92603, 25.3534, 2],
   ["Kelemenpatak", 46.9523, 25.33535, 0],
   ["Lunkány", 46.9124, 25.3568, 0],
   ["Magyaros", 46.9183, 25.34504, 0],
@@ -319,7 +319,7 @@ var FALVAK_ADAT = [
   ["Székelyszentmiklós", 46.33903, 25.08634, 0],
   ["Tarcsafalva", 46.37586, 25.13094, 0],
   ["Tordátfalva", 46.38098, 25.10359, 0],
-  ["Szentegyháza", 46.3267, 25.51481, 1],
+  ["Szentegyháza", 46.3267, 25.51481, 2],
   ["Homoródfürdő", 46.34981, 25.46611, 0],
   ["Szentkeresztbánya", 46.30631, 25.50644, 0],
   ["Szentábrahám", 46.33472, 25.00912, 1],
@@ -337,15 +337,15 @@ var FALVAK_ADAT = [
   ["Újlaktelep", 46.30966, 24.87126, 0],
   ["Székelyderzs", 46.20782, 25.16464, 1],
   ["Székelymuzsna", 46.2053, 25.14825, 0],
-  ["Székelykeresztúr", 46.29245, 25.03171, 1],
+  ["Székelykeresztúr", 46.29245, 25.03171, 2],
   ["Betfalva", 46.28941, 25.08296, 0],
   ["Fiatfalva", 46.26932, 25.0161, 0],
-  ["Székelyudvarhely", 46.305, 25.29265, 1],
+  ["Székelyudvarhely", 46.305, 25.29265, 2],
   ["Székelyvarság", 46.50907, 25.37281, 1],
   ["Tusnád", 46.14608, 25.85696, 1],
   ["Csíkverebes", 46.22327, 25.90759, 0],
   ["Újtusnád", 46.19381, 25.89723, 0],
-  ["Tusnádfürdő", 46.14608, 25.85696, 1],
+  ["Tusnádfürdő", 46.14608, 25.85696, 2],
   ["Kárpitusz", 46.12191, 25.85528, 0],
   ["Vasláb", 46.64607, 25.62371, 1],
   ["Marosfő", 46.62746, 25.71206, 0],
@@ -406,12 +406,15 @@ function beepitettKep(zoom, ter) {
 function nevekKep(zoom) {
   if (zoom < 9) { return ee.Image(); }
   var mPerPx = 156543.03 * Math.cos(46.4 * Math.PI / 180) / Math.pow(2, zoom);
-  var egyseg = mPerPx * (zoom >= 12 ? 0.75 : 0.62);           // 1 betűegység méterben (≈ 14–16 px-es betű)
+  // Nagyítás szerint: 9: csak a városok, 10–11: + községközpontok, 12-től: minden falu; a betű is nő
+  var minSzint = zoom <= 9 ? 2 : (zoom <= 11 ? 1 : 0);
+  var betuPx = {9: 0.42, 10: 0.5, 11: 0.58}[zoom] || 0.7;      // 1 betűegység képpontban (21 egység ≈ betűmagasság)
+  var egyseg = mPerPx * betuPx;
   var b = bal.getBounds();                                      // [ny, d, k, é] – csak a látható rész
   var rx = (b[2] - b[0]) * 0.2, ry = (b[3] - b[1]) * 0.2;
   var vonalak = [];
   FALVAK_ADAT.forEach(function (f, i) {
-    if (zoom < 12 && !f[3]) { return; }
+    if (f[3] < minSzint) { return; }
     if (f[2] < b[0] - rx || f[2] > b[2] + rx || f[1] < b[1] - ry || f[1] > b[3] + ry) { return; }
     var nv = NEV_VONALAK[i];
     var dx = egyseg / (111320 * Math.cos(f[1] * Math.PI / 180)), dy = egyseg / 110540;
@@ -423,8 +426,8 @@ function nevekKep(zoom) {
   });
   if (!vonalak.length) { return ee.Image(); }
   var geom = ee.FeatureCollection([ee.Feature(ee.Geometry.MultiLineString(vonalak, null, false))]);
-  var kontur = ee.Image().byte().paint(geom, 1, 4).visualize({palette: ['000000'], opacity: 0.75});
-  var betu = ee.Image().byte().paint(geom, 1, 1.6).visualize({palette: ['ffffff']});
+  var kontur = ee.Image().byte().paint(geom, 1, zoom >= 12 ? 4 : 3).visualize({palette: ['000000'], opacity: 0.75});
+  var betu = ee.Image().byte().paint(geom, 1, zoom >= 12 ? 1.6 : 1.3).visualize({palette: ['ffffff']});
   return ee.ImageCollection([kontur, betu]).mosaic();
 }
 var telepRetegek = [];      // [{terkep, beep, nev}] – nagyításkor csak ezek frissülnek
@@ -571,7 +574,7 @@ panel.add(ui.Label('Távolról: beépített foltok (ESA WorldCover, 10 m). Köze
   'minden épület körvonala (Google–Microsoft épületadat).', {fontSize: '11px', margin: '0 8px 0 30px', color: '666666'}));
 panel.add(ui.Checkbox({label: 'Településnevek (magyarul)', value: allapot.nevek, style: {margin: '2px 8px'},
   onChange: function (v) { allapot.nevek = v; rajzol(); }}));
-panel.add(ui.Label('Megyei nézetben a községközpontok, közelebb (12. nagyítástól) minden falu.',
+panel.add(ui.Label('Megyei nézetben a városok, közelebb a községközpontok, a 12. nagyítástól minden falu.',
   {fontSize: '11px', margin: '0 8px 0 30px', color: '666666'}));
 
 // Községválasztó
