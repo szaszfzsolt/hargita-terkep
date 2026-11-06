@@ -95,3 +95,4 @@
 - Településnevek: Zsolt névlistája (`adatok/kesz/telepulesek/hargita_telepulesek_nevek.csv`) a hiteles forrás; összevonva a pontokkal (264 település, 63 név javult). App: v2.4 a frissített nevekkel.
 - 2026-11-06 15:52: v2.4 (986cfe7) működik: saját magyar nevek helyes ékezetekkel, Google-feliratok nélküli háttér. Apró: Homoródszentlászló és Ábránfalva felirata összeér.
 - 2026-11-06 16:03: **T02 közzétéve:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/hargita-erdovaltozas (forrás: `erdo_app_v2`, Cloud Project). Inkognitós teszt folyamatban.
+- Közzétett app inkognitóban betölt. Hiba: 14. nagyítás fölött a beépített réteg az egész községet narancsra festette → épületréteg maszkolása javítva (selfMask).
