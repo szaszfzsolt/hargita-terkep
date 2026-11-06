@@ -45,7 +45,8 @@ function vagasEvenkent(evA, evB) {
     lista.push(ee.Image.constant(ev + 1).toInt16().updateMask(esett).rename('ev'));
   }
   var elso = ee.ImageCollection(lista).min();                       // az első vágás éve
-  return elso.updateMask(elso.mask().connectedPixelCount(30).gte(10)); // min. ~0,1 ha
+  var folt = elso.gt(0).toByte();                                   // egész típus kell a foltméréshez
+  return elso.updateMask(folt.connectedPixelCount(30, true).gte(10)); // min. ~0,1 ha
 }
 
 // ---------------------------------------------------------------------
