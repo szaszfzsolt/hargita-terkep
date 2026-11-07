@@ -22,7 +22,7 @@ var PAROK = {
   '2018b': {elotte: '2018-06-25', utana: '2018-07-01', palya: 131, irany: 'ASCENDING'},    // 1–2 nappal a csúcs után
   '2018c': {elotte: '2018-06-18', utana: '2018-06-30', palya: 109, irany: 'DESCENDING'}    // a csúcs napja, de csak a megye 85%-át fedi
 };
-var PAR = '2018a';              // melyik párt használjuk
+var PAR = '2018b';              // melyik párt használjuk (2018b: vasárnap, júl. 1. este = az első árhullám a Csíki-medencében)
 var ELOTTE = PAROK[PAR].elotte;
 var UTANA = PAROK[PAR].utana;
 var PALYA = PAROK[PAR].palya;
