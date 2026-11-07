@@ -51,4 +51,4 @@ Amibe belefutottunk (vagy várhatóan belefutunk), és hogyan oldottuk meg.
 ### 2026-11-07 – A megye keleti széle szürke a T03 térképen
 **Mi történt:** a Landsat-hőképeken Gyimes, Úz-völgye és Kászon (a megye keleti szegélye) nincs lefedve, a szürke rész éle egyenes, ferde vonal.
 **Ok:** egy Landsat-felvétel kb. 185 km széles; a szomszédos sávot a műhold 7–8 nappal később fényképezi, így azonos napra nem egyesíthető.
-**Megoldás:** az appban kiírva (szürke = nincs adat); a Csíki-medence teljesen lefedett. Későbbre: MODIS (1 km, a teljes megyét lefedi) vagy a keleti sáv külön napokkal.
+**Megoldás:** az appban kiírva (szürke = nincs adat). **Javítás (2026-11-07):** korábban tévesen azt írtuk, hogy a Csíki-medence teljesen lefedett; valójában Csíkszereda is a lefedetlen sávban van. A napkereső a derült arányt csak a lefedett pixelekre számolta, ezért nem szűrte ki a hiányos lefedettségű napokat. Későbbre: MODIS (1 km, a teljes megyét lefedi) vagy a keleti sáv külön napokkal.

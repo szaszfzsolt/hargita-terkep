@@ -501,7 +501,8 @@ panel.add(ui.Panel([ui.Label('−25', {fontSize: '11px', margin: '0 0 0 8px', wi
 
 panel.add(ui.Label('Szürke (csak domborzat) = nincs adat: felhő, vagy a terület kívül esik a műhold ' +
   'aznapi sávján. A Landsat egy felvétele kb. 185 km széles, ezért a megye keleti széle (Gyimes, ' +
-  'Úz-völgye, Kászon) a legtöbb napon hiányzik. A Csíki-medence teljesen látszik.', SZOVEG));
+  'Úz-völgye, Kászon) a legtöbb napon hiányzik. FIGYELEM: a jelenlegi téli napokon a Csíki-medence ' +
+  'nagy része is kívül esik a sávon, ezért a grafikon főleg a Gyergyói-medence és a Maros völgye adatait mutatja.', SZOVEG));
 
 // Kapcsolók
 panel.add(ui.Label('Megjelenítés', ALCIM));
