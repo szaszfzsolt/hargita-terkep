@@ -56,3 +56,8 @@ Amibe belefutottunk (vagy várhatóan belefutunk), és hogyan oldottuk meg.
 ### 2026-11-07 – Asset megosztása szkriptből nem megy
 **Mi történt:** a `T03_megosztas.js` hibát adott: „Internal error: object not in API" – az `ee.data.setAssetAcl` nem érhető el a Code Editorban.
 **Megoldás:** a megosztás kézzel (Assets fül → asset → SHARE → *Anyone can read*); a szkript törölve, az útmutató (U02) leírja a lépéseket.
+
+### 2026-11-07 – Eltűntek a Code Editor oldalpanelei (szkriptlista, Console)
+**Mi történt:** böngészőnagyítás (Ctrl + görgő) közben a bal és a jobb oldali panel összecsukódott, csak a szerkesztő és a térkép látszott. A Ctrl+0 (nagyítás visszaállítása) és az F5 (újratöltés) nem állította vissza.
+**Megoldás:** a panelek szélén lévő szaggatott függőleges vonalat (a képernyő bal és jobb szélén, kb. a szerkesztő magasságában) kell az egérrel befelé húzni.
+**Tanulság:** a Chrome Fordítója (angol → magyar) is zavarhatja az oldalt; az Earth Engine-hez érdemes kikapcsolni (⋮ → „Soha ne fordítsa az angol nyelvet").
