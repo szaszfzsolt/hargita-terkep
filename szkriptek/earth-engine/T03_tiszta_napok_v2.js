@@ -13,8 +13,11 @@
 // Oszlopok: dátum | megye fedett% | megye derült% | havas% (a derültből) | Csíki Δ°C | Gyergyói Δ°C
 // (Δ = medencealj (<800 m) mínusz hegyoldal (900–1200 m) felszínhőmérséklete; negatív = inverzió)
 // Mentés új szkriptként: NEW → File → név: T03_tiszta_napok_v2  (NE írj felül meglévőt – lásd jegyzetek/Utmutatok/U02)
-// Futás: néhány perc (kb. 150 nap × 3 terület).
+// Futás: néhány perc (kb. 150 nap × 3 terület). Nyári napokhoz írd át fent az IDOSZAK értékét 'nyar'-ra.
 // =====================================================================
+
+// ÁTKAPCSOLÓ: 'tel' (dec–feb, havas inverziós napok) vagy 'nyar' (jún–aug, forró napok, a medencealj melegebb)
+var IDOSZAK = 'tel';
 
 var PROJEKT = 'projects/tidal-velocity-494919-e2/assets/';
 var megye = ee.FeatureCollection(PROJEKT + 'hargita_megye_shp').geometry();
@@ -22,15 +25,17 @@ var csiki = ee.Geometry.Rectangle([25.55, 46.15, 26.05, 46.60]);    // Csíki-me
 var gyergyoi = ee.Geometry.Rectangle([25.38, 46.62, 25.78, 46.90]); // Gyergyói-medence és hegyoldalai
 var dem = ee.ImageCollection('COPERNICUS/DEM/GLO30').select('DEM').mosaic().setDefaultProjection('EPSG:4326', null, 30);
 
-var tel = ee.Filter.or(ee.Filter.calendarRange(12, 12, 'month'), ee.Filter.calendarRange(1, 2, 'month'));
+var tel = IDOSZAK === 'nyar' ? ee.Filter.calendarRange(6, 8, 'month')
+  : ee.Filter.or(ee.Filter.calendarRange(12, 12, 'month'), ee.Filter.calendarRange(1, 2, 'month'));
 var gyujtemeny = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .merge(ee.ImageCollection('LANDSAT/LC09/C02/T1_L2'))
-  .filterBounds(megye).filterDate('2013-12-01', '2026-03-01').filter(tel);
+  .filterBounds(megye).filterDate(IDOSZAK === 'nyar' ? '2014-06-01' : '2013-12-01',
+    IDOSZAK === 'nyar' ? '2026-09-01' : '2026-03-01').filter(tel);
 
 var napok = gyujtemeny.map(function (k) {
   return k.set('nap', ee.Date(k.get('system:time_start')).format('YYYY-MM-dd'));
 }).aggregate_array('nap').distinct();
-print('Téli napok száma (legalább egy felvétel a megyén):', napok.size());
+print(IDOSZAK + ' – napok száma (legalább egy felvétel a megyén):', napok.size());
 
 function szam(d, kulcs) {   // null (teljesen felhős) helyett jelzőérték
   var v = d.get(kulcs);
@@ -86,13 +91,15 @@ function sor(f) {
     .cat(' | ').cat(p('m_ho')).cat(' | ').cat(t('cs_diff')).cat(' | ').cat(t('gy_diff'))});
 }
 
-var teljes = tabla.filter(ee.Filter.and(ee.Filter.gte('m_fed', 0.9), ee.Filter.gte('m_der', 0.5)))
-  .sort('m_der', false);
+// télen: ≥50% derült, derültség szerint; nyáron: ≥80% derült, a legmelegebb medencealj (legpozitívabb Δ) elöl
+var teljes = tabla.filter(ee.Filter.and(ee.Filter.gte('m_fed', 0.9),
+    ee.Filter.gte('m_der', IDOSZAK === 'nyar' ? 0.8 : 0.5)))
+  .sort(IDOSZAK === 'nyar' ? 'cs_diff' : 'm_der', false);
 print('1. Teljes megye (dátum | fedett | derült | havas | Csíki Δ | Gyergyói Δ):', teljes.size(),
   teljes.limit(30).map(sor).aggregate_array('s'));
 
 var ketMedence = tabla.filter(ee.Filter.and(ee.Filter.gte('cs_fed', 0.97), ee.Filter.gte('gy_fed', 0.97),
-    ee.Filter.gte('cs_der', 0.8), ee.Filter.gte('gy_der', 0.8))).sort('cs_diff');
+    ee.Filter.gte('cs_der', 0.8), ee.Filter.gte('gy_der', 0.8))).sort('cs_diff', IDOSZAK === 'nyar');
 print('2. Két nagy medence teljesen látszik és derült:', ketMedence.size(),
   ketMedence.limit(30).map(sor).aggregate_array('s'));
 
