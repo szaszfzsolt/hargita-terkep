@@ -48,3 +48,8 @@
 - Megbízhatóbb alternatívák (ötlet, nem készült el): csapadék (GPM IMERG), árvízveszélyes sáv (HAND/DEM), a radar változás-rétege „nedves talaj lábnyomaként", Copernicus EMS hivatalos térkép (ha van).
 - Tanulság: ne állítsunk elöntéskiterjedést, amit nem tudunk igazolni; a tanároknak szánt eszköznél a bizonytalan jel félrevezet.
 - Következő: 2005 / 2010 – Landsat 5/7 (30 m) napkereső: `T07_landsat_napok.js`.
+
+## 2005. augusztus 23. – Nyikó-menti villámárvíz (forrás: Székelyhon)
+- Verőfényes nyári nap délutánja, felhőszakadás után rohamosan áradó patak: 16 áldozat, 29 lakóház pusztult el, közel 2000 lakó- és gazdasági épületben kár. Hét település a Nyikó mentén, köztük Szombatfalva, Székelyszentlélek, Farkaslaka, Siménfalva, Farcád, Hodgya. A cikk nem ad pontos adatot az eső kezdetéről, a vízcsúcsról és az elöntés kiterjedéséről.
+- Következmény a műholdadatokra: hirtelen, órák alatt levonuló árvíz – magáról a vízről nincs műholdkép (Landsat 16 naponta, 30 m; radar nincs). Legfeljebb utólagos nyomok (hordalék, növényzet, meder) látszhatnak, 30 m-en valószínűleg alig.
+- Tervezett térkép: a Nyikó vízgyűjtője és az érintett települések; MERIT Hydro (90 m): vízgyűjtő-terület (`upa`), legközelebbi vízfolyás feletti magasság (`hnd`), meder szélessége (`wth`); Copernicus DEM lejtő. Üzenet: miért tudott egy kis patak 16 életet követelni (meredek kis vízgyűjtő, keskeny völgy, felhőszakadás).
