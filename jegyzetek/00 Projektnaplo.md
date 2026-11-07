@@ -109,3 +109,10 @@
 - T03 exportok kész (7 asset). Megosztás: `T03_megosztas.js`; app: `T03_app_v1.js` (első teszt következik).
 - T03: MODIS éjszakai réteg (az egész megye, minden medence egyszerre) – `T03_modis_export.js` megírva; az app (`T03_app_v1.js`) két új elemmel (téli/nyári éjszakák átlaga), közös/saját skála kapcsolóval és oldalankénti jelmagyarázattal bővült. Következő: export futtatása, assetek megosztása, teszt.
 - T03 MODIS: javított export lefutott (tel/nyar éjszakai átlag, 1 km), app működik a két új elemmel és a skálakapcsolóval. Eredmény: Gyergyó ≈ 2,5–3 °C, Csík ≈ 1,5–2 °C téli éjszakai inverzió (részletek: [[T03 Homersekleti inverzio]]). Következő: app közzététele (Apps), inkognitós teszt, a 7 régi asset törlése.
+
+## 2026-11-07 este – T03 lezárva
+- **T03 közzétéve:** https://tidal-velocity-494919-e2.projects.earthengine.app/view/homersekleti-inverzio-hargita-megyeben (forrás: `T03_app_v1`, Cloud Project). Inkognitóban ellenőrizve: Landsat-napok és MODIS éjszakai átlagok is működnek, diagram is.
+- Assetek rendben: 7 használt `T03_st_*` + `T03_modis_tel_ej`, `T03_modis_nyar_ej`; a 7 régi törölve.
+- Eredmény: téli éjszakai inverzió Gyergyói-medence ≈ 2,5–3 °C, Csíki-medence ≈ 1,5–2 °C; Landsat-nap (2017-01-19, délelőtt) ≈ 5–6 °C.
+- Tanulságok: (1) az App-ID a közzétételkor a megadott név alapján készül, az ékezetes betűk kimaradnak, ellenőrizni kell az Apps listában; (2) törölt és újra létrehozott asset megosztását újra be kell állítani, és a közzétett app pár percig a régi állapotot mutathatja (kemény frissítés, várakozás); (3) a MODIS-szűrőnél a 0 érték = nincs adat, a QC 0 és 1 is elfogadható.
+- Későbbre: téli hajnali Landsat-nap helyett ECOSTRESS (hajnali sávok), 2 m-es léghőmérséklet-adatok (ERA5-Land) összevetése, kisebb medencék (Gyimes, Maroshévíz) saját elemzése.
