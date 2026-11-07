@@ -20,8 +20,10 @@ var PALYA = 7;                  // relatív pálya (7 = DESCENDING, 131 = ASCEND
 var IRANY = 'DESCENDING';       // ASCENDING / DESCENDING
 // Alternatív pár: ELOTTE '2025-05-25', UTANA '2025-05-31', PALYA 131, IRANY 'ASCENDING'
 
-var KUSZOB_UTANA = -15;         // dB: ennél sötétebb = víz (sima felszín)
-var KUSZOB_VALTOZAS = -3;       // dB: legalább ennyit sötétedett
+var KUSZOB_UTANA = -15;         // dB: ennél sötétebb = víz (sima felszín) – SZIGORÚ
+var KUSZOB_VALTOZAS = -3;       // dB: legalább ennyit sötétedett – SZIGORÚ
+var LAZA_UTANA = -13;           // LAZA változat: kisebb küszöbök (több hamis jelet is megenged)
+var LAZA_VALTOZAS = -2;
 var MAX_LEJTO = 5;              // fok
 var MIN_FOLT = 10;              // legalább ennyi összefüggő képpont (10 m-es pixel)
 
@@ -46,12 +48,16 @@ var dem = ee.ImageCollection('COPERNICUS/DEM/GLO30').select('DEM').mosaic()
 var lejto = ee.Terrain.slope(dem);
 var allandoViz = ee.Image('JRC/GSW1_4/GlobalSurfaceWater').select('occurrence').gt(20).unmask(0);
 
-var jelolt = utana.lt(KUSZOB_UTANA)
-  .and(valtozas.lt(KUSZOB_VALTOZAS))
-  .and(lejto.lt(MAX_LEJTO))
-  .and(allandoViz.not());
-var foltok = jelolt.selfMask().connectedPixelCount(100, true);
-var elontes = jelolt.updateMask(foltok.gte(MIN_FOLT)).selfMask();
+function elontesMaszk(kuszobUtana, kuszobValtozas) {
+  var jelolt = utana.lt(kuszobUtana)
+    .and(valtozas.lt(kuszobValtozas))
+    .and(lejto.lt(MAX_LEJTO))
+    .and(allandoViz.not());
+  var foltok = jelolt.selfMask().connectedPixelCount(100, true);
+  return jelolt.updateMask(foltok.gte(MIN_FOLT)).selfMask();
+}
+var elontes = elontesMaszk(KUSZOB_UTANA, KUSZOB_VALTOZAS);
+var elontesLaza = elontesMaszk(LAZA_UTANA, LAZA_VALTOZAS);
 
 // --- Megjelenítés ---
 Map.setCenter(25.80, 46.36, 12);   // Csíkszereda környéke
@@ -62,10 +68,14 @@ Map.addLayer(utana.clip(terulet), szurke, 'Radar UTÁNA ' + UTANA + ' (VV dB)', 
 Map.addLayer(valtozas.clip(terulet), {min: -6, max: 6, palette: ['d7191c', 'ffffff', '2c7bb6']},
   'Változás (utána−előtte, dB; piros = sötétedés)', false);
 Map.addLayer(ee.Image().paint(megye, 0, 2), {palette: 'ffd400'}, 'Megyehatár');
-Map.addLayer(elontes.clip(terulet), {palette: '00e5ff'}, 'Jelölt elöntés (új víz)');
+Map.addLayer(elontesLaza.clip(terulet), {palette: 'ffeb3b'}, 'Jelölt elöntés – LAZA (sárga, bizonytalanabb)');
+Map.addLayer(elontes.clip(terulet), {palette: '00e5ff'}, 'Jelölt elöntés – SZIGORÚ (cián)');
 
 // A jelölt elöntés összes területe a megyében (km²), 20 m-es mintavétellel
 print('Pár:', ELOTTE + ' → ' + UTANA + ' (pálya ' + PALYA + ', ' + IRANY + ')');
-print('Jelölt elöntött terület a megyében (km²):',
-  ee.Image.pixelArea().divide(1e6).updateMask(elontes).reduceRegion({
-    reducer: ee.Reducer.sum(), geometry: terulet, scale: 20, maxPixels: 1e10, bestEffort: true}));
+function terulet_km2(maszk) {
+  return ee.Image.pixelArea().divide(1e6).updateMask(maszk).reduceRegion({
+    reducer: ee.Reducer.sum(), geometry: terulet, scale: 20, maxPixels: 1e10, bestEffort: true});
+}
+print('Jelölt elöntött terület a megyében, SZIGORÚ (km²):', terulet_km2(elontes));
+print('Jelölt elöntött terület a megyében, LAZA (km²):', terulet_km2(elontesLaza));
