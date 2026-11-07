@@ -52,7 +52,7 @@ function elemez(kep) {
   // Teljesen felhős felvételnél a hőmérséklet null → -999 jelzőérték, később kiszűrjük
   function szam(kulcs) {
     var v = stat.get(kulcs);
-    return ee.Number(ee.Algorithms.If(v, v, -999));
+    return ee.Number(ee.Algorithms.If(ee.Algorithms.IsEqual(v, null), -999, v));
   }
   var derultArany = szam('derult');
   var hoArany = szam('ho').divide(derultArany.max(0.0001));
