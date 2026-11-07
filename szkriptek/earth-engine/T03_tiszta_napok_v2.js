@@ -99,7 +99,7 @@ print('1. Teljes megye (dátum | fedett | derült | havas | Csíki Δ | Gyergyó
   teljes.limit(30).map(sor).aggregate_array('s'));
 
 var ketMedence = tabla.filter(ee.Filter.and(ee.Filter.gte('cs_fed', 0.97), ee.Filter.gte('gy_fed', 0.97),
-    ee.Filter.gte('cs_der', 0.8), ee.Filter.gte('gy_der', 0.8))).sort('cs_diff', IDOSZAK === 'nyar');
+    ee.Filter.gte('cs_der', 0.8), ee.Filter.gte('gy_der', 0.8))).sort('cs_diff', IDOSZAK !== 'nyar');
 print('2. Két nagy medence teljesen látszik és derült:', ketMedence.size(),
   ketMedence.limit(30).map(sor).aggregate_array('s'));
 
