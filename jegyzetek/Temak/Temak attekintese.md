@@ -8,7 +8,7 @@
 | T04 | Hóborítottság és olvadás | Sentinel-2, MODIS | ötlet |
 | T05 | Vegetáció évszakos ritmusa (NDVI) | Sentinel-2 | ötlet |
 | T06 | Vulkáni formák 3D-ben (Csomád, Szent Anna-tó, Mohos) | Copernicus DEM | ötlet |
-| T07 | Vizek: tavak, tározók, árvizek | Sentinel-2, Sentinel-1 | ötlet |
+| T07 | [[T07 Arviz]] – árvíz térképe, események sorban (2025, 2018, 2005/2010) | Sentinel-1 radar, Sentinel-2, Landsat 5, Copernicus DEM | 🔧 folyamatban |
 | T08 | Felszínborítás és községi statisztika | ESA WorldCover | ötlet |
 | T09 | Éjszakai fények | VIIRS | ötlet |
 | T10 | Régi térkép vs. mai műholdkép | mapire.eu + Sentinel-2 | ötlet |
