@@ -47,3 +47,8 @@ Amibe belefutottunk (vagy várhatóan belefutunk), és hogyan oldottuk meg.
 ### 2026-11-07 – Teljesen felhős felvétel null értéket adott
 **Mi történt:** `Number.subtract: Parameter 'left' is required and may not be null` – ha az egész terület felhős, a `reduceRegion` null-t ad.
 **Megoldás:** jelzőérték (-999) a nullok helyett, majd szűrés (`gt('st_alj', -900)`).
+
+### 2026-11-07 – A megye keleti széle szürke a T03 térképen
+**Mi történt:** a Landsat-hőképeken Gyimes, Úz-völgye és Kászon (a megye keleti szegélye) nincs lefedve, a szürke rész éle egyenes, ferde vonal.
+**Ok:** egy Landsat-felvétel kb. 185 km széles; a szomszédos sávot a műhold 7–8 nappal később fényképezi, így azonos napra nem egyesíthető.
+**Megoldás:** az appban kiírva (szürke = nincs adat); a Csíki-medence teljesen lefedett. Későbbre: MODIS (1 km, a teljes megyét lefedi) vagy a keleti sáv külön napokkal.
