@@ -78,3 +78,8 @@
 
 ### 2005 – szkript
 - `T07_arviz_2005_nyiko.js`: függöny, bal: 2005-08-22 (árvíz előtti nap), jobb: 2005-09-06/07; megjelenítés: valódi szín / NDVI / MNDWI. Várható: csak az erősebb nyomok látszanak 30 m-en.
+
+### 2005 – eredmény (2026-11-08)
+- A Landsat előtte–utána **nem használható**: mindkét képen átlós SLC-off csíkok, a Nyikó-völgyben (Farkaslaka, Szentlélek) nincs látható különbség; a patak keskenyebb, mint a csíkok, és 30 m-es a felbontás. Az „aug. 22. → szept. 6." mozaik ezért csak tanulságként marad a tárban.
+- **Tartalék:** `T07_nyiko_2005_miert.js` – „Miért tudott egy kis patak 16 életet követelni?": árnyékolt domborzat (Copernicus DEM), lejtés, vízfolyások (MERIT upa > 5 km²), völgyfenék a patak feletti magasság szerint (MERIT HAND < 2 m és < 5 m), falvak (hargita_falvak.csv); a Console kiírja a falvak HAND-, vízgyűjtő- és lejtésértékét.
+- Feliratozás: természeti adottság, **nem** elöntési térkép.
