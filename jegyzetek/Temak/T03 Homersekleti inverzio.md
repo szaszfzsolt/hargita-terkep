@@ -26,3 +26,16 @@ Megmutatni, hogy derült, szélcsendes téli időben a medencealj hidegebb, mint
 1. Earth Engine-szkript (`szkriptek/earth-engine/T03_tiszta_napok.js`): derült téli Landsat-napok listája (dec–feb, 2014–2026), felhő/hó szerint rangsorolva
 2. 3–5 legjobb tél + 1–2 nyári nap kiválasztása, export assetként
 3. App: a T02 vázára építve
+
+## Eredmények (2026-11-07)
+`T03_tiszta_napok.js` futtatva: 293 téli Landsat 8/9 felvételből 8 sor felel meg (derült ≥85%, havas ≥70%) – 5 különböző nap (a Csíki-medence két szomszédos Landsat-sávon fekszik, ezért egyes napok kétszer szerepelnek). Mind negatív: a medencealj 2,6–12,7 °C-kal hidegebb a hegyoldalnál (850–1150 m).
+
+| Nap | Medencealj °C | Hegyoldal °C | Különbség |
+|---|---|---|---|
+| 2014-02-03 | −16,1 | −3,4 | −12,7 |
+| 2017-01-10 | −22,1 | −16,0 | −6,1 |
+| 2017-02-11 | −11,9 | −7,0 | −5,0 |
+| 2021-01-21 | −6,1 | −2,3 | −3,7 |
+| 2026-01-19 | −12,2 | −8,6 | −3,6 |
+
+Következő: nyári nap(ok) kiválasztása (`T03_nyari_napok.js`), majd export asset és app.

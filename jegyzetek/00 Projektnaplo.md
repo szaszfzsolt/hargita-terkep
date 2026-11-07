@@ -103,3 +103,6 @@
 ## 2026-11-06 este – T02 lezárva, T03 indul holnap
 - T02 app közzétéve és ellenőrizve (v2.5).
 - Következő: **T03 Hőmérsékleti inverzió** → [[T03 Homersekleti inverzio]]. Kezdés: derült téli Landsat-napok keresése.
+
+## 2026-11-07 – T03 indul
+- Téli napok kiválasztva (5 nap, 2014–2026, lásd [[T03 Homersekleti inverzio]]). Következő: nyári nap keresése, export, app.
