@@ -11,9 +11,9 @@ var PROJEKT = 'projects/tidal-velocity-494919-e2/assets/';
 var megye = ee.FeatureCollection(PROJEKT + 'hargita_megye_shp');
 var terulet = megye.geometry();
 
-var ESEMENY = '2005';   // '2005' (Nyikó, aug. 23.) vagy '2010' (az ablak átírható)
+var ESEMENY = '2010';   // '2010' (jún. 27. körül) vagy '2005' (Nyikó, aug. 23.) – az ablak átírható
 var ESEMENYEK = {
-  '2010': {kezd: '2010-06-01', veg: '2010-07-31'},
+  '2010': {kezd: '2010-06-10', veg: '2010-07-15'},   // Csík, Gyimes, Olt, Tatros: kb. 2010. jún. 25–29., a hírszöveg 2010. jún. 27-én (vasárnap) jelent meg
   '2005': {kezd: '2005-08-01', veg: '2005-09-15'}   // Nyikó-menti villámárvíz: 2005. aug. 23. délután
 };
 var ABLAK = ESEMENYEK[ESEMENY];

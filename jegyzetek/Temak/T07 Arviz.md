@@ -54,7 +54,10 @@
 - Következmény a műholdadatokra: hirtelen, órák alatt levonuló árvíz – magáról a vízről nincs műholdkép (Landsat 16 naponta, 30 m; radar nincs). Legfeljebb utólagos nyomok (hordalék, növényzet, meder) látszhatnak, 30 m-en valószínűleg alig.
 - Tervezett térkép: a Nyikó vízgyűjtője és az érintett települések; MERIT Hydro (90 m): vízgyűjtő-terület (`upa`), legközelebbi vízfolyás feletti magasság (`hnd`), meder szélessége (`wth`); Copernicus DEM lejtő. Üzenet: miért tudott egy kis patak 16 életet követelni (meredek kis vízgyűjtő, keskeny völgy, felhőszakadás).
 
-## 2018 – az esemény helyszínei (Zsolt által küldött hírszöveg + Csíki Hírlap, 2018. júl. 9.; a szöveg dátumát nem közli, 2018-ra illik – megerősítendő)
+## HELYESBÍTÉS: a „311 gazdaság, 130 ha” hírszöveg a 2010. júniusi árvízről szól (forrás: 24.hu, 2010. jún. 27., vasárnap; a cikket nem tudtam megnyitni, a dátum a webcímből és a „vasárnap”–„hétfői második árhullám” szövegből következik)
+- Az alábbi szakasz tartalma (helyszínek, kár) a **2010-es** eseményre vonatkozik; a 2018-hoz csak a Csíki Hírlap (2018. júl. 9.) sorai tartoznak.
+
+## Az esemény helyszínei (2010. jún. 27.; Zsolt hírszövege)
 - Elöntött: 9 település, 311 gazdaság, 130 ha mezőgazdasági terület (első jelentés). Legtöbb kár: **Csíkszentmihály, Gyimesközéplok, Gyimesfelsőlok**; továbbá Madéfalva, Csíkszentsimon, Csatószeg, Csíkszereda; udvarhelyszéki oldalon Eted, Homoródszentmárton. Nyerges-tetői műút megrongálódott, a gyimesi vasút szünetelt; piros kód az Olt felső szakaszán és a Feketeügyün; második, nagyobb árhullám várható hétfőn.
 - A Csíki Hírlap (2018. júl. 9.) szerint az első becslés több mint 2200 ha mezőgazdasági kár (köztük 1929 ha legelő/kaszáló, 197 ha burgonya), főleg Csíkszék; egy hónap alatt kb. félévnyi csapadék.
 - **Hiba az eddigi ellenőrzésben:** a 2018a-nál a hamis foltokat Kalonda–Székelypálfalva környékén (Udvarhelyszék) néztük, nem a Csíki-medencében/Gyimesekben. A 2018a „utána" képe (jún. 29. reggel) a vasárnapi (júl. 1.) csúcs előtti volt.
