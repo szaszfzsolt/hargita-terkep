@@ -78,3 +78,13 @@ A Landsat délelőtti (~10:30) mérése miatt a Δ mérsékelt; a hajnali inverz
 - Szkript: `T03_modis_export.js` → assetek: `T03_modis_tel_ej`, `T03_modis_nyar_ej` (sávok: `t` °C, `n` éjszakák száma; legalább 100 éjszaka kell egy képponthoz).
 - Korlát: 1 km-es felbontás, a kisebb medencék durván látszanak; a 100 m-es magassági sávok 1 km-es rácsra átlagolt domborzatból készülnek.
 - App: a legördülő listában két új elem; „Közös skála” kapcsoló: bekapcsolva a két oldal színe összehasonlítható, kikapcsolva mindkét kép a saját tartományát használja.
+
+### MODIS-eredmény (2026-11-07, app-teszt)
+- Export: 1977 téli és 2024 nyári kép; egy képpontra átlagosan 352 (max. 632) téli és 510 (max. 1007) derült éjszaka jut, a 100-as küszöb bőven teljesül.
+- Tanulság: az első változat (csak QC=0 és a maszkolás az ellenőrzés előtt) mindent kimaszkolt (`n: null`); a javított szkript a 0 értéket („nincs adat") külön szűri, a QC 0 és 1 kódot elfogadja. Ha az asset már létezik, az új exportnál előbb törölni kell (Assets → Delete).
+- Térkép (saját skála): a Gyergyói-medence a legkékebb (legmélyebb hideglevegő-tó), a Csíki-medence is kékes, a hegyoldalak melegebbek.
+- Diagram, téli éjszakák átlaga:
+  - Gyergyói-medence: 600–700 m ≈ −9,7 °C, 1000 m ≈ −7 °C, efölött közel állandó → ≈ 2,5–3 °C-os inverzió. Átlag −8,3 °C, leghidegebb pont −10,7 °C.
+  - Csíki-medence: 600 m ≈ −8,5 °C, 1000 m ≈ −7 °C → ≈ 1,5–2 °C. Átlag −7,5 °C, leghidegebb pont −10,2 °C.
+  - Nyári éjszakák: Gyergyó ≈ +11…12 °C, majdnem vízszintes; Csík ≈ 12,5 → 10,5 °C felfelé. A nyári éjszakai görbe laposabb a normális lehűlésnél, ami összefügghet a nyári éjszakai hideglevegő-gyűléssel (ezt külön adatsor nélkül nem állítjuk biztosan).
+- Értelmezés: a Landsat-nap (2017-01-19, délelőtt) ≈ 5–6 °C-os különbséget mutat, az éjszakai átlag kisebbet, mert sok éjszakát átlagol, 1 km-en; az átlag azt mutatja, hogy az inverzió tartós jelenség. A mérés felszínhőmérséklet, nem 2 m-es léghőmérséklet.
