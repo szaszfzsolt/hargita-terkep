@@ -41,8 +41,10 @@ var magSav = dem.divide(100).floor().multiply(100).rename('mag');   // 100 m-es 
 // Állapot és térképek
 // ---------------------------------------------------------------------
 var allapot = {napA: NAP_NEVEK[0], napB: '2025. július 3. (nyár)', kozseg: null, kozsegNev: null,
-               csakKozseg: true, hatarok: true, arnyek: true};
+               csakKozseg: true, hatarok: true, arnyek: true, medence: true};
 var frissitesSzam = 0;
+// A Csíki-medence és a környező hegyoldalak: ide számoljuk a grafikont, ha nincs kiválasztott község
+var medenceTer = ee.Geometry.Rectangle([25.55, 46.15, 26.05, 46.65]).intersection(terulet, ee.ErrorMargin(100));
 
 function ujTerkep() {
   var t = ui.Map();
@@ -62,7 +64,7 @@ bal.add(cimkeA);
 jobb.add(cimkeB);
 
 function rajzol() {
-  var statTer = allapot.kozseg ? allapot.kozseg.geometry() : terulet;
+  var statTer = allapot.kozseg ? allapot.kozseg.geometry() : (allapot.medence ? medenceTer : terulet);
   var kivag = Boolean(allapot.kozseg && allapot.csakKozseg);
   var ter = kivag ? statTer : terulet;
 
@@ -164,6 +166,9 @@ jobb.onClick(kattintas);
 
 // Statisztika és grafikon
 panel.add(ui.Label('Számok', ALCIM));
+panel.add(ui.Checkbox({label: 'Kiválasztott község nélkül a Csíki-medencére számoljon (nem az egész megyére)',
+  value: allapot.medence, style: {margin: '2px 8px'},
+  onChange: function (v) { allapot.medence = v; rajzol(); }}));
 var statSzoveg = ui.Label('', SZOVEG);
 panel.add(statSzoveg);
 var grafikonHely = ui.Panel();
@@ -180,7 +185,7 @@ function profil(kep, ter) {   // átlaghőmérséklet 100 m-es magassági sávon
     geometry: ter, scale: 90, maxPixels: 1e9, bestEffort: true}).get('groups');
 }
 function osszegzes(kep, ter) {
-  return kep.reduceRegion({
+  return kep.rename('t').reduceRegion({
     reducer: ee.Reducer.mean().combine(ee.Reducer.min(), '', true),
     geometry: ter, scale: 90, maxPixels: 1e9, bestEffort: true});
 }
@@ -191,7 +196,7 @@ function frissitStatisztika(ter) {
   statSzoveg.setValue('Számolás…');
   grafikonHely.clear();
   ee.Dictionary({
-    nev: allapot.kozseg ? allapot.kozseg.get('nev_hu') : 'Hargita megye',
+    nev: allapot.kozseg ? allapot.kozseg.get('nev_hu') : (allapot.medence ? 'Csíki-medence és környéke' : 'Hargita megye'),
     pa: profil(a, ter), pb: profil(b, ter),
     sa: osszegzes(a, ter), sb: osszegzes(b, ter)
   }).evaluate(function (d) {
@@ -210,7 +215,7 @@ function frissitStatisztika(ter) {
       var s = sor[m];
       return {c: [{v: m}, {v: s.a === undefined ? null : s.a}, {v: s.b === undefined ? null : s.b}]};
     });
-    var cimA = 'Bal: ' + allapot.napA, cimB = 'Jobb: ' + allapot.napB;
+    var cimA = allapot.napA + (allapot.napA === allapot.napB ? ' (bal)' : ''), cimB = allapot.napB + (allapot.napA === allapot.napB ? ' (jobb)' : '');
     grafikonHely.add(ui.Chart({
       cols: [{id: 'm', label: 'Magasság (m)', type: 'number'},
              {id: 'a', label: cimA, type: 'number'}, {id: 'b', label: cimB, type: 'number'}],
@@ -219,7 +224,7 @@ function frissitStatisztika(ter) {
       title: 'Felszínhőmérséklet a magasság szerint',
       hAxis: {title: 'Tengerszint feletti magasság (m)'},
       vAxis: {title: 'Átlagos felszínhőmérséklet (°C)'},
-      legend: {position: 'bottom'}, lineWidth: 2, pointSize: 3, interpolateNulls: true,
+      legend: {position: 'top', maxLines: 3}, lineWidth: 2, pointSize: 3, interpolateNulls: true,
       series: {0: {color: '2171b5'}, 1: {color: 'e31a1c'}}, height: 280
     }));
   });
