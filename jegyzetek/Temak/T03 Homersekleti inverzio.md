@@ -66,3 +66,9 @@ A Landsat délelőtti (~10:30) mérése miatt a Δ mérsékelt; a hajnali inverz
 - Következő: export futtatása és megosztás (`T03_megosztas.js`), app ellenőrzése; majd MODIS éjszakai réteg.
 
 - A `T03_megosztas.js` megszűnt (a Code Editor nem engedi az ACL állítását szkriptből); az új 7 asset (`T03_st_20170119`, `20260120`, `20150215`, `20131226`, `20221219`, `20250704`, `20260731`) megosztása kézzel történik, lásd U02.
+
+## App v1 első teszt (2026-11-07 este)
+- Mind a 7 nap teljes lefedettséggel betölt, szürke terület nincs; nevek, városok, medencéválasztó működnek.
+- Gyergyói-medence, 2017-01-19 (tél, ~10:30): medencealj (600–700 m) ≈ −16 °C, 1100–1200 m-en ≈ −10,5 °C (kb. +5…6 °C melegebb), efölött újra hűl (1600 m: ≈ −13 °C) → inverzió látszik. Nyáron 700 m: ≈ 41 °C → 1600 m: ≈ 27 °C (normális rend).
+- Egész megye, ugyanaz a nap: lapos profil (−14 … −10 °C) – a megyei átlag elmossa az inverziót; medencénként érdemes nézni.
+- Ötlet: naponként saját színskála (az inverzió jobban látszik a téli képen), közzététel, MODIS éjszakai réteg.

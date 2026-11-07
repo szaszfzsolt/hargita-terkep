@@ -606,9 +606,9 @@ function frissitStatisztika(ter) {
       var s = sor[m];
       return {c: [{v: m}, {v: s.a === undefined ? null : s.a}, {v: s.b === undefined ? null : s.b}]};
     });
-    function rovid(c) {   // '2014. február 3. (tél)' → '2014-02-03 tél'
+    function rovid(c) {   // '2014. február 3. (tél)' → '2014-02-03' (a jelmagyarázat szűk, a szín jelzi az évszakot)
     var az = NAPOK[c];
-    return az.substr(0, 4) + '-' + az.substr(4, 2) + '-' + az.substr(6, 2) + (c.indexOf('(tél') >= 0 ? ' tél' : ' nyár');
+    return az.substr(0, 4) + '-' + az.substr(4, 2) + '-' + az.substr(6, 2);
   }
   var cimA = rovid(allapot.napA) + (allapot.napA === allapot.napB ? ' (bal)' : ''),
       cimB = rovid(allapot.napB) + (allapot.napA === allapot.napB ? ' (jobb)' : '');
