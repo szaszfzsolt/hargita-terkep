@@ -39,3 +39,9 @@ Megmutatni, hogy derült, szélcsendes téli időben a medencealj hidegebb, mint
 | 2026-01-19 | −12,2 | −8,6 | −3,6 |
 
 Következő: nyári nap(ok) kiválasztása (`T03_nyari_napok.js`), majd export asset és app.
+
+## Export és app (2026-11-07)
+- `T03_export.js`: 7 nap (5 téli, 2 nyári: 2025-07-03, 2026-08-23) → assetek `T03_st_ÉÉÉÉHHNN` (°C, 30 m, megyére vágva). Mind a 7 kész.
+- `T03_megosztas.js`: az assetek nyilvánossá tétele (ee.data.setAssetAcl) – kézzel is megy (Assets → SHARE → Anyone can read).
+- `T03_app_v1.js`: két nap függönnyel, árnyékolt domborzat, jelmagyarázat, községválasztó, magasság–hőmérséklet grafikon (100 m-es sávok), felszínhőmérséklet-figyelmeztetés. Falunevek még nincsenek (a T02 appból átvehetők).
+- Később: MODIS éjszakai LST, húzható metszetvonal, falunevek.

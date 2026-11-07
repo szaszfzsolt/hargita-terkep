@@ -8,4 +8,4 @@ A szkriptek a Google Earth Engine **Code Editorba** másolhatók (https://code.e
 |---|---|
 | T01 – Felhőmentes műholdmozaik | `T01_*` |
 | T02 – Erdőváltozás | `T02_*` |
-| T03 – Hőmérsékleti inverzió | `T03_tiszta_napok.js` (1. téli napok keresése) → `T03_nyari_napok.js` (2. nyári napok) → `T03_export.js` (3. export asset) |
+| T03 – Hőmérsékleti inverzió | `T03_tiszta_napok.js` (1. téli napok keresése) → `T03_nyari_napok.js` (2. nyári napok) → `T03_export.js` (3. export asset) → `T03_megosztas.js` (4. assetek nyilvánossá tétele) → `T03_app_v1.js` (5. az interaktív app) |
