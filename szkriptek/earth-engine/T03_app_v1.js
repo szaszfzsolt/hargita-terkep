@@ -340,6 +340,7 @@ var allapot = {napA: NAP_NEVEK[0], napB: '2025. július 3. (nyár)', kozseg: nul
                csakKozseg: true, hatarok: true, arnyek: true, medence: true,
                varosok: true, kozpontok: true, falvak: true, nevek: true};
 var frissitesSzam = 0;
+var KEZDO_PONT = ee.Geometry.Point([25.80, 46.38]);   // Csíkszereda környéke
 // A Csíki-medence és a környező hegyoldalak: ide számoljuk a grafikont, ha nincs kiválasztott község
 var medenceTer = ee.Geometry.Rectangle([25.55, 46.15, 26.05, 46.65]).intersection(terulet, ee.ErrorMargin(100));
 
@@ -527,7 +528,7 @@ panel.add(ui.Checkbox({label: 'Csak a kiválasztott község (a környék elsöt
 panel.add(ui.Button({label: '↺ Az egész megye', style: {margin: '6px 8px'},
   onClick: function () {
     allapot.kozseg = null; allapot.kozsegNev = null; kozsegValaszto.setValue(null, false);
-    bal.setCenter(25.80, 46.38, 10); rajzol();
+    bal.centerObject(KEZDO_PONT, 10); rajzol();
   }}));
 kozsegek.aggregate_array('nev_hu').evaluate(function (nevek) {
   nevek.sort(function (a, b) { return a.localeCompare(b, 'hu'); });
@@ -629,5 +630,5 @@ ui.root.clear();
 ui.root.setLayout(ui.Panel.Layout.flow('horizontal'));
 ui.root.add(panel);
 ui.root.add(terkepek);
-bal.setCenter(25.80, 46.38, 10);   // a Csíki-medence
+bal.centerObject(KEZDO_PONT, 10);   // a Csíki-medence (késleltetve, a térkép elkészülte után ugrik oda)
 rajzol();
