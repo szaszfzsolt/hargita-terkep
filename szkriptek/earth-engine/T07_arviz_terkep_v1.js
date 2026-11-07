@@ -33,6 +33,7 @@ var KUSZOB_VALTOZAS = -3;       // dB: legalább ennyit sötétedett – SZIGOR�
 var LAZA_UTANA = -13;           // LAZA változat: kisebb küszöbök (több hamis jelet is megenged)
 var LAZA_VALTOZAS = -2;
 var MAX_LEJTO = 5;              // fok
+var MAX_HAND = 10;              // m: legfeljebb ennyivel lehet magasabban a legközelebbi vízfolyásnál (MERIT Hydro, 90 m)
 var MIN_FOLT = 10;              // legalább ennyi összefüggő képpont (10 m-es pixel)
 
 var s1 = ee.ImageCollection('COPERNICUS/S1_GRD')
@@ -54,12 +55,14 @@ var valtozas = utana.subtract(elotte);
 var dem = ee.ImageCollection('COPERNICUS/DEM/GLO30').select('DEM').mosaic()
   .setDefaultProjection('EPSG:4326', null, 30);
 var lejto = ee.Terrain.slope(dem);
+var hand = ee.Image('MERIT/Hydro/v1_0_1').select('hnd');   // legközelebbi vízfolyás feletti magasság (m)
 var allandoViz = ee.Image('JRC/GSW1_4/GlobalSurfaceWater').select('occurrence').gt(20).unmask(0);
 
 function elontesMaszk(kuszobUtana, kuszobValtozas) {
   var jelolt = utana.lt(kuszobUtana)
     .and(valtozas.lt(kuszobValtozas))
     .and(lejto.lt(MAX_LEJTO))
+    .and(hand.lt(MAX_HAND))
     .and(allandoViz.not());
   var foltok = jelolt.selfMask().connectedPixelCount(100, true);
   return jelolt.updateMask(foltok.gte(MIN_FOLT)).selfMask();

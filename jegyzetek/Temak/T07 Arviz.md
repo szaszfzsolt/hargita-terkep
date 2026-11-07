@@ -36,3 +36,7 @@
 - Teljes lefedésű radarpályák: 7 DESC (jún. 17, 23, **29**, júl. 5, 11), 131 ASC (jún. 19, 25, **júl. 1**, júl. 13). 109 DESC (85%): jún. 18, **30**, júl. 12.
 - Optikai: csak júl. 3. használható (felhő 23%, 100% lefedés); a többi nap 38–100% felhő.
 - Párok a szkriptben: `2018a` (jún. 23 → 29, 7. pálya), `2018b` (jún. 25 → júl. 1, 131. pálya), `2018c` (jún. 18 → 30, 109. pálya, 85%).
+
+### 2018a – első eredmény (2026-11-08)
+- Radar (7. pálya, jún. 23 → 29): szigorú 0,27 km², laza 11,1 km². A laza foltok nem folyóvölgyben, hanem dombtetőn, kiirtott erdőfoltokon és legelőkön voltak (Kalonda–Székelypálfalva környéke): eső áztatta csupasz talaj is sötétedik a radaron → hamis jel.
+- Javítás: HAND-maszk (MERIT Hydro `hnd` < 10 m), hogy csak a vízfolyás közelében jelöljön elöntést.
