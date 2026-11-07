@@ -1,6 +1,6 @@
-# T03 – A Csíki-medence hidegtava (téli hőmérsékleti inverzió)
+# T03 – Hőmérsékleti inverzió – a Csíki-medence hidegtava
 
-**Állapot:** ⏳ következő (indítás: 2026-11-07)
+**Állapot:** 🔧 folyamatban (indítás: 2026-11-07)
 
 ## Cél
 Megmutatni, hogy derült, szélcsendes téli időben a medencealj hidegebb, mint a hegyoldal (inverzió), és nyáron fordított a rend.
@@ -23,6 +23,6 @@ Megmutatni, hogy derült, szélcsendes téli időben a medencealj hidegebb, mint
 - Kevés jó téli Landsat-kép → több tél legjobb napjaiból válogatni
 
 ## Első lépések
-1. Earth Engine-szkript: derült téli Landsat-napok listája (dec–feb, 2014–2026), felhő/hó szerint rangsorolva
+1. Earth Engine-szkript (`szkriptek/earth-engine/T03_tiszta_napok.js`): derült téli Landsat-napok listája (dec–feb, 2014–2026), felhő/hó szerint rangsorolva
 2. 3–5 legjobb tél + 1–2 nyári nap kiválasztása, export assetként
 3. App: a T02 vázára építve
