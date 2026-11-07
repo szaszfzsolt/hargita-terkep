@@ -25,10 +25,21 @@ var NAPOK = {
   '2013. december 26. (tél)': '20131226',
   '2022. december 19. (tél, hó nélkül)': '20221219',
   '2025. július 4. (nyár)': '20250704',
-  '2026. július 31. (nyár)': '20260731'
+  '2026. július 31. (nyár)': '20260731',
+  'Téli éjszakák átlaga 2015–2025 (MODIS, 1 km)': 'modis_tel_ej',
+  'Nyári éjszakák átlaga 2015–2025 (MODIS, 1 km)': 'modis_nyar_ej'
 };
 var NAP_NEVEK = Object.keys(NAPOK);
-function stKep(cim) { return ee.Image(PROJEKT + 'T03_st_' + NAPOK[cim]).select('st'); }
+function modisE(cim) { return NAPOK[cim].indexOf('modis') === 0; }
+function stKep(cim) {
+  if (modisE(cim)) { return ee.Image(PROJEKT + 'T03_' + NAPOK[cim]).select('t'); }
+  return ee.Image(PROJEKT + 'T03_st_' + NAPOK[cim]).select('st');
+}
+// Saját skála egy-egy képhez (ha a közös skála ki van kapcsolva): [min, max]
+function sajatSkala(cim) {
+  if (modisE(cim)) { return NAPOK[cim] === 'modis_tel_ej' ? [-14, 0] : [0, 25]; }
+  return cim.indexOf('(nyár') >= 0 ? [15, 45] : [-22, 0];
+}
 
 var ST_MIN = -25, ST_MAX = 40;
 var PALETTA = ['08306b', '2171b5', '6baed6', 'c6dbef', 'ffffff', 'ffffb2', 'fed976', 'fd8d3c', 'e31a1c', '800026'];
@@ -338,7 +349,7 @@ var NEV_ALAK = FALVAK_ADAT.map(function (f) { return nevSokszogei(f[0]); });   /
 // ---------------------------------------------------------------------
 var allapot = {napA: NAP_NEVEK[0], napB: '2025. július 4. (nyár)', kozseg: null, kozsegNev: null,
                csakKozseg: true, hatarok: true, arnyek: true, medence: 'Csíki-medence',
-               varosok: true, kozpontok: true, falvak: true, nevek: true};
+               varosok: true, kozpontok: true, falvak: true, nevek: true, kozosSkala: true};
 var frissitesSzam = 0;
 var KEZDO_PONT = ee.Geometry.Point([25.70, 46.55]);   // a megye közepe
 // A Csíki-medence és a környező hegyoldalak: ide számoljuk a grafikont, ha nincs kiválasztott község
@@ -435,13 +446,17 @@ function rajzol() {
   var kivag = Boolean(allapot.kozseg && allapot.csakKozseg);
   var ter = kivag ? statTer : terulet;
 
+  frissitLegenda();
   [[bal, allapot.napA, cimkeA], [jobb, allapot.napB, cimkeB]].forEach(function (x) {
     var t = x[0];
     t.layers().reset();
     if (allapot.arnyek) {
       t.addLayer(arnyek.clip(ter), {min: 0, max: 255}, 'Domborzat (árnyékolt)');
     }
-    t.addLayer(stKep(x[1]).clip(ter), {min: ST_MIN, max: ST_MAX, palette: PALETTA},
+    var sk = skala(x[1]);
+    var kep = stKep(x[1]);
+    if (modisE(x[1])) { kep = kep.resample('bilinear'); }   // a durva 1 km-es képpontok simábban látszanak
+    t.addLayer(kep.clip(ter), {min: sk[0], max: sk[1], palette: PALETTA},
                'Felszínhőmérséklet', true, allapot.arnyek ? 0.8 : 1);
     if (allapot.hatarok) {
       t.addLayer(ee.Image().paint(kozsegek, 0, 1), {palette: 'ffffff'}, 'Községhatárok', true, 0.5);
@@ -471,6 +486,30 @@ function rajzol() {
   frissitStatisztika(statTer);
 }
 
+function skala(cim) { return allapot.kozosSkala ? [ST_MIN, ST_MAX] : sajatSkala(cim); }
+
+// Jelmagyarázat egy oldalhoz (a skála a kiválasztott képtől és a kapcsolótól függ)
+function legendaSor(felirat, cim) {
+  var sk = skala(cim), tav = sk[1] - sk[0];
+  var grad = ee.Image.pixelLonLat().select('longitude').multiply(tav / 100).add(sk[0]);
+  function f(v) { return (Math.round(v) > 0 ? '+' : '') + Math.round(v); }
+  return ui.Panel([
+    ui.Label(felirat, {fontSize: '11px', color: '555555', margin: '4px 8px 0 8px'}),
+    ui.Thumbnail({image: grad,
+      params: {bbox: [0, 0, 100, 8], dimensions: '300x16', format: 'png', min: sk[0], max: sk[1], palette: PALETTA},
+      style: {margin: '2px 8px'}}),
+    ui.Panel([ui.Label(f(sk[0]), {fontSize: '11px', margin: '0 0 0 8px', width: '100px'}),
+              ui.Label(f(sk[0] + tav / 2), {fontSize: '11px', width: '100px'}),
+              ui.Label(f(sk[1]), {fontSize: '11px'})], ui.Panel.Layout.flow('horizontal'))
+  ]);
+}
+function frissitLegenda() {
+  legendHely.clear();
+  legendHely.add(legendaSor('Bal oldal (°C)', allapot.napA));
+  legendHely.add(legendaSor('Jobb oldal (°C)', allapot.napB));
+}
+var legendHely = ui.Panel();
+
 // ---------------------------------------------------------------------
 // Oldalpanel
 // ---------------------------------------------------------------------
@@ -495,17 +534,14 @@ panel.add(ui.Select({items: NAP_NEVEK, value: allapot.napB, style: {stretch: 'ho
 
 // Jelmagyarázat
 panel.add(ui.Label('Felszínhőmérséklet (°C)', ALCIM));
-var grad = ee.Image.pixelLonLat().select('longitude').multiply((ST_MAX - ST_MIN) / 100).add(ST_MIN);
-panel.add(ui.Thumbnail({image: grad,
-  params: {bbox: [0, 0, 100, 8], dimensions: '300x16', format: 'png', min: ST_MIN, max: ST_MAX, palette: PALETTA},
-  style: {margin: '2px 8px'}}));
-panel.add(ui.Panel([ui.Label('−25', {fontSize: '11px', margin: '0 0 0 8px', width: '75px'}),
-                    ui.Label('0', {fontSize: '11px', width: '85px'}),
-                    ui.Label('+20', {fontSize: '11px', width: '85px'}),
-                    ui.Label('+40', {fontSize: '11px'})], ui.Panel.Layout.flow('horizontal')));
-
-panel.add(ui.Label('Szürke (csak domborzat) = nincs adat (felhő). Mind a hét nap olyan, amelyen az egész ' +
-  'megye lefedett és nagyrészt derült volt.', SZOVEG));
+panel.add(ui.Checkbox({label: 'Közös skála (a két oldal közvetlenül összehasonlítható)', value: allapot.kozosSkala,
+  style: {margin: '2px 8px'}, onChange: function (v) { allapot.kozosSkala = v; rajzol(); }}));
+panel.add(legendHely);
+panel.add(ui.Label('Szürke (csak domborzat) = nincs adat (felhő). A hét nappali kép olyan nap, amelyen az egész ' +
+  'megye lefedett és nagyrészt derült volt. A két éjszakai átlag (MODIS) sok derült éjszaka átlaga ' +
+  '(éjjel 22:30 és 1:30 körül), ezért az egész megyét és minden medencét egyszerre mutatja, ' +
+  'de csak 1 km-es felbontásban. Ha a skálát külön állítod, az egyes képek részletei jobban látszanak, ' +
+  'de a színek két oldalon nem ugyanazt jelentik.', SZOVEG));
 
 // Kapcsolók
 panel.add(ui.Label('Megjelenítés', ALCIM));
@@ -565,20 +601,27 @@ panel.add(statSzoveg);
 var grafikonHely = ui.Panel();
 panel.add(grafikonHely);
 panel.add(ui.Label('Fontos: a műhold a talaj, a hó vagy a növényzet FELSZÍNÉNEK hőmérsékletét méri ' +
-  'kb. délelőtt fél 11-kor, nem a 2 méteren mért léghőmérsékletet. A hó felszíne hidegebb a levegőnél, ' +
+  'kb. délelőtt fél 11-kor (a MODIS-átlagok éjszaka), nem a 2 méteren mért léghőmérsékletet. A hó felszíne hidegebb a levegőnél, ' +
   'de a két érték együtt mozog. A felhős pixelek kimaradnak.', SZOVEG));
-panel.add(ui.Label('Adatok: Landsat 8–9 (USGS/NASA), Copernicus DEM (ESA). Készítette: Szász Ferenc Zsolt.',
+panel.add(ui.Label('Adatok: Landsat 8–9 (USGS/NASA), MODIS Terra/Aqua (NASA), Copernicus DEM (ESA). Készítette: Szász Ferenc Zsolt.',
   {fontSize: '11px', color: '777777', margin: '10px 8px'}));
 
-function profil(kep, ter) {   // átlaghőmérséklet 100 m-es magassági sávonként
-  return ee.Image.cat([kep.rename('t'), magSav]).reduceRegion({
+// A MODIS-képeknél (1 km) a magasságot is az 1 km-es rácsra átlagoljuk, és 1 km-en számolunk.
+function profil(kep, ter, modis) {   // átlaghőmérséklet 100 m-es magassági sávonként
+  var mag = magSav, sc = 90;
+  if (modis) {
+    mag = dem.reduceResolution({reducer: ee.Reducer.mean(), maxPixels: 4096})
+      .reproject(kep.projection()).divide(100).floor().multiply(100).rename('mag');
+    sc = 1000;
+  }
+  return ee.Image.cat([kep.rename('t'), mag]).reduceRegion({
     reducer: ee.Reducer.mean().group({groupField: 1, groupName: 'mag'}),
-    geometry: ter, scale: 90, maxPixels: 1e9, bestEffort: true}).get('groups');
+    geometry: ter, scale: sc, maxPixels: 1e9, bestEffort: true}).get('groups');
 }
-function osszegzes(kep, ter) {
+function osszegzes(kep, ter, modis) {
   return kep.rename('t').reduceRegion({
     reducer: ee.Reducer.mean().combine(ee.Reducer.min(), '', true),
-    geometry: ter, scale: 90, maxPixels: 1e9, bestEffort: true});
+    geometry: ter, scale: modis ? 1000 : 90, maxPixels: 1e9, bestEffort: true});
 }
 
 function frissitStatisztika(ter) {
@@ -588,8 +631,8 @@ function frissitStatisztika(ter) {
   grafikonHely.clear();
   ee.Dictionary({
     nev: allapot.kozseg ? allapot.kozseg.get('nev_hu') : (allapot.medence + (allapot.medence === 'Egész megye' ? '' : ' és hegyoldalai')),
-    pa: profil(a, ter), pb: profil(b, ter),
-    sa: osszegzes(a, ter), sb: osszegzes(b, ter)
+    pa: profil(a, ter, modisE(allapot.napA)), pb: profil(b, ter, modisE(allapot.napB)),
+    sa: osszegzes(a, ter, modisE(allapot.napA)), sb: osszegzes(b, ter, modisE(allapot.napB))
   }).evaluate(function (d) {
     if (szam !== frissitesSzam || !d) { return; }   // közben másik választás történt
     function f1(v) { return (v === null || v === undefined) ? '–' : v.toFixed(1).replace('.', ',') + ' °C'; }
@@ -608,6 +651,7 @@ function frissitStatisztika(ter) {
     });
     function rovid(c) {   // '2014. február 3. (tél)' → '2014-02-03' (a jelmagyarázat szűk, a szín jelzi az évszakot)
     var az = NAPOK[c];
+    if (modisE(c)) { return az === 'modis_tel_ej' ? 'téli éjszakák átl.' : 'nyári éjszakák átl.'; }
     return az.substr(0, 4) + '-' + az.substr(4, 2) + '-' + az.substr(6, 2);
   }
   var cimA = rovid(allapot.napA) + (allapot.napA === allapot.napB ? ' (bal)' : ''),

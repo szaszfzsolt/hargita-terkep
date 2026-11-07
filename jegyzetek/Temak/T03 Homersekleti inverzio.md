@@ -72,3 +72,9 @@ A Landsat délelőtti (~10:30) mérése miatt a Δ mérsékelt; a hajnali inverz
 - Gyergyói-medence, 2017-01-19 (tél, ~10:30): medencealj (600–700 m) ≈ −16 °C, 1100–1200 m-en ≈ −10,5 °C (kb. +5…6 °C melegebb), efölött újra hűl (1600 m: ≈ −13 °C) → inverzió látszik. Nyáron 700 m: ≈ 41 °C → 1600 m: ≈ 27 °C (normális rend).
 - Egész megye, ugyanaz a nap: lapos profil (−14 … −10 °C) – a megyei átlag elmossa az inverziót; medencénként érdemes nézni.
 - Ötlet: naponként saját színskála (az inverzió jobban látszik a téli képen), közzététel, MODIS éjszakai réteg.
+
+## MODIS éjszakai réteg (az egész megye)
+- Cél: a Landsat-napok nem fedik le mindig az összes medencét, ezért a MODIS Terra+Aqua éjszakai felszínhőmérsékletéből átlagot számolunk a derült éjszakákra (tél: 2014 dec.–2025 febr.; nyár: 2015 jún.–2025 aug.), 1 km-en.
+- Szkript: `T03_modis_export.js` → assetek: `T03_modis_tel_ej`, `T03_modis_nyar_ej` (sávok: `t` °C, `n` éjszakák száma; legalább 100 éjszaka kell egy képponthoz).
+- Korlát: 1 km-es felbontás, a kisebb medencék durván látszanak; a 100 m-es magassági sávok 1 km-es rácsra átlagolt domborzatból készülnek.
+- App: a legördülő listában két új elem; „Közös skála” kapcsoló: bekapcsolva a két oldal színe összehasonlítható, kikapcsolva mindkét kép a saját tartományát használja.

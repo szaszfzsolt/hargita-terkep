@@ -107,3 +107,4 @@
 ## 2026-11-07 – T03 indul
 - Téli napok kiválasztva (5 nap, 2014–2026, lásd [[T03 Homersekleti inverzio]]). Következő: nyári nap keresése, export, app.
 - T03 exportok kész (7 asset). Megosztás: `T03_megosztas.js`; app: `T03_app_v1.js` (első teszt következik).
+- T03: MODIS éjszakai réteg (az egész megye, minden medence egyszerre) – `T03_modis_export.js` megírva; az app (`T03_app_v1.js`) két új elemmel (téli/nyári éjszakák átlaga), közös/saját skála kapcsolóval és oldalankénti jelmagyarázattal bővült. Következő: export futtatása, assetek megosztása, teszt.
