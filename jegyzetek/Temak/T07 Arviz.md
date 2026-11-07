@@ -24,3 +24,9 @@
 - A csapadék csúcsa kb. máj. 26–27 (hírek alapján); a csúcsnapon nincs teljes lefedettségű kép.
 - Választott pár: 7. pálya, máj. 23 (előtte) → máj. 29 (utána). Ellenőrző pár: 131. pálya, máj. 25 → máj. 31.
 - Szkript: `T07_arviz_terkep_v1.js` (előnézet a térképen; küszöbök: utána < −15 dB, változás < −3 dB, lejtő < 5°, állandó víz kizárva, legalább 10 képpontos folt).
+
+## 2025 – első eredmény (2026-11-08)
+- Radar-előtte–utána (7. pálya, máj. 23 → máj. 29): szigorú 2,8 km², laza 5,0 km² az egész megyében. Csíkszereda mellett egy kisebb réti folt, Praidnál csak elszórt hamis jel (legelők, erdőszél), a Korond-patak völgye üres.
+- Ok: a csapadékcsúcsot (máj. 26–27) nem kapta el teljes lefedettségű radarkép; az árvíz Hargita megyében főleg helyi, hirtelen áradás volt; a radar csak a nyílt vizet látja sötétnek (fűvel borított elöntött rét, hullámzó folyó, utcák nem).
+- Optikai (Sentinel-2): máj. 12–jún. 1 között végig felhős; tiszta: jún. 6 (13%), jún. 8 (9%), 100% lefedés – csak utólagos következményekre jó.
+- Következtetés: a 2025-ös esemény ezekkel a napokkal nem mutatható be látványosan. Következő: **2018. június**, utána 2005/2010.

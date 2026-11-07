@@ -13,7 +13,7 @@ var PROJEKT = 'projects/tidal-velocity-494919-e2/assets/';
 var megye = ee.FeatureCollection(PROJEKT + 'hargita_megye_shp');
 var terulet = megye.geometry();
 
-var ESEMENY = '2025';   // '2025' (máj.–jún.) vagy '2018' (jún.–júl.)
+var ESEMENY = '2018';   // '2018' (jún.–júl.) vagy '2025' (máj.–jún.)
 var ESEMENYEK = {
   '2025': {kezd: '2025-05-10', veg: '2025-06-15'},   // Praid, Csíkszereda, Székelyudvarhely, Kovászna megye
   '2018': {kezd: '2018-06-15', veg: '2018-07-15'}    // Székelyföld, 2018. június vége
@@ -58,8 +58,20 @@ function s2Napok() {
   }));
 }
 
+// Rövid, soronkénti kiírás (egy lista, könnyű képernyőképet készíteni róla)
+var s1Sorok = s1Napok().sort('nap').map(function (f) {
+  return f.set('sor', ee.String(f.get('nap')).cat(' | ').cat(ee.String(f.get('irany')).slice(0, 4))
+    .cat(' | pálya ').cat(ee.Number(f.get('palya')).int().format('%d'))
+    .cat(' | lefedés ').cat(ee.Number(f.get('lefedettseg_szazalek')).int().format('%d')).cat('%'));
+}).aggregate_array('sor');
+var s2Sorok = s2Napok().sort('nap').map(function (f) {
+  return f.set('sor', ee.String(f.get('nap')).cat(' | lefedés ')
+    .cat(ee.Number(f.get('lefedettseg_szazalek')).int().format('%d')).cat('% | felhő ')
+    .cat(ee.Number(f.get('felho_szazalek_atlag')).int().format('%d')).cat('%'));
+}).aggregate_array('sor');
+
 print('Esemény ablaka:', ABLAK.kezd + ' – ' + ABLAK.veg);
-print('1) Sentinel-1 radar napok (a megye hány %-át fedi, irány, pálya):', s1Napok().sort('nap'));
-print('2) Sentinel-2 optikai napok (lefedettség, felhő %):', s2Napok().sort('nap'));
+print('1) Sentinel-1 radar napok (nap | DESC=reggel, ASC=este | pálya | a megye hány %-át fedi):', s1Sorok);
+print('2) Sentinel-2 optikai napok (nap | lefedés | felhő):', s2Sorok);
 Map.centerObject(terulet, 9);
 Map.addLayer(ee.Image().paint(megye, 0, 2), {palette: 'ffd400'}, 'Megye');
