@@ -62,3 +62,13 @@
 - A Csíki Hírlap (2018. júl. 9.) szerint az első becslés több mint 2200 ha mezőgazdasági kár (köztük 1929 ha legelő/kaszáló, 197 ha burgonya), főleg Csíkszék; egy hónap alatt kb. félévnyi csapadék.
 - **Hiba az eddigi ellenőrzésben:** a 2018a-nál a hamis foltokat Kalonda–Székelypálfalva környékén (Udvarhelyszék) néztük, nem a Csíki-medencében/Gyimesekben. A 2018a „utána" képe (jún. 29. reggel) a vasárnapi (júl. 1.) csúcs előtti volt.
 - Következő teszt: `PAR = '2018b'` (jún. 25 → júl. 1. este, 131. pálya), helyszín: Csíkszentmihály, Madéfalva, Csíkszentsimon (Olt völgye) és Gyimes (Tatros).
+
+## 2010 – Landsat-napkereső eredménye (2026-11-08)
+- Ablak: 2010-06-10 – 07-15. Felvételek: jún. 18 (L5, 182/28, felhő 79%), jún. 24 (L7, 184/28, 87%), **júl. 2** (L5, 184/28: 17%; 184/27: 33%), **júl. 3** (L7, 183/28: 26%; 183/27: 40%), júl. 11 (L5, 72–77%).
+- Az árvíz (jún. 25–29.) előtti napokra nincs tiszta kép; használható: júl. 2–3. (3–7 nappal utána).
+- Módszer: MNDWI (zöld, SWIR1) a júl. 2–3-i mozaikon; „száraz" viszonyítás = júl. 16 – szept. 30 felhőmaszkolt mediánja; HAND < 10 m, lejtő < 5°, állandó víz kizárva. Szkript: `T07_arviz_2010_landsat.js`.
+- Korlát: az árvíz utáni állapot, 30 m, Landsat 7 csíkos.
+
+## 2005 – Landsat-napkereső eredménye
+- Ablak: 2005-08-01 – 09-15. **2005-08-22** (L7, 183/27: felhő 0%; 183/28: 6%) = az árvíz (aug. 23.) előtti nap; **2005-09-06/07** (L5 184/27: 15%; L7 183/27: 1%, 183/28: 3%) = két héttel utána. Landsat 7: csíkos (SLC-off).
+- Terv: előtte–utána a Nyikó-völgyre (hordalék, kopár partszakaszok, növényzetvesztés), 30 m.
