@@ -45,3 +45,5 @@ Következő: nyári nap(ok) kiválasztása (`T03_nyari_napok.js`), majd export a
 - `T03_megosztas.js`: az assetek nyilvánossá tétele (ee.data.setAssetAcl) – kézzel is megy (Assets → SHARE → Anyone can read).
 - `T03_app_v1.js`: két nap függönnyel, árnyékolt domborzat, jelmagyarázat, községválasztó, magasság–hőmérséklet grafikon (100 m-es sávok), felszínhőmérséklet-figyelmeztetés. Falunevek még nincsenek (a T02 appból átvehetők).
 - Később: MODIS éjszakai LST, húzható metszetvonal, falunevek.
+
+- App v1 bővítve (2026-11-07): külön kapcsolható **községhatárok, városok, községközpontok, falvak (pontok)** és **településnevek** (a T02 appból átvett névlista és betűkészlet; városnevek 8-as, községközpontok 10-es, falvak 12-es nagyítástól; kiválasztott községnél annak minden települése).
