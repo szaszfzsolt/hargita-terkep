@@ -40,3 +40,11 @@
 ### 2018a – első eredmény (2026-11-08)
 - Radar (7. pálya, jún. 23 → 29): szigorú 0,27 km², laza 11,1 km². A laza foltok nem folyóvölgyben, hanem dombtetőn, kiirtott erdőfoltokon és legelőkön voltak (Kalonda–Székelypálfalva környéke): eső áztatta csupasz talaj is sötétedik a radaron → hamis jel.
 - Javítás: HAND-maszk (MERIT Hydro `hnd` < 10 m), hogy csak a vízfolyás közelében jelöljön elöntést.
+
+## Radaros elöntéstérkép – tanulságok (2026-11-08, lezárva)
+- 2025a: szigorú 2,8 / laza 5,0 km²; 2018a: szigorú 0,27 / laza 11,1 km²; HAND-maszkkal 0,09 / 4,4 km². A maradék foltok dombtetői legelőkön és kiirtott erdőfoltokon voltak (eső áztatta csupasz talaj), nem folyóvölgyben.
+- Okok: a felvétel az esőben készült (minden sötétedik); a hirtelen, helyi áradás gyorsan levonul, a 6 napos radar elhibázza; a keskeny hegyi völgyekhez a 10 m-es radar és a 90 m-es HAND kevés; a fűvel borított elöntött rét a radaron nem sötét.
+- Döntés: a radaros elöntéstérkép nem megbízható ezeknél az eseményeknél, nem közöljük elöntött területként. Szkript megmarad (`T07_arviz_terkep_v1.js`) kísérleti jelleggel.
+- Megbízhatóbb alternatívák (ötlet, nem készült el): csapadék (GPM IMERG), árvízveszélyes sáv (HAND/DEM), a radar változás-rétege „nedves talaj lábnyomaként", Copernicus EMS hivatalos térkép (ha van).
+- Tanulság: ne állítsunk elöntéskiterjedést, amit nem tudunk igazolni; a tanároknak szánt eszköznél a bizonytalan jel félrevezet.
+- Következő: 2005 / 2010 – Landsat 5/7 (30 m) napkereső: `T07_landsat_napok.js`.
