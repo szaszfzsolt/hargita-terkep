@@ -353,10 +353,12 @@ var bal = ujTerkep();
 var jobb = ujTerkep();
 ui.Map.Linker([bal, jobb]);
 
-var CIMKE = {position: 'top-center', fontWeight: 'bold', fontSize: '15px', padding: '4px 10px',
+var CIMKE = {fontWeight: 'bold', fontSize: '15px', padding: '4px 10px',
              backgroundColor: 'rgba(0,0,0,0.65)', color: 'white'};
 var cimkeA = ui.Label('', CIMKE);
 var cimkeB = ui.Label('', CIMKE);
+cimkeA.style().set('position', 'bottom-left');
+cimkeB.style().set('position', 'bottom-right');
 bal.add(cimkeA);
 jobb.add(cimkeB);
 
@@ -390,7 +392,7 @@ function nevekKep(zoom) {
   var mPerPx = 156543.03 * Math.cos(46.4 * Math.PI / 180) / Math.pow(2, zoom);
   var emPx = zoom <= 10 ? 15 : (zoom <= 12 ? 17 : 20);         // betűméret képpontban
   var egyseg = mPerPx * emPx / 100;                             // 1 betűegység méterben
-  var b = bal.getBounds();
+  var b = bal.getBounds() || [24.8, 46.0, 26.8, 47.2];   // ha a térkép még nem kész: az egész megye
   var rx = (b[2] - b[0]) * 0.2, ry = (b[3] - b[1]) * 0.2;
   var sokszogek = [];
   FALVAK_ADAT.forEach(function (f, i) {
@@ -415,6 +417,7 @@ function nevekKep(zoom) {
 var telepRetegek = [];      // [{pont, nev}] – nagyításkor / mozgatáskor csak ezek frissülnek
 function telepulesRetegek() {
   var z = bal.getZoom();
+  if (!z) { return; }
   telepRetegek.forEach(function (r) {
     r.pont.setEeObject(pontokKep(z));
     r.nev.setEeObject(nevekKep(z));
@@ -452,7 +455,7 @@ function rajzol() {
   // Települések pontjai és nevei legfelül, mindkét térképen (saját nevek mellett nincs Google-felirat)
   [bal, jobb].forEach(function (t) { t.setOptions(allapot.nevek ? 'SATELLITE' : 'HYBRID'); });
   telepRetegek = [];
-  var z = bal.getZoom();
+  var z = bal.getZoom() || 10;
   [bal, jobb].forEach(function (t) {
     var r = {pont: ui.Map.Layer(pontokKep(z), {}, 'Települések (pontok)'),
              nev: ui.Map.Layer(nevekKep(z), {}, 'Településnevek')};
