@@ -58,3 +58,9 @@ A téli napok (v1 napkereső) nem fedték le teljesen a Csíki-medencét (Csíks
 ## Napkereső v2 – téli eredmény (2026-11-07)
 15 nap, amelyen a megye 100%-a látszik; közülük inverziós (mindkét Δ negatív), derült és havas: **2017-01-19** (derült 95%, havas 66%, Csíki Δ −3,4, Gyergyói Δ −5,2), **2026-01-20** (81%, 71%, −3,4/−7,1), **2015-02-15** (89%, 60%, −2,8/−7,5), **2013-12-26** (71%, 44%, −5,3/−9,1). Ellenpéldák (hó nélkül, a medencealj melegebb): 2022-12-19, 2024-02-16, 2016-01-01.
 A Landsat délelőtti (~10:30) mérése miatt a Δ mérsékelt; a hajnali inverzió erősebb → MODIS éjszakai réteg. A korábbi 7 export (T03_st_*) hiányos lefedettségű, kiváltandó.
+
+## Új napok kiválasztva és bekötve (2026-11-07 este)
+- Nyári napkereső (v2, `IDOSZAK = 'nyar'`): 24 nap teljes lefedettséggel; kiválasztva **2025-07-04** (derült 98%, Csíki Δ +7,8, Gyergyói +9,0) és **2026-07-31** (100%, +6,2 / +8,1).
+- Új exportlista (`T03_export.js`): 2017-01-19, 2026-01-20, 2015-02-15, 2013-12-26, 2022-12-19 (hó nélküli ellenpélda), 2025-07-04, 2026-07-31. A régi 7 asset (hiányos lefedettség) nem kell; törölhető.
+- App: új napok, hó nélküli ellenpélda, medencék közti választó a grafikonhoz (Csíki / Gyergyói / egész megye), kezdőnézet az egész megye, cím: „Hőmérsékleti inverzió Hargita megyében".
+- Következő: export futtatása és megosztás (`T03_megosztas.js`), app ellenőrzése; majd MODIS éjszakai réteg.

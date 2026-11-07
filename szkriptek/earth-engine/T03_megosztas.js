@@ -6,7 +6,7 @@
 // Ha hibát ír, a megosztás kézzel is megy: Assets fül → asset → SHARE → Anyone can read.
 // =====================================================================
 var PROJEKT = 'projects/tidal-velocity-494919-e2/assets/';
-var NAPOK = ['20140203', '20170110', '20170211', '20210121', '20260119', '20250703', '20260823'];
+var NAPOK = ['20170119', '20260120', '20150215', '20131226', '20221219', '20250704', '20260731'];
 
 NAPOK.forEach(function (nap) {
   var id = PROJEKT + 'T03_st_' + nap;

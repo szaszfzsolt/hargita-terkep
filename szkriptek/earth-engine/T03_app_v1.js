@@ -1,5 +1,5 @@
 // =====================================================================
-// Hargita megye – T03 Hőmérsékleti inverzió – a Csíki-medence hidegtava, interaktív app v1
+// Hargita megye – T03 Hőmérsékleti inverzió – hidegtavak a medencékben, interaktív app v1
 // - Két nap felszínhőmérséklete (Landsat 8/9) egymás mellett, húzható „függönnyel":
 //   téli derült napok (a medencealj hidegebb) ↔ nyári napok (a medencealj melegebb)
 // - Magasság–hőmérséklet grafikon (Copernicus DEM, 100 m-es sávok) a megyére / kiválasztott községre
@@ -19,13 +19,13 @@ var terulet = megye.geometry();
 // Adatok
 // ---------------------------------------------------------------------
 var NAPOK = {
-  '2014. február 3. (tél)': '20140203',
-  '2017. január 10. (tél)': '20170110',
-  '2017. február 11. (tél)': '20170211',
-  '2021. január 21. (tél)': '20210121',
-  '2026. január 19. (tél)': '20260119',
-  '2025. július 3. (nyár)': '20250703',
-  '2026. augusztus 23. (nyár)': '20260823'
+  '2017. január 19. (tél)': '20170119',
+  '2026. január 20. (tél)': '20260120',
+  '2015. február 15. (tél)': '20150215',
+  '2013. december 26. (tél)': '20131226',
+  '2022. december 19. (tél, hó nélkül)': '20221219',
+  '2025. július 4. (nyár)': '20250704',
+  '2026. július 31. (nyár)': '20260731'
 };
 var NAP_NEVEK = Object.keys(NAPOK);
 function stKep(cim) { return ee.Image(PROJEKT + 'T03_st_' + NAPOK[cim]).select('st'); }
@@ -336,13 +336,17 @@ var NEV_ALAK = FALVAK_ADAT.map(function (f) { return nevSokszogei(f[0]); });   /
 // ---------------------------------------------------------------------
 // Állapot és térképek
 // ---------------------------------------------------------------------
-var allapot = {napA: NAP_NEVEK[0], napB: '2025. július 3. (nyár)', kozseg: null, kozsegNev: null,
-               csakKozseg: true, hatarok: true, arnyek: true, medence: true,
+var allapot = {napA: NAP_NEVEK[0], napB: '2025. július 4. (nyár)', kozseg: null, kozsegNev: null,
+               csakKozseg: true, hatarok: true, arnyek: true, medence: 'Csíki-medence',
                varosok: true, kozpontok: true, falvak: true, nevek: true};
 var frissitesSzam = 0;
-var KEZDO_PONT = ee.Geometry.Point([25.80, 46.38]);   // Csíkszereda környéke
+var KEZDO_PONT = ee.Geometry.Point([25.70, 46.55]);   // a megye közepe
 // A Csíki-medence és a környező hegyoldalak: ide számoljuk a grafikont, ha nincs kiválasztott község
-var medenceTer = ee.Geometry.Rectangle([25.55, 46.15, 26.05, 46.65]).intersection(terulet, ee.ErrorMargin(100));
+var MEDENCEK = {
+  'Csíki-medence': ee.Geometry.Rectangle([25.55, 46.15, 26.05, 46.60]),
+  'Gyergyói-medence': ee.Geometry.Rectangle([25.38, 46.62, 25.78, 46.90]),
+  'Egész megye': terulet
+};
 
 function ujTerkep() {
   var t = ui.Map();
@@ -427,7 +431,7 @@ function telepulesRetegek() {
 bal.onChangeBounds(telepulesRetegek);
 
 function rajzol() {
-  var statTer = allapot.kozseg ? allapot.kozseg.geometry() : (allapot.medence ? medenceTer : terulet);
+  var statTer = allapot.kozseg ? allapot.kozseg.geometry() : MEDENCEK[allapot.medence];
   var kivag = Boolean(allapot.kozseg && allapot.csakKozseg);
   var ter = kivag ? statTer : terulet;
 
@@ -475,10 +479,11 @@ var ALCIM = {fontSize: '13px', fontWeight: 'bold', margin: '14px 8px 4px 8px', c
 var SZOVEG = {fontSize: '12px', margin: '2px 8px', color: '444444', whiteSpace: 'pre-wrap'};
 
 var panel = ui.Panel({style: {width: '350px', padding: '6px'}});
-panel.add(ui.Label('Hőmérsékleti inverzió – a Csíki-medence hidegtava', CIM));
+panel.add(ui.Label('Hőmérsékleti inverzió Hargita megyében', CIM));
 panel.add(ui.Label('Húzd a térkép közepén a függőleges vonalat: bal oldalt az egyik, ' +
   'jobb oldalt a másik nap felszínhőmérséklete látszik. Alapból télen a medencealj ' +
-  '(kék) hidegebb a hegyoldalnál, nyáron melegebb (piros).', SZOVEG));
+  '(kék) hidegebb a hegyoldalnál, nyáron melegebb (piros). A hó nélküli téli nap (2022. dec. 19.) ' +
+  'azt mutatja, hogy inverzióhoz hó, derült ég és szélcsend kell.', SZOVEG));
 
 panel.add(ui.Label('Melyik két napot hasonlítsuk össze?', ALCIM));
 panel.add(ui.Label('Bal oldal:', {margin: '4px 8px 0 8px', fontSize: '12px'}));
@@ -499,10 +504,8 @@ panel.add(ui.Panel([ui.Label('−25', {fontSize: '11px', margin: '0 0 0 8px', wi
                     ui.Label('+20', {fontSize: '11px', width: '85px'}),
                     ui.Label('+40', {fontSize: '11px'})], ui.Panel.Layout.flow('horizontal')));
 
-panel.add(ui.Label('Szürke (csak domborzat) = nincs adat: felhő, vagy a terület kívül esik a műhold ' +
-  'aznapi sávján. A Landsat egy felvétele kb. 185 km széles, ezért a megye keleti széle (Gyimes, ' +
-  'Úz-völgye, Kászon) a legtöbb napon hiányzik. FIGYELEM: a jelenlegi téli napokon a Csíki-medence ' +
-  'nagy része is kívül esik a sávon, ezért a grafikon főleg a Gyergyói-medence és a Maros völgye adatait mutatja.', SZOVEG));
+panel.add(ui.Label('Szürke (csak domborzat) = nincs adat (felhő). Mind a hét nap olyan, amelyen az egész ' +
+  'megye lefedett és nagyrészt derült volt.', SZOVEG));
 
 // Kapcsolók
 panel.add(ui.Label('Megjelenítés', ALCIM));
@@ -529,7 +532,7 @@ panel.add(ui.Checkbox({label: 'Csak a kiválasztott község (a környék elsöt
 panel.add(ui.Button({label: '↺ Az egész megye', style: {margin: '6px 8px'},
   onClick: function () {
     allapot.kozseg = null; allapot.kozsegNev = null; kozsegValaszto.setValue(null, false);
-    bal.centerObject(KEZDO_PONT, 10); rajzol();
+    bal.centerObject(KEZDO_PONT, 9); rajzol();
   }}));
 kozsegek.aggregate_array('nev_hu').evaluate(function (nevek) {
   nevek.sort(function (a, b) { return a.localeCompare(b, 'hu'); });
@@ -553,8 +556,9 @@ jobb.onClick(kattintas);
 
 // Statisztika és grafikon
 panel.add(ui.Label('Számok', ALCIM));
-panel.add(ui.Checkbox({label: 'Kiválasztott község nélkül a Csíki-medencére számoljon (nem az egész megyére)',
-  value: allapot.medence, style: {margin: '2px 8px'},
+panel.add(ui.Label('Melyik területre számoljon, ha nincs kiválasztott község?', {fontSize: '12px', margin: '2px 8px'}));
+panel.add(ui.Select({items: Object.keys(MEDENCEK), value: allapot.medence,
+  style: {stretch: 'horizontal', margin: '0 8px'},
   onChange: function (v) { allapot.medence = v; rajzol(); }}));
 var statSzoveg = ui.Label('', SZOVEG);
 panel.add(statSzoveg);
@@ -583,7 +587,7 @@ function frissitStatisztika(ter) {
   statSzoveg.setValue('Számolás…');
   grafikonHely.clear();
   ee.Dictionary({
-    nev: allapot.kozseg ? allapot.kozseg.get('nev_hu') : (allapot.medence ? 'Csíki-medence és környéke' : 'Hargita megye'),
+    nev: allapot.kozseg ? allapot.kozseg.get('nev_hu') : (allapot.medence + (allapot.medence === 'Egész megye' ? '' : ' és hegyoldalai')),
     pa: profil(a, ter), pb: profil(b, ter),
     sa: osszegzes(a, ter), sb: osszegzes(b, ter)
   }).evaluate(function (d) {
@@ -604,7 +608,7 @@ function frissitStatisztika(ter) {
     });
     function rovid(c) {   // '2014. február 3. (tél)' → '2014-02-03 tél'
     var az = NAPOK[c];
-    return az.substr(0, 4) + '-' + az.substr(4, 2) + '-' + az.substr(6, 2) + (c.indexOf('(tél)') >= 0 ? ' tél' : ' nyár');
+    return az.substr(0, 4) + '-' + az.substr(4, 2) + '-' + az.substr(6, 2) + (c.indexOf('(tél') >= 0 ? ' tél' : ' nyár');
   }
   var cimA = rovid(allapot.napA) + (allapot.napA === allapot.napB ? ' (bal)' : ''),
       cimB = rovid(allapot.napB) + (allapot.napA === allapot.napB ? ' (jobb)' : '');
@@ -631,5 +635,5 @@ ui.root.clear();
 ui.root.setLayout(ui.Panel.Layout.flow('horizontal'));
 ui.root.add(panel);
 ui.root.add(terkepek);
-bal.centerObject(KEZDO_PONT, 10);   // a Csíki-medence (késleltetve, a térkép elkészülte után ugrik oda)
+bal.centerObject(KEZDO_PONT, 9);   // az egész megye (késleltetve, a térkép elkészülte után ugrik oda)
 rajzol();

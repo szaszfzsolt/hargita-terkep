@@ -14,8 +14,11 @@ var megye = ee.FeatureCollection(PROJEKT + 'hargita_megye_shp');
 var terulet = megye.geometry();
 
 // téli napok (derült, havas) és nyári napok (derült, forró)
-var NAPOK = ['2014-02-03', '2017-01-10', '2017-02-11', '2021-01-21', '2026-01-19',
-             '2025-07-03', '2026-08-23'];
+// A napokat a T03_tiszta_napok_v2.js választotta: a megye 100%-ban lefedett, derült nap.
+// Tél (inverzió, havas): 2017-01-19, 2026-01-20, 2015-02-15, 2013-12-26; ellenpélda (nincs hó, nincs inverzió): 2022-12-19
+// Nyár (a medencealj melegebb): 2025-07-04, 2026-07-31
+var NAPOK = ['2017-01-19', '2026-01-20', '2015-02-15', '2013-12-26', '2022-12-19',
+             '2025-07-04', '2026-07-31'];
 
 var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .merge(ee.ImageCollection('LANDSAT/LC09/C02/T1_L2'))
@@ -24,7 +27,7 @@ var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
 function stKep(nap) {
   var d = ee.Date(nap);
   var kepek = landsat.filterDate(d, d.advance(1, 'day')).map(function (k) {
-    var derult = k.select('QA_PIXEL').bitwiseAnd(0x1E).eq(0);   // nem felhő/árnyék/cirrus
+    var derult = k.select('QA_PIXEL').bitwiseAnd(0x1F).eq(0);   // nem kitöltő pixel, felhő, árnyék, cirrus
     return k.select('ST_B10').multiply(0.00341802).add(149.0).subtract(273.15)
       .updateMask(derult).rename('st');
   });
