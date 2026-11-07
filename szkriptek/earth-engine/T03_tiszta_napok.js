@@ -49,22 +49,29 @@ function elemez(kep) {
     maxPixels: 1e9, bestEffort: true
   });
 
-  var derultArany = ee.Number(stat.get('derult'));
-  var hoArany = ee.Number(stat.get('ho')).divide(derultArany.max(0.0001));
-  var kul = ee.Number(stat.get('st_alj')).subtract(ee.Number(stat.get('st_oldal')));
+  // Teljesen felhős felvételnél a hőmérséklet null → -999 jelzőérték, később kiszűrjük
+  function szam(kulcs) {
+    var v = stat.get(kulcs);
+    return ee.Number(ee.Algorithms.If(v, v, -999));
+  }
+  var derultArany = szam('derult');
+  var hoArany = szam('ho').divide(derultArany.max(0.0001));
+  var stAlj = szam('st_alj');
+  var stOldal = szam('st_oldal');
   return ee.Feature(null, {
     datum: ee.Date(kep.get('system:time_start')).format('YYYY-MM-dd'),
     muhold: ee.String(kep.get('SPACECRAFT_ID')).replace('LANDSAT_', 'L'),
     derult: derultArany,
     ho: hoArany,
-    st_alj: stat.get('st_alj'),
-    st_oldal: stat.get('st_oldal'),
-    kulonbseg: kul
+    st_alj: stAlj,
+    st_oldal: stOldal,
+    kulonbseg: stAlj.subtract(stOldal)
   });
 }
 
+// érvényes: volt mérhető hőmérséklet mindkét sávban
 var tabla = gyujtemeny.map(elemez)
-  .filter(ee.Filter.notNull(['derult', 'ho', 'st_alj', 'st_oldal', 'kulonbseg']));
+  .filter(ee.Filter.and(ee.Filter.gt('st_alj', -900), ee.Filter.gt('st_oldal', -900)));
 
 // Jó napok: legalább 85% derült, és a derült terület legalább 70%-a havas
 var jok = tabla.filter(ee.Filter.and(ee.Filter.gte('derult', 0.85), ee.Filter.gte('ho', 0.7)))
