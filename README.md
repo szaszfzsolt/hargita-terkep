@@ -20,7 +20,7 @@ Két év összehasonlítása függönnyel, évenkénti vágás/erdőkár (Sentin
 | Mappa | Mi van benne |
 |---|---|
 | `jegyzetek/` | Projektnapló, követelmények, adatforrások, témák, útmutatók. Obsidian-tárként is megnyitható. |
-| `szkriptek/earth-engine/` | Google Earth Engine-szkriptek (JavaScript, a Code Editorba másolhatók) |
+| `szkriptek/earth-engine/` | Google Earth Engine-szkriptek (JavaScript, a Code Editorba másolhatók) – használat: [README](szkriptek/earth-engine/README.md) |
 | `szkriptek/qgis/` | QGIS-lépések, Python-szkriptek |
 | `adatok/nyers/` | Letöltött, feldolgozatlan adatok (NEM kerül a GitHubra) |
 | `adatok/kesz/` | Kivágott, feldolgozott rétegek (GeoTIFF, GeoJSON) |

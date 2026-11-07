@@ -6,6 +6,7 @@
 // az azonos napon egy mozaikká egyesíti. 30 m, a megye határára vágva.
 // Futtatás: Run, majd a jobb oldali Tasks fülön minden feladatnál a RUN gomb.
 // Az elkészült assetet nyilvánossá kell tenni (Anyone can read)!
+// Mentés új szkriptként: NEW → File → név: T03_export  (NE írj felül meglévőt – lásd jegyzetek/Utmutatok/U02)
 // =====================================================================
 
 var PROJEKT = 'projects/tidal-velocity-494919-e2/assets/';

@@ -33,3 +33,17 @@ Amibe belefutottunk (vagy várhatóan belefutunk), és hogyan oldottuk meg.
 **Mi történt:** inkognitóban a községlista „Betöltés…" maradt, nem volt műholdréteg.
 **Megoldás:** az app által használt asseteket meg kell osztani (Assets → asset → SHARE → *Anyone can read*). Az appot nem kell újra közzétenni.
 **Tanulság:** közzététel után mindig inkognitóablakban is tesztelni.
+
+### 2026-11-07 – Szkript felülírása a Code Editorban
+**Mi történt:** a T03 nyári napkereső kódját a már megnyitott `T03_tiszta_napok` szkriptbe másoltuk be és mentettük (Ctrl+S), így az felülírta a téli napkeresőt. Kétszer is megtörtént.
+**Megoldás:** a szkript a GitHubon megvan, újra bemásolható; az Earth Engine a korábbi változatot is őrzi (Revision history). Az új [[U02 Earth Engine szkript futtatasa]] útmutató és a szkriptek fejlécének „Mentés új szkriptként” sora ezért kerül be.
+**Tanulság:** minden új szkript előtt NEW → File; mentés előtt a szerkesztő fölötti fül nevét ellenőrizni.
+
+### 2026-11-07 – A 0 érték „hiányzónak” számított
+**Mi történt:** a `ee.Algorithms.If(v, v, -999)` a 0-t is hamisnak vette, így havasság nélküli (nyári) napoknál a „havas arány” -101218% lett.
+**Megoldás:** `ee.Algorithms.If(ee.Algorithms.IsEqual(v, null), -999, v)`.
+**Tanulság:** Earth Engine-ben a null vizsgálatához `IsEqual(v, null)`, ne a puszta értéket használjuk.
+
+### 2026-11-07 – Teljesen felhős felvétel null értéket adott
+**Mi történt:** `Number.subtract: Parameter 'left' is required and may not be null` – ha az egész terület felhős, a `reduceRegion` null-t ad.
+**Megoldás:** jelzőérték (-999) a nullok helyett, majd szűrés (`gt('st_alj', -900)`).

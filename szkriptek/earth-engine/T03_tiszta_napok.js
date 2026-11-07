@@ -10,6 +10,7 @@
 // A Console-ra kiírja a legjobb napokat (sok derült terület, havas, erős inverzió).
 // Használat: másold a Code Editorba, Run. Futás: néhány perc.
 // Projekt: tidal-velocity-494919-e2
+// Mentés új szkriptként: NEW → File → név: T03_tiszta_napok  (NE írj felül meglévőt – lásd jegyzetek/Utmutatok/U02)
 // =====================================================================
 
 // A Csíki-medence és a környező hegyoldalak (nyugat–kelet: Hargita ↔ Csíki-havasok)

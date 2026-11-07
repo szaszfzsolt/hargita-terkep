@@ -3,6 +3,7 @@
 // 2. lépés: derült NYÁRI Landsat-napok keresése (a téli napokkal való összehasonlításhoz)
 // Nyáron délelőtt a medencealj általában melegebb a hegyoldalnál (a különbség pozitív).
 // Használat: másold a Code Editorba, Run. Futás: néhány perc.
+// Mentés új szkriptként: NEW → File → név: T03_nyari_napok  (NE írj felül meglévőt – lásd jegyzetek/Utmutatok/U02)
 // =====================================================================
 
 // A Csíki-medence és a környező hegyoldalak (nyugat–kelet: Hargita ↔ Csíki-havasok)
