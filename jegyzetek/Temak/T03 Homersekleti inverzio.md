@@ -47,3 +47,10 @@ Következő: nyári nap(ok) kiválasztása (`T03_nyari_napok.js`), majd export a
 - Később: MODIS éjszakai LST, húzható metszetvonal, falunevek.
 
 - App v1 bővítve (2026-11-07): külön kapcsolható **községhatárok, városok, községközpontok, falvak (pontok)** és **településnevek** (a T02 appból átvett névlista és betűkészlet; városnevek 8-as, községközpontok 10-es, falvak 12-es nagyítástól; kiválasztott községnél annak minden települése).
+
+## Irányváltás (2026-11-07, délelőtt)
+A téli napok (v1 napkereső) nem fedték le teljesen a Csíki-medencét (Csíkszereda a lefedetlen sávban); a derült arányt a v1 csak a lefedett pixelekre számolta. **Döntés (Zsolt jóváhagyta):**
+1. **Napkereső v2** (`T03_tiszta_napok_v2.js`): napi mozaik, a megye és a két nagy medence (Csíki, Gyergyói) lefedettségének külön ellenőrzésével.
+2. **MODIS éjszakai LST** átlag (1 km, teljes megye, minden medence egyszerre) – hosszú távú, megbízható kép.
+3. **App átnevezése:** „Hőmérsékleti inverzió Hargita megyében"; medencénként választható grafikon.
+4. A régi 5 téli nap (2014–2026) csak a Gyergyói-medencére és a Maros völgyére jó; felülvizsgálandó.
