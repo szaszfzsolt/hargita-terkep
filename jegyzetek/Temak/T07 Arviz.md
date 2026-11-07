@@ -72,3 +72,9 @@
 ## 2005 – Landsat-napkereső eredménye
 - Ablak: 2005-08-01 – 09-15. **2005-08-22** (L7, 183/27: felhő 0%; 183/28: 6%) = az árvíz (aug. 23.) előtti nap; **2005-09-06/07** (L5 184/27: 15%; L7 183/27: 1%, 183/28: 3%) = két héttel utána. Landsat 7: csíkos (SLC-off).
 - Terv: előtte–utána a Nyikó-völgyre (hordalék, kopár partszakaszok, növényzetvesztés), 30 m.
+
+### 2010 – eredmény (2026-11-08)
+- `T07_arviz_2010_landsat.js`: a jelölt árvíz utáni nyom (júl. 2–3-án nedves, a száraz nyári viszonyításban nem) 1,05 km² a megyében; a térképen az **Olt** menti réteken, keskeny sávban, a völgyfenéken látszik (Zsolt megerősítette a helyszínt: Olt). Korlát: árvíz utáni állapot (3–7 nap), 30 m, Landsat 7 csíkos; nem az elöntés teljes kiterjedése. Feliratozás: „árvíz utáni nyom".
+
+### 2005 – szkript
+- `T07_arviz_2005_nyiko.js`: függöny, bal: 2005-08-22 (árvíz előtti nap), jobb: 2005-09-06/07; megjelenítés: valódi szín / NDVI / MNDWI. Várható: csak az erősebb nyomok látszanak 30 m-en.
