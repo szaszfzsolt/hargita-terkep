@@ -215,16 +215,21 @@ function frissitStatisztika(ter) {
       var s = sor[m];
       return {c: [{v: m}, {v: s.a === undefined ? null : s.a}, {v: s.b === undefined ? null : s.b}]};
     });
-    var cimA = allapot.napA + (allapot.napA === allapot.napB ? ' (bal)' : ''), cimB = allapot.napB + (allapot.napA === allapot.napB ? ' (jobb)' : '');
+    function rovid(c) {   // '2014. február 3. (tél)' → '2014-02-03 tél'
+    var az = NAPOK[c];
+    return az.substr(0, 4) + '-' + az.substr(4, 2) + '-' + az.substr(6, 2) + (c.indexOf('(tél)') >= 0 ? ' tél' : ' nyár');
+  }
+  var cimA = rovid(allapot.napA) + (allapot.napA === allapot.napB ? ' (bal)' : ''),
+      cimB = rovid(allapot.napB) + (allapot.napA === allapot.napB ? ' (jobb)' : '');
     grafikonHely.add(ui.Chart({
       cols: [{id: 'm', label: 'Magasság (m)', type: 'number'},
              {id: 'a', label: cimA, type: 'number'}, {id: 'b', label: cimB, type: 'number'}],
       rows: rows
     }, 'LineChart', {
       title: 'Felszínhőmérséklet a magasság szerint',
-      hAxis: {title: 'Tengerszint feletti magasság (m)'},
+      hAxis: {title: 'Tengerszint feletti magasság (m)', gridlines: {count: 8}, minorGridlines: {count: 0}, format: '#'},
       vAxis: {title: 'Átlagos felszínhőmérséklet (°C)'},
-      legend: {position: 'top', maxLines: 3}, lineWidth: 2, pointSize: 3, interpolateNulls: true,
+      legend: {position: 'top', maxLines: 3, textStyle: {fontSize: 11}}, lineWidth: 2, pointSize: 3, interpolateNulls: true,
       series: {0: {color: '2171b5'}, 1: {color: 'e31a1c'}}, height: 280
     }));
   });
