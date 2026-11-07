@@ -18,3 +18,9 @@
 1. `T07_arviz_napok.js` – mely napokon van radar- és optikai kép (2025, majd 2018).
 2. Radarból elöntésmaszk (előtte–utána különbség), export assetként.
 3. App: függöny (előtte–utána), elöntött terület községenként.
+
+## 2025 – napkereső eredménye (2026-11-08)
+- Teljes lefedettségű (100%) radarpályák: **7. pálya DESCENDING** (máj. 11, 17, 23, 29, jún. 4, 10), **131. pálya ASCENDING** (máj. 13, 19, 25, 31, jún. 6, 12). A 109-es (86%) és 29-es (85%) pálya nem fedi le az egészet, az 58-as alig (1–2%).
+- A csapadék csúcsa kb. máj. 26–27 (hírek alapján); a csúcsnapon nincs teljes lefedettségű kép.
+- Választott pár: 7. pálya, máj. 23 (előtte) → máj. 29 (utána). Ellenőrző pár: 131. pálya, máj. 25 → máj. 31.
+- Szkript: `T07_arviz_terkep_v1.js` (előnézet a térképen; küszöbök: utána < −15 dB, változás < −3 dB, lejtő < 5°, állandó víz kizárva, legalább 10 képpontos folt).
