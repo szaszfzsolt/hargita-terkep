@@ -30,3 +30,9 @@
 - Ok: a csapadékcsúcsot (máj. 26–27) nem kapta el teljes lefedettségű radarkép; az árvíz Hargita megyében főleg helyi, hirtelen áradás volt; a radar csak a nyílt vizet látja sötétnek (fűvel borított elöntött rét, hullámzó folyó, utcák nem).
 - Optikai (Sentinel-2): máj. 12–jún. 1 között végig felhős; tiszta: jún. 6 (13%), jún. 8 (9%), 100% lefedés – csak utólagos következményekre jó.
 - Következtetés: a 2025-ös esemény ezekkel a napokkal nem mutatható be látványosan. Következő: **2018. június**, utána 2005/2010.
+
+## 2018 – napkereső eredménye (2026-11-08)
+- Csapadék/árvíz: 2018. jún. 28–30. (Székelyföld, Tatros, Olt mente).
+- Teljes lefedésű radarpályák: 7 DESC (jún. 17, 23, **29**, júl. 5, 11), 131 ASC (jún. 19, 25, **júl. 1**, júl. 13). 109 DESC (85%): jún. 18, **30**, júl. 12.
+- Optikai: csak júl. 3. használható (felhő 23%, 100% lefedés); a többi nap 38–100% felhő.
+- Párok a szkriptben: `2018a` (jún. 23 → 29, 7. pálya), `2018b` (jún. 25 → júl. 1, 131. pálya), `2018c` (jún. 18 → 30, 109. pálya, 85%).

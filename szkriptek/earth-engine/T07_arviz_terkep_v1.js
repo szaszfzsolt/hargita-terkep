@@ -14,11 +14,19 @@ var megye = ee.FeatureCollection(PROJEKT + 'hargita_megye_shp');
 var terulet = megye.geometry();
 
 // --- Beállítások (a napkereső szkript alapján) ---
-var ELOTTE = '2025-05-23';      // száraz nap az árvíz előtt
-var UTANA = '2025-05-29';       // 2 nappal a csúcs (május 26–27) után
-var PALYA = 7;                  // relatív pálya (7 = DESCENDING, 131 = ASCENDING)
-var IRANY = 'DESCENDING';       // ASCENDING / DESCENDING
-// Alternatív pár: ELOTTE '2025-05-25', UTANA '2025-05-31', PALYA 131, IRANY 'ASCENDING'
+// Párok: azonos pálya és irány kell az előtte és utána képhez (a napkereső szkript eredménye)
+var PAROK = {
+  '2025a': {elotte: '2025-05-23', utana: '2025-05-29', palya: 7, irany: 'DESCENDING'},     // csúcs máj. 26–27 után 2 nappal
+  '2025b': {elotte: '2025-05-25', utana: '2025-05-31', palya: 131, irany: 'ASCENDING'},
+  '2018a': {elotte: '2018-06-23', utana: '2018-06-29', palya: 7, irany: 'DESCENDING'},     // az eső közben (jún. 28–30.), teljes lefedés
+  '2018b': {elotte: '2018-06-25', utana: '2018-07-01', palya: 131, irany: 'ASCENDING'},    // 1–2 nappal a csúcs után
+  '2018c': {elotte: '2018-06-18', utana: '2018-06-30', palya: 109, irany: 'DESCENDING'}    // a csúcs napja, de csak a megye 85%-át fedi
+};
+var PAR = '2018a';              // melyik párt használjuk
+var ELOTTE = PAROK[PAR].elotte;
+var UTANA = PAROK[PAR].utana;
+var PALYA = PAROK[PAR].palya;
+var IRANY = PAROK[PAR].irany;
 
 var KUSZOB_UTANA = -15;         // dB: ennél sötétebb = víz (sima felszín) – SZIGORÚ
 var KUSZOB_VALTOZAS = -3;       // dB: legalább ennyit sötétedett – SZIGORÚ
