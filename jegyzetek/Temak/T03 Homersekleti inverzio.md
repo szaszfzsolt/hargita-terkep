@@ -64,3 +64,5 @@ A Landsat délelőtti (~10:30) mérése miatt a Δ mérsékelt; a hajnali inverz
 - Új exportlista (`T03_export.js`): 2017-01-19, 2026-01-20, 2015-02-15, 2013-12-26, 2022-12-19 (hó nélküli ellenpélda), 2025-07-04, 2026-07-31. A régi 7 asset (hiányos lefedettség) nem kell; törölhető.
 - App: új napok, hó nélküli ellenpélda, medencék közti választó a grafikonhoz (Csíki / Gyergyói / egész megye), kezdőnézet az egész megye, cím: „Hőmérsékleti inverzió Hargita megyében".
 - Következő: export futtatása és megosztás (`T03_megosztas.js`), app ellenőrzése; majd MODIS éjszakai réteg.
+
+- A `T03_megosztas.js` megszűnt (a Code Editor nem engedi az ACL állítását szkriptből); az új 7 asset (`T03_st_20170119`, `20260120`, `20150215`, `20131226`, `20221219`, `20250704`, `20260731`) megosztása kézzel történik, lásd U02.

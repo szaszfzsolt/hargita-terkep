@@ -19,6 +19,17 @@ A **Ctrl+S mindig abba a szkriptbe ment, amelyik éppen meg van nyitva.** Ha egy
 - Mentés előtt nézd meg a szerkesztő fölötti **fülön látható nevet**: az egyezik-e a szkript nevével?
 - Ha mégis felülírtad: a szkript a GitHubon megvan, onnan újra bemásolható. Az Earth Engine a korábbi változatokat is őrzi (a szkript sorában a kis óra ikon, *Revision history*).
 
+## Exportált asset nyilvánossá tétele (kézzel)
+
+Az `Export.image.toAsset` assetjei alapból privátak. A közzétett app csak akkor látja őket, ha nyilvánosak:
+
+1. Bal oldalt kattints az **Assets** fülre (a **Scripts** mellett), és frissítsd a listát (kék nyilak).
+2. Kattints a kívánt assetre (pl. `T03_st_20170119`), majd az ablakban a **SHARE** (megosztás) gombra.
+3. Pipáld be: **Anyone can read** (*Bárki olvashatja*), majd **Save**.
+4. Ismételd meg minden assetnél. Az assetek listáját a témajegyzet tartalmazza.
+
+(A Code Editorban az `ee.data.setAssetAcl` parancs nem érhető el, ezért ez nem szkriptelhető.)
+
 ## Egyéb tudnivalók
 
 - Az exportált assetet (**Assets** fül → az asset → **SHARE**) nyilvánossá kell tenni (*Anyone can read*), különben a közzétett app nem látja.
